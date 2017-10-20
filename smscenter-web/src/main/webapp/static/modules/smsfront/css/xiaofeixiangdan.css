@@ -1,0 +1,161 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*消费详单*/
+.tit h1{width:30%;float:left;height:48px;line-height:48px;font-size:28px;font-family:"兰亭纤黑";font-weight:normal;
+}
+.tit .tips{float:right; line-height:34px; padding:14px 10px 0 0; font-size:14px; color:#8f8f8f; font-family:'宋体';
+}
+.tit .tips a{color:#03c2fa;
+}
+.search_box{padding:0px 0 32px; background:#f4fafd; margin:40px 0 26px; overflow:hidden;
+}
+.search_box .search_line{width:100%; overflow:hidden; padding-top:20px;
+}
+.search_line .downlink{float:left; padding-left:10px; line-height:30px; color:#03c2fa;
+}
+.search_box .name, .search_box .name1{float:left; line-height:30px; width:110px; text-align:right; padding-right:4px; font-size:16px; color:#565656; font-family:'Microsoft YaHei';
+}
+.search_box .name1{width:70px;
+}
+.search_box .pl{padding-left:30px;
+}
+.search_box .txt, .search_box .l_txt, .search_box .ltxt{float:left; width:112px; height:28px; border:#ccc solid 1px; padding-left:4px; color:#565656;
+}
+.search_box .l_txt{width:130px; margin-right:14px;
+}
+.search_box .ml{margin-left:22px;
+}
+.search_box .sub_btn{float:left; width:126px; height:30px; color:#FFF; border:none; cursor:pointer; background:#fea720; text-align:center; font-size:16px; font-family:'Microsoft YaHei';
+}
+.search_box .radio{float:left; margin:9px 2px 0 0; *margin:6px 0 0 0;
+}
+.search_box .radio_name{float:left; line-height:30px; font-size:14px; color:#565656; font-family:'Microsoft YaHei'; padding-right:14px; *padding-right:8px;
+}
+.search_box .em1{padding-right:4px; *padding-right:0;
+}
+.tips_box{width:100%; height:240px; background:#f9f9f9;
+}
+.tips_box p{font-size:18px; color:#acacac; font-family:'Microsoft YaHei'; text-align:center; line-height:30px; padding-top:84px;
+}
+/*消费概要*/
+.title_name{width:100%; height:40px; line-height:40px; font-family:'Microsoft YaHei';
+}
+.title_name .s_title{float:left; padding:0 26px; background:#f9f9f9; text-align:center; font-size:16px; color:#808080; margin-right:30px;
+}
+.title_name .count{float:left; font-size:16px; color:#565656;
+}
+.title_name .org{color:#fea720;
+}
+.title_name .blue{float:right; padding-right:46px; color:#27a9e3; font-size:14px;
+}
+.pay_list, .fushu .fs_list{width:98%; overflow:hidden; border-bottom:#eeeeee solid 4px;
+}
+.pay_list .pay, .pay_list .unpay{width:49%; float:left;
+}
+.pay_list .thtitle, .fushu .thtitle, .spend_list .common_title{width:100%; height:40px; line-height:40px; padding:10px 0; background:#eeeeee;
+}
+.pay_list ul{width:100%; overflow:hidden;
+}
+.pay_list li, .spend_list li{width:100%; overflow:hidden; float:left; line-height:48px; border-bottom:#dddddd dotted 1px;
+}
+.pay_list .pay{border-right:#dddddd solid 1px;
+}
+.pay_list span, .fs_list span, .spend_list span{float:left; font-size:14px; color:#666666; font-family:'Microsoft YaHei'; word-wrap:break-word; word-break:break-all; white-space: nowrap; word-wrap:normal; overflow:hidden; text-overflow:ellipsis;
+}
+.pay_list .thtitle span, .spend_list .common_title span{font-size:16px; color:#565656;
+}
+.pay_list .t1{padding-left:24px; width:180px;
+}
+.pay_list .t2{width:142px;
+}
+.pay_list .t3{width:96px;
+}
+.pay_list .org, .fs_list .org{color:#fea720; font-weight:bold;
+}
+.fushu{width:100%; overflow:hidden; margin:30px 0 40px 0; 
+}
+.fushu .thtitle{font-size:16px; color:#565656; font-family:'Microsoft YaHei'; padding-left:24px; width:96%;
+}
+.fs_list li{width:49%; float:left; line-height:48px; border-bottom:#dddddd dotted 1px;
+}
+.fs_list .t1{width:154px; text-align:right;
+}
+.pay_list .link{color:#666666;
+}
+.pay_list .link:hover, .pay_list .org_link:hover{text-decoration:underline;
+}
+/*单项外呼等*/
+.spend_list{width:100%; overflow:hidden;
+}
+.spend_list .common_list{width:100%; overflow:hidden; border-bottom:#eeeeee solid 2px;
+}
+.spend_list span{padding:0 4px;
+}
+.spend_list .default{cursor:default; color:#666666;
+}
+.spend_list .t1{padding-left:24px; width:150px;
+}
+.spend_list .t2{width:140px;
+}
+.spend_list .t3{width:150px;
+}
+.spend_list .t4{padding-left:24px; width:220px;
+}
+.spend_list .t5{width:220px;
+}
+.spend_list .t6{width:100px;
+}
+.spend_list .t7{width:500px;
+}
+.spend_list .t8{padding-left:24px; width:150px;
+}
+.spend_list .t9{width:300px;
+}
+.spend_list .t10{width:120px;
+}
+.spend_list .t11{width:60px;
+}
+.spend_list .t12{width:440px;
+}
+.spend_list .t13{width:70px;
+}
+.spend_list .t14{width:520px;
+}
+.spend_list .wordkeep{white-space:normal;
+}
+.spend_list .wordkeep .default{line-height:24px; padding:12px 0;
+}
+.spend_list .center{text-align:center;
+}
+.spend_list .downlink{color:#02b9ef;
+}
+/*短信发送记录*/
+.search_box .time_date{float:left; font-size:14px;
+}
+.search_box .time_date .txt{float:none;
+}
+.search_box .ltxt{width:252px;
+}
+.search_box .space{width:96px; float:left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

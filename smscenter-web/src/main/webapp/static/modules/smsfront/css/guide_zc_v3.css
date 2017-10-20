@@ -1,0 +1,355 @@
+@charset "utf-8";
+/* CSS Document */
+body, input, textarea {
+    font: 12px/1.2em Microsoft YaHei, Tahoma, Arial, sans-serif, 'Hiragino Sans GB';
+    letter-spacing: 0.7px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    display: inline-block;
+    color: #3c3c3c;
+}
+
+a:focus {
+    outline: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+img {
+    border: 0;
+}
+
+em, i {
+    font-style: normal;
+}
+
+.clearfix:after {
+    content: '';
+    clear: both;
+    display: block;
+    clear: both;
+    line-height: 0;
+    visibility: hidden;
+}
+
+* html .clearfix {
+    height: 1%;
+}
+
+.registerwrap {
+    width: 100%;
+    height: 100%;
+    background: url(../images/advice_img1.jpg) 50% 0 no-repeat;
+    min-width: 1200px;
+    min-height: 700px;
+}
+
+.registerwrap .zcfooter {
+    position: fixed;
+    left: 0;
+    bottom: 63px;
+    width: 100%;
+    height: 17px;
+}
+
+.registerwrap .zcfooter .footerimg {
+    width: 1028px;
+    height: 17px;
+    background: url(../images/advice_img2.png) left top no-repeat;
+    margin: 0 auto;
+}
+
+.registerwrap .zccontent {
+    width: 1100px;
+    height: 360px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -490px;
+    margin-top: -180px;
+}
+
+.zccontent .zccon_l {
+    width: 582px;
+    height: 360px;
+    float: left;
+    background: url(../images/advice_img3.png) right top no-repeat;
+    font-size: 14px;
+    font-family: '宋体';
+}
+
+.zccontent .zccon_l .title {
+    width: 565px;
+    height: 92px;
+    background: url(../images/register_img1.png) left 96px no-repeat;
+    padding-top: 96px;
+}
+
+.zccontent .zccon_l .stitle {
+    padding: 21px 0 11px 0;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.zccontent .zccon_l .con, .zccontent .zccon_l .cons {
+    line-height: 24px;
+    color: #888888
+}
+
+.zccontent .zccon_l .cons {
+    font-size: 12px;
+    padding-top: 12px;
+}
+
+.zccon_l .cons a {
+    color: #148F5C;
+}
+
+.zccon_l .cons a:hover {
+    text-decoration: underline;
+}
+
+.zccontent .zccon_r {
+    float: left;
+    width: 488px;
+    height: 360px;
+    font-size: 14px;
+    font-family: '宋体';
+    overflow: hidden;
+    *position: relative;
+}
+
+.zccontent .zccon_r .zcconwrap {
+    width: 1464px;
+    overflow: hidden;
+    height: 360px;
+    *position: relative;
+}
+
+.zccontent .zccon_r .zcstep1, .zccontent .zccon_r .zcstep2, .zccontent .zccon_r .zcstep3 {
+    width: 488px;
+    float: left;
+    height: 100%;
+}
+
+.zccon_r .zcstep1 .zclist, .zccon_r .zcstep2 .zclist {
+    padding: 38px 0 8px 82px;
+    width: 318px;
+}
+
+.zcstep1 .zclist li, .zcstep2 .zclist li {
+    width: 100%;
+    padding-bottom: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.zcstep1 .zclist .txtbox, .zcstep2 .zclist .txtbox {
+    width: 318px;
+    height: 34px;
+    border-bottom: #575b53 solid 1px;
+    position: relative;
+}
+
+.zclist .xieyi {
+    font-size: 12px;
+    color: #3a4347;
+    padding-top: 20px;
+    text-align: right;
+}
+
+.zclist .xieyi a:hover {
+    color: #148f5c;
+}
+
+.zcstep1 .zclist .label, .zcstep2 .zclist .label {
+    float: left;
+    line-height: 34px;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.zcstep1 .zclist .line, .zcstep2 .zclist .line {
+    float: left;
+    height: 20px;
+    width: 1px;
+    background: #000;
+    margin: 7px 13px;
+}
+
+.zcstep1 .zclist .txt, .zcstep2 .zclist .txt {
+    float: left;
+    width: 222px;
+    height: 34px;
+    line-height: 34px;
+    background: none;
+    border: 0;
+    outline: none;
+    color: #FFF;
+    position: relative;
+    z-index: 9999;
+}
+
+.zcstep2 .zclist .txt {
+    width: 188px;
+}
+
+.zcstep1 .zclist .icon, .zcstep2 .zclist .icon {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: url(../images/advice_img5.png) left top no-repeat;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.zccon_r .zcstep1 .subbtn, .zccon_r .zcstep2 .subbtn {
+    float: left;
+    width: 332px;
+    height: 48px;
+    line-height: 44px;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 20px;
+    color: #FFF;
+    font-family: 'Microsoft YaHei';
+    background: url(../images/advice_img6.png) 0 0 no-repeat;
+    margin-left: 73px;
+}
+
+.zccon_r .zcstep1 .subbtn:hover, .zccon_r .zcstep2 .subbtn:hover {
+    background-position: 0 -48px;
+}
+
+.zcstep1 .zclist .erroricon, .zcstep1 .zclist .passicon, .zcstep2 .zclist .erroricon, .zcstep2 .zclist .passicon {
+    display: block;
+    width: 11px;
+    height: 11px;
+    background: url(../images/advice_img10.png) 0 0 no-repeat;
+    position: absolute;
+    right: 18px;
+    top: 12px;
+}
+
+.zcstep1 .zclist .passicon, .zcstep2 .zclist .passicon {
+    width: 15px;
+    height: 10px;
+    background-position: 0 -11px;
+    right: 16px;
+    bottom: 7px;
+}
+
+.zcstep1 .zclist em.error, .zcstep2 .zclist em.error {
+    display: block;
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    text-align: right;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 14px;
+    color: #f42643;
+    font-family: '宋体';
+}
+
+.zclist em.error .link {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+.zccon_r .zcstep2 .zclist {
+    padding: 0 0 55px 82px;
+    float: left;
+}
+
+.zccon_r .zcstep2 .tips {
+    padding: 43px 0 55px 82px;
+    line-height: 30px;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.zccon_r .zcstep2 .red {
+    color: #ff473d;
+}
+
+.zccon_r .zcstep2 .gray {
+    color: #a5a4a4;
+}
+
+.zccon_r .zcstep2 .listwrap {
+    width: 100%;
+    overflow: hidden;
+}
+
+.zcstep2 .listwrap .second, .zcstep2 .listwrap .resend {
+    float: left;
+    line-height: 35px;
+    padding-left: 28px;
+    color: #a5a4a4;
+    font-size: 14px;
+    font-family: '宋体';
+}
+
+.zcstep2 .listwrap .resend {
+    margin-left: 14px;
+    padding-left: 0;
+}
+
+.zcstep2 .listwrap .resend:hover {
+    color: #20a56e;
+}
+
+.zcstep3 .imgbox {
+    width: 211px;
+    height: 222px;
+    background: url(../images/register_img2.png) left top no-repeat;
+    margin: 28px auto 0;
+}
+
+.zcstep3 .tips {
+    line-height: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: #888888;
+    font-family: '宋体';
+    padding-top: 20px;
+}
+
+.zcstep3 .tips .link {
+    font-weight: bold;
+    color: #FFF;
+    text-decoration: underline;
+}
+
+.zcstep3 .tips .link:hover {
+    color: #148f5c;
+}
+
+span.error_error {
+    display: block;
+    width: 100%;
+    height: 60px;
+    position: relative;
+    *position: absolute;
+    *left: 0;
+    *top: 0;
+    z-index: 9;
+}
+
+@media screen and (min-width: 1920px) {
+    .registerwrap {
+        background-size: 100% 100%;
+    }
+}

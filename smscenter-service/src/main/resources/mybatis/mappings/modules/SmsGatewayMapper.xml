@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.gateway.mapper.SmsGatewayMapper">
+    
+	<select id="findList" resultType="com.sanerzone.smscenter.biz.entity.SmsGateway">
+		SELECT 
+			a.id AS "id",
+			a.gw_code AS "gwCode",
+			a.app_code AS "appCode",
+			a.gw_name AS "gwName",
+			a.gw_remark AS "gwRemark",
+			a.gw_status AS "gwStatus",
+			a.gw_type AS "gwType",
+			a.gw_proto AS "gwProto",
+			a.gw_proto_version AS "gwProtoVersion",
+			a.gw_proto_class AS "gwProtoClass",
+			a.gw_proto_extparam AS "gwProtoExtparam",
+			a.gw_server_ip AS "gwServerIp",
+			a.gw_server_port AS "gwServerPort",
+			a.gw_local_ip AS "gwLocalIp",
+			a.gw_local_port AS "gwLocalPort",
+			a.gw_username AS "gwUsername",
+			a.gw_password AS "gwPassword",
+			a.gw_sp_number AS "gwSpNumber",
+			a.gw_corp_id AS "gwCorpId",
+			a.gw_service_id AS "gwServiceId",
+			a.gw_receive_model AS "gwReceiveModel",
+			a.sms_sign_model AS "smsSignModel",
+			a.sms_sign_nose AS "smsSignNose",
+			a.gw_longsms AS "gwLongsms",
+			a.gw_once_submit AS "gwOnceSubmit",
+			a.gw_send_rate AS "gwSendRate",
+			a.gw_receive_rate AS "gwReceiveRate",
+			a.gw_connections AS "gwConnections",
+			a.create_time AS "createTime",
+			a.modify_time AS "modifyTime",
+			a.create_by AS "createBy.id",
+			a.modify_by AS "modifyBy",
+			a.modify_remark AS "modifyRemark"
+		FROM sms_gateway a
+		where a.gw_status &lt; 2
+			AND a.app_code = #{appCode}
+	</select>
+	
+	<select id="findByGwCode" resultType="com.sanerzone.smscenter.biz.entity.SmsGateway">
+		SELECT 
+			a.id AS "id",
+			a.gw_code AS "gwCode",
+			a.app_code AS "appCode",
+			a.gw_name AS "gwName",
+			a.gw_remark AS "gwRemark",
+			a.gw_status AS "gwStatus",
+			a.gw_type AS "gwType",
+			a.gw_proto AS "gwProto",
+			a.gw_proto_version AS "gwProtoVersion",
+			a.gw_proto_class AS "gwProtoClass",
+			a.gw_proto_extparam AS "gwProtoExtparam",
+			a.gw_server_ip AS "gwServerIp",
+			a.gw_server_port AS "gwServerPort",
+			a.gw_local_ip AS "gwLocalIp",
+			a.gw_local_port AS "gwLocalPort",
+			a.gw_username AS "gwUsername",
+			a.gw_password AS "gwPassword",
+			a.gw_sp_number AS "gwSpNumber",
+			a.gw_corp_id AS "gwCorpId",
+			a.gw_service_id AS "gwServiceId",
+			a.gw_receive_model AS "gwReceiveModel",
+			a.sms_sign_model AS "smsSignModel",
+			a.sms_sign_nose AS "smsSignNose",
+			a.gw_longsms AS "gwLongsms",
+			a.gw_once_submit AS "gwOnceSubmit",
+			a.gw_send_rate AS "gwSendRate",
+			a.gw_receive_rate AS "gwReceiveRate",
+			a.gw_connections AS "gwConnections",
+			a.create_time AS "createTime",
+			a.modify_time AS "modifyTime",
+			a.create_by AS "createBy.id",
+			a.modify_by AS "modifyBy",
+			a.modify_remark AS "modifyRemark"		
+		FROM sms_gateway a
+		WHERE a.gw_code = #{gwCode}
+	</select>
+	
+	<update id="updateStatus">
+		UPDATE sms_gateway SET 	
+			gw_status = #{gwStatus},
+		WHERE gw_code = #{gwCode}
+	</update>
+	
+</mapper>

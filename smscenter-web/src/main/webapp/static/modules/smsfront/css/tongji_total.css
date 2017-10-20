@@ -1,0 +1,85 @@
+@charset "utf-8";
+/* CSS Document */
+/*查询部分*/
+.tj_search{padding:20px 0 20px 30px; background:#f4fafd; margin:22px 0 40px; overflow:hidden;
+}
+.tj_search .checkbox, .search_box .checkbox{float:left; margin:9px 2px 0 4px;
+}
+.tj_search .checkname, .search_box .checkname{float:left; font-size:14px; color:#565656; line-height:30px; padding-right:14px;
+}
+.tj_search .name{float:left; line-height:30px; font-size:16px; padding-right:14px;
+}
+.tj_search .datename{float:left; line-height:30px; font-size:14px; margin-right:14px;
+}
+.tj_search .txt, .search_box .txt{float:left; width:140px; padding-left:6px; height:28px; line-height:28px; color:#565656; border:#b9b8b8 solid 1px; margin-right:14px;
+}
+.tj_search .search_btn, .search_box .search_btn{float:left; width:126px; height:30px; color:#FFF; border:none; cursor:pointer; background:#fea720; text-align:center; font-size:16px; font-family:'Microsoft YaHei'; margin-left:20px;
+}
+.tj_search .switch{float:right; line-height:30px; padding-right:40px;
+}
+.tj_search .l_switch, .search_box .l_switch{float:left; line-height:30px; padding:0 30px 0 0;
+}
+.switch a, .l_switch a{float:left; font-size:14px; color:#03c2fa;
+}
+.switch .line, .l_switch .line{float:left; height:14px; border-left:solid 1px #b9b8b8; margin:8px 6px;
+}
+.switch .active, .l_switch .active{font-weight:bold; color:#565656;
+}
+/*详细数据列表*/
+.detail_info{width:100%; overflow:hidden; margin-top:40px;
+}
+.detail_info .title{width:150px; height:40px; line-height:40px;  text-align:center; background:#28b779; color:#FFF; font-size:16px;
+}
+.detail_info .data_list{width:100%; overflow:hidden;
+}
+.detail_info .thtitle{width:100%; height:40px; line-height:40px; background:#eeeeee;
+}
+.detail_info .thtitle span{height:40px; line-height:40px; font-size:16px; color:#565656; padding:0 4px; float:left;
+}
+.detail_info .thtitle .t1, .th_list .t1, .detail_info .thtitle .t3, .th_list .t3{padding:0 4px 0 14px; 
+}
+.t1, .t2{width:300px;
+}
+.t3{width:160px;
+}
+.t4{width:140px;
+}
+.t5{width:100px;
+}
+.th_list{overflow:hidden;
+}
+/*应用类型*/
+.choose_type{width:100%; overflow:hidden; margin-top:24px;
+}
+.choose_type li{float:left; width:154px; text-align:center; height:28px; line-height:28px; margin:0 10px 10px 0; background:#eeeeee;
+}
+.choose_type a{float:left; width:100%; color:#565656; font-size:14px;
+}
+.choose_type a:hover, .choose_type .active a{background:#999999; color:#FFF;
+}
+/*短信统计*/
+.tit .tips{float:right; line-height:34px; padding:14px 10px 0 0; font-size:14px; color:#8f8f8f; font-family:'宋体';
+}
+.tit .tips a{color:#03c2fa;
+}
+.search_box{padding:0px 0 32px; background:#f4fafd; margin:22px 0 40px; overflow:hidden;
+}
+.search_box .search_line{width:100%; overflow:hidden; padding-top:20px;
+}
+.search_box .label, .search_box .label1{float:left; line-height:30px; width:110px; text-align:right; padding-right:4px; font-size:16px; color:#565656; font-family:'Microsoft YaHei';
+}
+.search_box .label1{width:86px;
+}
+.search_box .ltxt{float:left; width:252px; height:28px; border:#ccc solid 1px; padding-left:4px; color:#565656;
+}
+.search_box .l_switch{padding:0 11px 0 36px;
+}
+.f_tips{padding-top:20px; font-size:12px; color:#565656; line-height:22px;
+}
+.search_box .con{float:left; line-height:30px; font-size:14px; margin-left:-6px;
+}
+
+
+
+
+

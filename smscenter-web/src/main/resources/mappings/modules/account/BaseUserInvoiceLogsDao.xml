@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.account.dao.BaseUserInvoiceLogsDao">
+    
+	<sql id="baseUserInvoiceLogsColumns">
+		a.id AS "id",
+		a.userid AS "userid",
+		a.amount AS "amount",
+		a.invoice_number AS "invoiceNumber",
+		a.header_info AS "headerInfo",
+		a.invoice_type AS "invoiceType",
+		a.invoice_content AS "invoiceContent",
+		a.nsrsbh AS "nsrsbh",
+		a.bank_number AS "bankNumber",
+		a.deposit_bank AS "depositBank",
+		a.reg_address AS "regAddress",
+		a.phone AS "phone",
+		a.collect_address AS "collectAddress",
+		a.addressee AS "addressee",
+		a.mobile AS "mobile",
+		a.status AS "status",
+		a.express_company AS "expressCompany",
+		a.express_number AS "expressNumber",
+		a.check_by AS "checkBy",
+		a.create_time AS "createTime",
+		a.check_time AS "checkTime",
+		a.remark AS "remark"
+	</sql>
+	
+	<sql id="baseUserInvoiceLogsJoins">
+	</sql>
+    
+	<select id="get" resultType="BaseUserInvoiceLogs">
+		SELECT 
+			<include refid="baseUserInvoiceLogsColumns"/>
+		FROM base_user_invoice_logs a
+		<include refid="baseUserInvoiceLogsJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="BaseUserInvoiceLogs">
+		SELECT 
+			<include refid="baseUserInvoiceLogsColumns"/>,u1.name AS "user.name"
+		FROM base_user_invoice_logs a
+		<include refid="baseUserInvoiceLogsJoins"/>
+		LEFT JOIN sys_user u1 ON u1.id = a.userid
+		<where>
+			
+			<if test="userid != null and userid != ''">
+				AND a.userid = #{userid}
+			</if>
+			<if test="user != null and user.name != null and user.name !=''">
+				AND u1.name LIKE CONCAT('%',#{user.name},'%')
+			</if>
+			<if test="invoiceType != null and invoiceType != ''">
+				AND a.invoice_type = #{invoiceType}
+			</if>
+			<if test="invoiceContent != null and invoiceContent != ''">
+				AND a.invoice_content = #{invoiceContent}
+			</if>
+			<if test="status != null and status != ''">
+				AND a.status = #{status}
+			</if>
+			<if test="createTimeQ != null and createTimeQ != ''">
+				AND a.create_time >= #{createTimeQ}
+			</if>
+			<if test="createTimeZ != null and createTimeZ != ''">
+				AND a.create_time &lt;= #{createTimeZ}
+			</if>
+			<if test="queryType == 'history'.toString()">
+				AND a.status > -1
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="BaseUserInvoiceLogs">
+		SELECT 
+			<include refid="baseUserInvoiceLogsColumns"/>
+		FROM base_user_invoice_logs a
+		<include refid="baseUserInvoiceLogsJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO base_user_invoice_logs(
+			userid,
+			amount,
+			header_info,
+			invoice_type,
+			invoice_content,
+			nsrsbh,
+			bank_number,
+			deposit_bank,
+			reg_address,
+			phone,
+			collect_address,
+			addressee,
+			mobile,
+			status,
+			create_time,
+			remark
+		) VALUES (
+			#{userid},
+			#{amount},
+			#{headerInfo},
+			#{invoiceType},
+			#{invoiceContent},
+			#{nsrsbh},
+			#{bankNumber},
+			#{depositBank},
+			#{regAddress},
+			#{phone},
+			#{collectAddress},
+			#{addressee},
+			#{mobile},
+			#{status},
+			NOW(),
+			#{remark}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE base_user_invoice_logs SET 	
+			invoice_number = #{invoiceNumber},
+			status = #{status},
+			express_company = #{expressCompany},
+			express_number = #{expressNumber},
+			check_by = #{checkBy},
+			check_time = #{checkTime},
+			remark = #{remark}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="updateStatus">
+		UPDATE base_user_invoice_logs SET 	
+			invoice_number = #{invoiceNumber},
+			status = #{status},
+			express_company = #{expressCompany},
+			express_number = #{expressNumber},
+			check_by = #{checkBy},
+			check_time = NOW(),
+			remark = #{remark}
+		WHERE id = #{id}
+	</update>	
+	
+	<update id="delete">
+		DELETE FROM base_user_invoice_logs
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

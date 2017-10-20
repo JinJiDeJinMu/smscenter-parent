@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsSubmitDao">
+    
+	<sql id="smsSubmitColumns">
+		a.id AS "id",
+		a.msgid AS "msgid",
+		a.bizid AS "bizid",
+		a.taskid AS "taskid",
+		a.acc_id AS "accId",
+		a.userid AS "userid",
+		a.result AS "result",
+		a.phone AS "phone",
+		a.reserve AS "reserve",
+		a.gateway_id AS "gatewayId",
+		a.receive_time AS "receiveTime",
+		a.biz_time AS "bizTime",
+		a.submit_time AS "submitTime",
+		a.createtime AS "createtime"
+	</sql>
+	
+	<sql id="smsSubmitJoins">
+	</sql>
+    
+	<select id="get" resultType="SmsSubmit">
+		SELECT 
+			<include refid="smsSubmitColumns"/>
+		FROM sms_submit a
+		<include refid="smsSubmitJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsSubmit">
+		SELECT 
+			<include refid="smsSubmitColumns"/>
+		FROM sms_submit a
+		<include refid="smsSubmitJoins"/>
+		<where>
+			
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="SmsSubmit">
+		SELECT 
+			<include refid="smsSubmitColumns"/>
+		FROM sms_submit a
+		<include refid="smsSubmitJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sms_submit(
+			id,
+			msgid,
+			bizid,
+			taskid,
+			acc_id,
+			userid,
+			result,
+			phone,
+			reserve,
+			gateway_id,
+			receive_time,
+			biz_time,
+			submit_time,
+			createtime
+		) VALUES (
+			#{id},
+			#{msgid},
+			#{bizid},
+			#{taskid},
+			#{accId},
+			#{userid},
+			#{result},
+			#{phone},
+			#{reserve},
+			#{gatewayId},
+			#{receiveTime},
+			#{bizTime},
+			#{submitTime},
+			#{createtime}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_submit SET 	
+			msgid = #{msgid},
+			bizid = #{bizid},
+			taskid = #{taskid},
+			acc_id = #{accId},
+			userid = #{userid},
+			result = #{result},
+			phone = #{phone},
+			reserve = #{reserve},
+			gateway_id = #{gatewayId},
+			receive_time = #{receiveTime},
+			biz_time = #{bizTime},
+			submit_time = #{submitTime},
+			createtime = #{createtime}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_submit
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

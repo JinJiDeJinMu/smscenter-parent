@@ -1,0 +1,551 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+    font: normal 12px/24px 微软雅黑, Arail;
+    color: #565656;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a, span {
+    display: inline-block;
+}
+
+img {
+    border: none;
+}
+
+em, i {
+    font-style: normal;
+}
+
+input, textarea {
+    font-family: 微软雅黑;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+}
+
+* html .clearfix {
+    height: 1%;
+}
+
+/*新增按钮*/
+.smsbox {
+    width: 100%;
+    padding-top: 32px;
+}
+
+.tablelist {
+    width: 100%;
+    overflow: hidden;
+}
+
+.newbox {
+    width: 100%;
+    height: 46px;
+    margin-bottom: 9px;
+}
+
+.newbox .link {
+    float: right;
+    color: #03c2fa;
+    font-size: 16px;
+    margin-right: 40px;
+    line-height: 46px;
+}
+
+.new_btn {
+    display: inline-block;
+    width: 146px;
+    height: 46px;
+    line-height: 46px;
+    color: #FFF;
+    font-size: 24px;
+    background: #f2ae43;
+    text-align: center;
+    font-family: "幼圆";
+    float: right;
+}
+
+.newbox a.new_btn:hover {
+    background: #f7ba59;
+}
+
+.newbox a.new_btn:active {
+    background: #eea22b;
+}
+
+/*列表标题*/
+.thDiv .t1 {
+    width: 19%;
+    padding: 0 4px 0 26px;
+    background: url(../images/ico_dec.png) 98px 18px no-repeat;
+    cursor: pointer;
+}
+
+.thDiv .t2 {
+    width: 7%;
+}
+
+.thDiv .t3 {
+    width: 19%;
+}
+
+.thDiv .t4 {
+    width: 12%;
+}
+
+.thDiv .t5 {
+    width: 13%;
+}
+
+.thDiv .t6 {
+    width: 12%;
+}
+
+.thDiv .t7, .th_list li .t7 {
+    width: 20%;
+    padding: 0 4px 0 26px;
+}
+
+.thDiv .t8, .th_list li .t8 {
+    width: 50%;
+}
+
+.thDiv .t9, .th_list li .t9 {
+    width: 16%;
+}
+
+/*列表部分*/
+.th_list li .t1 {
+    width: 19%;
+    padding: 0 4px 0 26px;
+}
+
+.th_list .t2 {
+    width: 7%;
+}
+
+.th_list .t3 {
+    width: 19%;
+}
+
+.th_list .t4 {
+    width: 12%;
+}
+
+.th_list .t5 {
+    width: 13%;
+}
+
+.th_list .t6 {
+    width: 12%;
+}
+
+.th_list .t6 a {
+    width: 44px;
+}
+
+.th_list .org {
+    color: #fea720;
+}
+
+.th_list .red {
+    color: #fb3601;
+}
+
+.th_list .green {
+    color: #59c145;
+}
+
+.th_list .uncheck {
+    float: left;
+    line-height: 40px;
+    padding-right: 6px;
+}
+
+.th_list .view_reason {
+    width: 48%;
+}
+
+/*新增模板*/
+.newsms_temp {
+    width: 100%;
+    overflow: hidden;
+    background: #f4fafd;
+    padding: 20px 0;
+    margin-top: 28px;
+}
+
+.newsms_temp .dl1 {
+    width: 920px;
+    overflow: hidden;
+    margin-bottom: 28px;
+}
+
+.newsms_temp .no_margin {
+    margin: 0;
+}
+
+.newsms_temp .dl1 dt {
+    width: 108px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #333;
+    padding-left: 30px;
+    float: left;
+}
+
+.newsms_temp .dl1 dd {
+    float: left;
+    width: 708px;
+    line-height: 30px;
+}
+
+.newsms_temp p {
+    font-size: 14px;
+}
+
+.newsms_temp .info {
+    line-height: 22px;
+}
+
+.newsms_temp .ltxt {
+    width: 320px;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 10px;
+    float: left;
+    border: #CCC solid 1px;
+}
+
+.newsms_temp .ys {
+    color: #9f9f9f;
+}
+
+.newsms_temp .txtarea {
+    width: 320px;
+    height: 72px;
+    padding-top: 6px;
+    padding-left: 10px;
+    resize: none;
+    border: #CCC solid 1px;
+    float: left;
+    line-height: 22px;
+}
+
+.newsms_temp .area {
+    background: #ffffcb;
+}
+
+.newsms_temp .tips {
+    padding: 0;
+    height: auto;
+    line-height: 16px;
+    margin-top: 10px;
+}
+
+.newsms_temp .btn_reset {
+    width: 145px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: none;
+    margin: 0 0 0 36px;
+    font-size: 16px;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.newsms_temp .btn_sure {
+    margin: 0;
+}
+
+.newsms_temp .blue {
+    color: #44caf9;
+    text-decoration: underline;
+}
+
+.newsms_div1 {
+    width: 100%;
+    overflow: hidden;
+    border-bottom: #dddddd dotted 1px;
+    padding-bottom: 14px;
+}
+
+.newsms_div1 .icon {
+    float: left;
+    width: 22px;
+    height: 22px;
+    background: url(../images/green.png) -168px 0 no-repeat;
+    margin: 6px 9px 0 0;
+}
+
+.newsms_div1 .con_status {
+    float: left;
+    color: #f00;
+}
+
+.newsms_div2 {
+    width: 100%;
+    overflow: hidden;
+    padding-top: 34px;
+}
+
+.newsms_div2 .label {
+    float: left;
+    width: 116px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #565656;
+    padding-right: 10px;
+}
+
+.newsms_div2 .radio {
+    float: left;
+    margin: 9px 6px 0 0;
+    *margin: 6px 6px 0 0;
+}
+
+.newsms_div2 .tab_div1, .newsms_div2 .tab_div2, .newsms_div2 .tab_div3 {
+    width: 100%;
+    overflow: hidden;
+    display: none;
+}
+
+.newsms_div2 .file_box {
+    width: 100%;
+    position: relative;
+    float: left;
+}
+
+.newsms_div2 .file {
+    position: absolute;
+    width: 332px;
+    height: 30px;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.newsms_div2 .s_txt {
+    width: 228px;
+    height: 28px;
+    line-height: 28px;
+    border: #CCC solid 1px;
+    float: left;
+    padding-left: 8px;
+    margin-right: 24px;
+}
+
+.newsms_div2 .view_btn {
+    float: left;
+    width: 70px;
+    height: 30px;
+    background: #FFF;
+    height: 30px;
+    border: #CCC solid 1px;
+    font-size: 12px;
+}
+
+.newsms_temp .red {
+    color: #f00;
+}
+
+.newsms_div2 .graytips {
+    float: left;
+    font-size: 12px;
+    padding-left: 10px;
+    line-height: 24px;
+    color: #999;
+}
+
+.newsms_div2 .graytips .link {
+    color: #44caf9;
+    text-decoration: underline;
+}
+
+.newsms_div2 .sign_select {
+    float: left;
+    width: 238px;
+    height: 30px;
+    border: #CCC solid 1px;
+    color: #565656;
+    font-size: 14px;
+    font-family: 'Microsoft YaHei';
+}
+
+/*创建子账号页面*/
+.newsms_temp .btn_total {
+    width: 242px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    border: none;
+    font-size: 16px;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.newsms_temp .star {
+    padding: 4px 3px 0 0;
+    color: #f00;
+}
+
+/*弹出层*/
+.pop_con_div {
+    padding-bottom: 0;
+}
+
+.popbox1 {
+    width: 620px;
+}
+
+.popbox2 {
+    width: 700px;
+}
+
+.poptipwrap {
+    width: 100%;
+    overflow: hidden;
+}
+
+.poptipwrap .poptip_l {
+    float: left;
+    width: 360px;
+    padding: 0 20px;
+    border-right: #ccc solid 1px;
+}
+
+.poptipwrap .poptip_l .title {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.poptipwrap .poptip_l .greencon {
+    color: #00945f;
+    line-height: 20px;
+    padding: 4px 0 20px 0;
+}
+
+.poptipwrap .poptip_l .tipcon {
+    padding: 4px 0 14px 0;
+}
+
+.poptipwrap .poptip_r {
+    float: left;
+    width: 220px;
+}
+
+.poptipwrap .poptip_r .imgbox {
+    width: 78px;
+    height: 78px;
+    margin: 4px auto 16px;
+}
+
+.poptip_r .imgbox img {
+    width: 100%;
+    height: 100%;
+}
+
+.poptipwrap .poptip_r .tips {
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+}
+
+/*参考模板*/
+.referred_table {
+    width: 100%;
+    overflow: hidden;
+    margin: 60px 0 40px 0;
+}
+
+.referred_table .table {
+    border-top: #c9c9c9 solid 1px;
+    border-left: #c9c9c9 solid 1px;
+}
+
+.referred_table .table td, .referred_table .table th {
+    border-right: #c9c9c9 solid 1px;
+    border-bottom: #c9c9c9 solid 1px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 14px;
+}
+
+.referred_table .table th {
+    font-size: 16px;
+    font-weight: normal;
+    height: 59px;
+    background: #eeeeee;
+}
+
+.table .t1 {
+    text-align: center;
+    width: 16%;
+}
+
+.table .t2 {
+    width: 40%;
+    padding-left: 2%;
+}
+
+.table .t3 {
+    width: 14%;
+    text-align: center;
+}
+
+.table .link {
+    color: #03c2fa;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

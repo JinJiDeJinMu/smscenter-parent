@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsSendDao">
+    
+	<sql id="smsSendColumns">
+		a.id AS "id",
+		a.acc_id AS "accId",
+		a.userid AS "userid",
+		a.fee_type AS "feeType",
+		a.fee_payment AS "feePayment",
+		a.taskid AS "taskid",
+		a.custom_taskid AS "customTaskid",
+		a.custom_serviceid AS "customServiceid",
+		a.phone AS "phone",
+		a.phone_type AS "phoneType",
+		a.phone_area AS "phoneArea",
+		a.spnumber AS "spnumber",
+		a.sms_content AS "smsContent",
+		a.sms_content_id AS "smsContentId",
+		a.sms_content_sign AS "smsContentSign",
+		a.sms_type AS "smsType",
+		a.sms_size AS "smsSize",
+		a.send_status AS "sendStatus",
+		a.gateway_id AS "gatewayId",
+		a.gateway_group AS "gatewayGroup",
+		a.gateway_status AS "gatewayStatus",
+		a.source_gateway_id AS "sourceGatewayId",
+		a.send_time AS "sendTime",
+		a.submit_time AS "submitTime",
+		a.report_time AS "reportTime",
+		a.create_time AS "createTime",
+		a.receive_time AS "receiveTime",
+		a.user_notify_status AS "userNotifyStatus",
+		a.user_notify_time AS "userNotifyTime"
+	</sql>
+	
+	<sql id="smsSendJoins">
+	</sql>
+    
+	<select id="get" resultType="SmsSend">
+		SELECT 
+			<include refid="smsSendColumns"/>
+		FROM sms_send a
+		<include refid="smsSendJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="getV2" resultType="SmsSend">
+		SELECT 
+			<include refid="smsSendColumns"/>
+		FROM ${tableName} a
+		<include refid="smsSendJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsSend">
+		SELECT 
+			<include refid="smsSendColumns"/>
+		FROM ${tableName} a
+		<include refid="smsSendJoins"/>
+		<where>
+			
+			<if test="id != null and id != ''">
+				AND a.id = #{id}
+			</if>
+			<if test="accId != null and accId != ''">
+				AND a.acc_id = #{accId}
+			</if>
+			<if test="userid != null and userid != ''">
+				AND a.userid = #{userid}
+			</if>
+			<if test="taskid != null and taskid != ''">
+				AND a.taskid = #{taskid}
+			</if>
+			<if test="phone != null and phone != ''">
+				AND a.phone = #{phone}
+			</if>
+			<if test="phoneType != null and phoneType != ''">
+				AND a.phone_type = #{phoneType}
+			</if>
+			<if test="sendStatus != null and sendStatus != ''">
+				AND a.send_status LIKE CONCAT(#{sendStatus},'%')
+			</if>
+			<if test="gatewayId != null and gatewayId != ''">
+				AND a.gateway_id = #{gatewayId}
+			</if>
+			<if test="gatewayStatus != null and gatewayStatus != ''">
+				AND a.gateway_status = #{gatewayStatus}
+			</if>
+			<if test="sendTimeQ != null and sendTimeQ != ''">
+				AND a.send_time >= #{sendTimeQ}
+			</if>
+			<if test="sendTimeZ != null and sendTimeZ != ''">
+				AND a.send_time &lt;= #{sendTimeZ}
+			</if>
+			<if test="resultStatus != null and resultStatus !='' and resultStatus == '1'.toString()">
+				AND (a.fee_type=0 OR (a.fee_type=2 AND a.gateway_status LIKE 'T%')) AND a.send_status like 'T%'
+			</if>
+			<if test="resultStatus != null and resultStatus !='' and resultStatus == '0'.toString()">
+				AND (a.send_status LIKE 'F%' OR (a.fee_type=2 AND a.gateway_status LIKE 'F%'))
+			</if>
+			<if test="resultStatus != null and resultStatus !='' and resultStatus == '-1'.toString()">
+				AND (a.fee_type=2 AND a.send_status like 'T%' AND a.gateway_status LIKE 'P%')
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY create_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="SmsSend">
+		SELECT 
+			<include refid="smsSendColumns"/>
+		FROM sms_send a
+		<include refid="smsSendJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO ${tableName}(
+			id,
+			acc_id,
+			userid,
+			fee_type,
+			fee_payment,
+			taskid,
+			custom_taskid,
+			custom_serviceid,
+			phone,
+			phone_type,
+			phone_area,
+			spnumber,
+			sms_content,
+			sms_content_id,
+			sms_content_sign,
+			sms_type,
+			sms_size,
+			send_status,
+			gateway_id,
+			gateway_group,
+			gateway_status,
+			source_gateway_id,
+			send_time,
+			submit_time,
+			report_time,
+			create_time,
+			receive_time,
+			user_notify_status,
+			user_notify_time
+		) VALUES (
+			#{id},
+			#{accId},
+			#{userid},
+			#{feeType},
+			#{feePayment},
+			#{taskid},
+			#{customTaskid},
+			#{customServiceid},
+			#{phone},
+			#{phoneType},
+			#{phoneArea},
+			#{spnumber},
+			#{smsContent},
+			#{smsContentId},
+			#{smsContentSign},
+			#{smsType},
+			#{smsSize},
+			#{sendStatus},
+			#{gatewayId},
+			#{gatewayGroup},
+			#{gatewayStatus},
+			#{sourceGatewayId},
+			#{sendTime},
+			#{submitTime},
+			#{reportTime},
+			#{createTime},
+			#{receiveTime},
+			#{userNotifyStatus},
+			#{userNotifyTime}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_send SET 	
+			acc_id = #{accId},
+			userid = #{userid},
+			fee_type = #{feeType},
+			fee_payment = #{feePayment},
+			taskid = #{taskid},
+			custom_taskid = #{customTaskid},
+			custom_serviceid = #{customServiceid},
+			phone = #{phone},
+			phone_type = #{phoneType},
+			phone_area = #{phoneArea},
+			spnumber = #{spnumber},
+			sms_content = #{smsContent},
+			sms_content_id = #{smsContentId},
+			sms_content_sign = #{smsContentSign},
+			sms_type = #{smsType},
+			sms_size = #{smsSize},
+			send_status = #{sendStatus},
+			gateway_id = #{gatewayId},
+			gateway_group = #{gatewayGroup},
+			gateway_status = #{gatewayStatus},
+			source_gateway_id = #{sourceGatewayId},
+			send_time = #{sendTime},
+			submit_time = #{submitTime},
+			report_time = #{reportTime},
+			create_time = #{createTime},
+			receive_time = #{receiveTime},
+			user_notify_status = #{userNotifyStatus},
+			user_notify_time = #{userNotifyTime}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_send
+		WHERE id = #{id}
+	</update>
+	
+	<insert id="insertHistory">
+		INSERT INTO ${historyName} SELECT * FROM ${tableName}
+	</insert>
+	
+	<delete id="clearSmsSend">
+		TRUNCATE TABLE ${tableName}
+	</delete>
+	
+	<select id="findSmsSendByTaskId" resultType="com.sanerzone.smscenter.modules.sms.entity.SmsTask">
+		SELECT 
+			SUM(case when (a.fee_type=0 and a.send_status like 'T%') or (a.fee_type=2 and a.send_status like 'T%' and (a.gateway_status like 'T%' or a.gateway_status like 'P%' ))
+			THEN 1 else 0 end) successCount,
+			SUM(case when (a.fee_type=0 and a.send_status like 'F%') or (a.fee_type=2 and (a.send_status like 'F%' OR a.gateway_status LIKE 'F%'))  THEN 1 ELSE 0 END) failCount
+		FROM ${tableName} a
+		WHERE a.taskid=#{taskid}
+	</select>	
+	
+</mapper>

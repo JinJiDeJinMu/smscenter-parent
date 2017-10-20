@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsPhoneBlacklistDao">
+    
+	<sql id="smsPhoneBlacklistColumns">
+		a.id AS "id",
+		a.phone AS "phone",
+		a.create_by AS "createBy.id",
+		a.create_datetime AS "createDatetime",
+		a.remarks AS "remarks"
+	</sql>
+	
+	<sql id="smsPhoneBlacklistJoins">
+	</sql>
+    
+	<select id="get" resultType="SmsPhoneBlacklist">
+		SELECT 
+			<include refid="smsPhoneBlacklistColumns"/>
+		FROM sms_phone_blacklist a
+		<include refid="smsPhoneBlacklistJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsPhoneBlacklist">
+		SELECT 
+			<include refid="smsPhoneBlacklistColumns"/>
+		FROM sms_phone_blacklist a
+		<include refid="smsPhoneBlacklistJoins"/>
+		<where>
+			
+			<if test="phone != null and phone != ''">
+				AND a.phone = #{phone}
+			</if>
+			<if test="createDatetimeQ != null and createDatetimeQ != ''">
+				AND a.create_datetime >= #{createDatetimeQ}
+			</if>			
+			<if test="createDatetimeZ != null and createDatetimeZ != ''">
+				AND a.create_datetime &lt;= #{createDatetimeZ}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="SmsPhoneBlacklist">
+		SELECT 
+			<include refid="smsPhoneBlacklistColumns"/>
+		FROM sms_phone_blacklist a
+		<include refid="smsPhoneBlacklistJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		REPLACE INTO sms_phone_blacklist(
+			phone,
+			create_by,
+			create_datetime,
+			remarks
+		) VALUES (
+			#{phone},
+			#{createBy.id},
+			NOW(),
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_phone_blacklist SET 	
+			phone = #{phone},
+			create_datetime = #{createDatetime}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_phone_blacklist
+		WHERE phone = #{phone}
+	</update>
+	
+	<delete id="deleteByPhone">
+		DELETE FROM sms_phone_blacklist
+		WHERE phone = #{phone}
+	</delete>
+	
+</mapper>

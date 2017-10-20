@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.account.dao.BaseAccountOptionsDao">
+    
+	<sql id="baseAccountOptionsColumns">
+		a.userid AS "userid",
+		a.acc_id AS "accId",
+		a.option_key AS "optionKey",
+		a.option_value AS "optionValue",
+		a.modify_time AS "modifyTime",
+		a.modify_by AS "modifyBy"
+	</sql>
+	
+	<sql id="baseAccountOptionsJoins">
+		LEFT JOIN sys_user u2 ON u2.id = a.userid
+	</sql>
+	
+	<select id="get" resultType="BaseAccountOptions">
+		SELECT 
+			<include refid="baseAccountOptionsColumns"/>
+		FROM base_account_options a
+		<include refid="baseAccountOptionsJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="BaseAccountOptions">
+		SELECT 
+			<include refid="baseAccountOptionsColumns"/>
+		FROM base_account_options a
+		<include refid="baseAccountOptionsJoins"/>
+		<where>
+			
+			<if test="userid != null and userid != ''">
+				AND a.userid = #{userid}
+			</if>
+			<if test="accId != null and accId != ''">
+				AND a.acc_id = #{accId}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="BaseAccountOptions">
+		SELECT 
+			<include refid="baseAccountOptionsColumns"/>
+		FROM base_account_options a
+		<include refid="baseAccountOptionsJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		REPLACE INTO base_account_options(
+			userid,
+			acc_id,
+			option_key,
+			option_value,
+			modify_time,
+			modify_by
+		) VALUES (
+			#{userid},
+			#{accId},
+			#{optionKey},
+			#{optionValue},
+			NOW(),
+			#{modifyBy}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE base_account_options SET 	
+			userid = #{userid},
+			acc_id = #{accId},
+			option_key = #{optionKey},
+			option_value = #{optionValue},
+			modify_time = #{modifyTime},
+			modify_by = #{modifyBy}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM base_account_options
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="delByParam">
+		DELETE FROM base_account_options
+		<where>
+			<if test="userid != null and userid !=''">
+				AND userid=#{userid}
+			</if>
+			<if test="accId != null and accId !=''">
+				AND acc_id=#{accId}
+			</if>
+		</where>
+	</delete>
+	
+	<select id="findOptionsList" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT  a.option_key optionKey,
+				a.option_value optionValue
+		FROM base_account_options a
+		<where>
+			<if test="accId != null and accId !=''">
+				AND a.acc_id=#{accId}
+			</if>
+			<if test="userid != null and userid !=''">
+				AND a.userid=#{userid} AND a.acc_id = 0
+			</if>
+		</where>
+	</select>
+	
+</mapper>

@@ -1,0 +1,125 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.sanerzone.smscenter.biz</groupId>
+	<artifactId>smscenter-biz-support</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>smscenter-biz-support</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.7</jdk.version>
+		
+		<commons-lang3.version>3.3.2</commons-lang3.version>
+		<commons-io.version>2.4</commons-io.version>
+		<commons-codec.version>1.9</commons-codec.version>
+		<guava.version>18.0</guava.version>
+		
+		<ehcache.version>2.6.9</ehcache.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>${ehcache.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>de.ruedigermoeller</groupId>
+		    <artifactId>fst</artifactId>
+		    <version>2.48</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>com.sleepycat</groupId>
+		  <artifactId>je</artifactId>
+		  <version>5.0.73</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.xiaoleilu</groupId>
+		    <artifactId>hutool-all</artifactId>
+		    <version>3.0.6</version>
+		</dependency>
+		
+		<!-- smscenter -->
+		<dependency>
+			<groupId>org.marre</groupId>
+	 	 	<artifactId>smsj</artifactId>
+	 	 	<version>0.1.0-SNAPSHOT</version>
+	 	</dependency>
+	 	
+	 	<dependency>
+			  <groupId>com.sanerzone.smscenter.biz</groupId>
+			  <artifactId>smscenter-biz-api</artifactId>
+			  <version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>fakepath</groupId>
+			<artifactId>word-search</artifactId>
+			<version>1.1</version>
+		</dependency>	
+
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.0.29.Final</version>
+		</dependency>
+		
+	</dependencies>
+	
+	<build>  
+    <plugins>  
+      <plugin>  
+        <groupId>org.apache.maven.plugins</groupId>  
+        <artifactId>maven-compiler-plugin</artifactId>  
+        <configuration>  
+          <source>${jdk.version}</source>  
+          <target>${jdk.version}</target>  
+        </configuration>  
+      </plugin>  
+    </plugins>  
+</build>  
+
+<distributionManagement>
+  <repository>
+    <id>releases</id>
+    <url>http://192.168.1.180:8081/nexus/content/repositories/releases</url>
+  </repository>
+</distributionManagement>
+</project>

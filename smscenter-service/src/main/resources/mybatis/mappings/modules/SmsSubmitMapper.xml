@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.biz.mapper.SmsSubmitMapper">
+	
+	<insert id="insert">
+		INSERT INTO ${tableName}(
+			msgid,
+			bizid,
+			taskid,
+			acc_id,
+			userid,
+			result,
+			phone,
+			reserve,
+			gateway_id,
+			receive_time,
+			biz_time,
+			submit_time,
+			createtime
+		) VALUES (
+			#{data.msgid},
+			#{data.message.id},
+			#{data.message.smsREQMessage.taskid},
+			#{data.message.smsREQMessage.accId},
+			#{data.message.smsREQMessage.userid},
+			#{data.result},
+			#{data.message.phone},
+			#{data.reserve},
+			#{data.message.gatewayId},
+			#{data.message.smsREQMessage.receiveTime},
+			#{data.message.bizTime},
+			#{data.message.submitTime},
+			now()
+		)
+	</insert>
+	
+</mapper>

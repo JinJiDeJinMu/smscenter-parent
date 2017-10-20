@@ -1,0 +1,258 @@
+/* CSS Document */
+*{margin:0; padding:0;
+}
+body{
+	margin:0;
+	padding:0;
+	overflow-x:hidden;
+	font-family:'Microsoft YaHei',Tahoma,'锟斤拷锟斤拷',Arial,Lucida,Verdana,Helvetica,sans-serif;
+	color:#4b5c66;
+}
+a{text-decoration:none;display:inline-block;color:#3c3c3c;}
+a:focus { outline: none; }
+ul li{list-style:none;}
+img{border:0;}
+em, i{font-style:normal;}
+.clearfix:after{content:'';clear:both;display:block;clear:both;line-height:0;visibility:hidden;}
+*html .clearfix{height:1%;}
+.wrap{width:100%; overflow:hidden;
+}
+/*锟斤拷锟斤拷锟侥碉拷*/
+.txt_box, .yidong_box{width:1148px; overflow:hidden; margin:0 auto; padding-bottom:50px;
+}
+.txt_box .list_bar{width:177px; overflow:hidden; float:left;
+}
+.txt_box .txt_r{width:890px; overflow:hidden; float:right; padding:0 32px 0 22px; border-left:#efefef solid 1px; /*margin-left:24px;*/ min-height:600px; 
+}
+.list_bar .title{font-weight:normal; line-height:32px; border-bottom:#efefef solid 1px; margin-bottom:6px;
+}
+.list_bar .title a{font-size:14px; color:#333333; font-family:'Microsoft YaHei'; display:block; padding-left:30px; width:147px;
+}
+.list_bar .title .active{background:#9f9c9c; color:#FFF;
+}
+.list_bar p{line-height:24px; font-size:12px; font-family:'Microsoft YaHei';  padding-left:30px;	
+}
+.list_bar p a{display:block; width:147px;
+}
+.list_bar p a:hover, .list_bar .current a{color:#18bd9c; 
+}
+.list_bar .current a{font-weight:bold;
+}
+.txt_r .common_box{padding:6px 0 26px 20px;
+}
+.common_box .title{font-size:16px; color:#5d5d5d; font-family:'Microsoft YaHei'; font-weight:normal; line-height:26px; padding-bottom:10px;
+}
+.common_box .content{font-size:14px; color:#75878b; font-family:'锟斤拷锟斤拷'; line-height:22px;
+}
+.list_bar .child_list{padding-left:40px; overflow:hidden;
+}
+.list_bar .child_list a{float:left; font-size:12px; line-height:22px; width:100%; color:#44caf9; font-family:'Microsoft YaHei';
+}
+/*锟斤拷锟斤拷*/
+.wiki_content{width:100%; overflow:hidden; font-family:'Microsoft YaHei';
+}
+.wiki_content .blue_c{color:#44caf9;
+}
+.wiki_content .red{color:#f00;
+}
+.wiki_content .green{color:#007c00;
+}
+/*锟皆讹拷锟斤拷锟斤拷锟斤拷屑锟斤拷锟斤拷*/
+.wiki_acon{width:100%;float:left;border-bottom:1px solid #E7E6E6; margin-bottom:20px;
+}
+.wiki_acon .wiki_a{width:auto;padding:3px 5px 10px 0;font-size:15px;color:#999999;letter-spacing:1px;float:left;
+}
+
+/*锟斤拷锟斤拷锟�*/
+.wiki_content .wiki_t{line-height:40px; font-size:20px; 
+}
+/*锟叫憋拷锟斤拷*/
+.wiki_content .wiki_st{padding-left:14px; padding-bottom:6px; font-size:16px; line-height:30px;
+}
+/*小锟斤拷锟斤拷*/
+.wiki_content .wiki_sst{padding-left:14px; font-size:14px; line-height:22px; 
+}
+/*小小锟斤拷锟斤拷*/
+.wiki_content .wiki_ssst{padding-left:28px; font-size:14px; line-height:22px; 
+}
+/*锟斤拷锟捷诧拷锟斤拷*/
+.wiki_content .wiki_con{font-size:14px; padding-left:12px; line-height:22px; padding-bottom:4px; font-family:'锟斤拷锟斤拷';
+}
+.wiki_content .blue{color:#44caf9; text-decoration:underline;
+}
+/*锟斤拷锟斤拷锟斤拷锟捷诧拷锟斤拷*/
+.wiki_content .wiki_cons{font-size:14px; padding-left:28px; line-height:22px; padding-bottom:4px; font-family:'锟斤拷锟斤拷';
+}
+/*锟斤拷锟斤拷锟捷诧拷锟斤拷*/
+.wiki_content .wiki_conss{font-size:14px; padding-left:48px; line-height:22px; padding-bottom:4px; font-family:'锟斤拷锟斤拷';
+}
+/*锟侥硷拷锟斤拷锟捷诧拷锟斤拷*/
+.wiki_content .wikicon_s{font-size:14px; padding-left:68px; line-height:22px; padding-bottom:4px; font-family:'锟斤拷锟斤拷';
+}
+/*锟斤拷隙*/
+.wiki_content .line1{width:100%; height:16px;
+}
+/*图片*/
+.wiki_content .wiki_img{width:100%; overflow:hidden; margin:6px 0 6px 12px;
+}
+.wiki_img img{float:left; max-width:800px;
+}
+.wiki_img .tip1, .wiki_img .tip2{float:left; font-family:'锟斤拷锟斤拷'; padding:166px 0 0 10px;
+}
+.wiki_img .tip2{padding:378px 0 0 10px; 
+}
+/*wiki_pre*/
+.wiki_pre{overflow:hidden; margin-left:12px; padding-bottom:12px; margin:6px 0 0 12px;
+}
+.wiki_pre .pre{padding-top:10px;
+}
+/*锟斤拷锟�*/
+.wiki_table{font-size:14px; color:#565656; width:698px; margin-left:12px;
+}
+.wiki_table .table{border-left:solid 1px #cdcdcd; border-top:solid 1px #cdcdcd;
+}
+.wiki_table th, .wiki_table td{border-right:solid 1px #cdcdcd; border-bottom:solid 1px #cdcdcd; line-height:30px; text-align:center; padding:0 2px;
+}
+.wiki_table p{text-align:center;
+}
+.wiki_table th{background:#e8e6e6;
+}
+#content p{padding-left:20px; font-size:12px; line-height:22px; margin:1.2em 0;
+}
+.content{
+	width:1148px;
+	height:auto;
+	margin:0 auto;
+	padding:0 10px 0 10px;
+	}
+/*一锟斤拷锟剿碉拷*/
+.nav{
+	width:1148px;
+	height:36px;
+	margin:0 auto;
+	padding-top:18px;
+	padding-bottom:16px;
+	}
+.nav .logo{float:left; margin-right:312px;
+}
+.nav .logo .name{float:left; line-height:36px;
+}
+.nav a{
+	float:left;
+	}
+.nav .nav-img{
+	display:block;
+	border:0;
+	width:153px;
+	float:left;
+	margin:5px 0 0 0;
+	}
+.nav .nav-a{
+	width:auto;
+	margin-right:35px;
+	line-height:33px;
+	float:left;
+	cursor:pointer;
+	color:#AEAEAE;
+	} 
+.nav .nav-a1{
+	width:auto;
+	margin-right:35px;
+	line-height:33px;
+	float:left;
+	cursor:pointer;
+	color:#000;
+	border-bottom:3px solid #AEAEAE;
+	} 
+.nav-font{
+	float:left;
+	color:#24BF9F;
+	line-height:33px;
+	text-decoration:underline;
+	}
+.nav-font:hover{
+	font-weight:600;
+	color:#24BF9F;
+	cursor:pointer;
+	text-decoration:underline;
+	}
+.nav-index{
+	width:109px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	margin-left:36px;
+	display:inline-block; 
+	color:#24BF9F;
+	background:url(../images/wiki_btn.png) 0 0 no-repeat;
+	cursor:pointer;
+	}
+.nav-index:hover{
+	line-height:30px;
+	text-align:center;
+	color:#fff;
+	background-position: 0 -30px;
+	cursor:pointer;
+	}
+/*锟斤拷锟斤拷锟剿碉拷*/
+.sub-nav-con{
+	width:1148px;
+	margin:0 auto;
+	}
+.sub-nav{
+	width:1148px;
+	float:left;
+	margin-top:12px;
+	}
+.sub-nav a{
+	float:left;
+	}	
+.sub-nav .sub-a{
+	width:auto;
+	height:30px;
+	float:left;
+	color:#AEAEAE;
+	text-align:left;
+	list-style-type:none;
+	margin-right:60px;
+	cursor:pointer;
+	}
+.sub-nav .sub-font{
+	color:#24BF9F;
+	margin-right:60px;
+	border-bottom:3px solid #24BF9F;
+	}
+	.nav .current{color:#000;border-bottom:3px solid #AEAEAE;
+	}
+.nav-border-top{
+	width:100%;
+	height:1px;
+	float:left;
+	border-bottom:1px solid #E7E6E6;
+	}
+.nav-border-bottom{
+	width:100%;
+	height:30px;
+	float:left;
+	border-top:1px solid #E7E6E6;
+}
+/*锟阶诧拷*/
+.footerwrap{width:100%; overflow:hidden;
+}
+.footerwrap .copyright, .copyright_wrap{width:100%; padding:12px 0; overflow:hidden; background:#0d0d0d;
+}
+.footerwrap .copyright .copycon{width:1150px; position:relative; margin:0 auto;
+}
+.footerwrap .copyright .con{width:1144px; margin:0 auto; line-height:24px; font-size:12px; color:#888888; font-family:'Microsoft YaHei';
+}
+/*锟揭诧拷锟斤拷*/
+.rightbar{width:44px; height:93px; overflow:hidden; position:fixed; right:72px; bottom:88px;
+}
+.rightbar a{display:block; width:44px; height:44px; background:url(../images/wiki_righticon.png) 0 0 no-repeat; margin-bottom:5px;
+}
+.rightbar .gotop{background-position: 0 -44px;
+}
+.rightbar .collect:hover{background-position: 0 -88px;
+}
+.rightbar .gotop:hover{background-position: 0 -132px;
+}

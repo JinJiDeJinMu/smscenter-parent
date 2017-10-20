@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsAddresslistInfoDao">
+    
+	<sql id="smsAddresslistInfoColumns">
+		a.id AS "id",
+		a.group_id AS "groupId",
+		u1.name AS "group.name",
+		a.phone AS "phone",
+		a.contacts AS "contacts",
+		a.email AS "email",
+		a.birthday AS "birthday",
+		a.create_by AS "createBy.id",
+		a.createtime AS "createtime",
+		a.remarks AS "remarks"
+	</sql>
+	
+	<sql id="smsAddresslistInfoJoins">
+		LEFT JOIN sms_addresslist_group u1 ON u1.id = a.group_id
+	</sql>
+    
+	<select id="get" resultType="com.sanerzone.smscenter.modules.sms.entity.SmsAddresslistInfo">
+		SELECT 
+			<include refid="smsAddresslistInfoColumns"/>
+		FROM sms_addresslist_info a
+		<include refid="smsAddresslistInfoJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="com.sanerzone.smscenter.modules.sms.entity.SmsAddresslistInfo">
+		SELECT 
+			<include refid="smsAddresslistInfoColumns"/>
+		FROM sms_addresslist_info a
+		<include refid="smsAddresslistInfoJoins"/>
+		<where>
+			
+			<if test="group != null and group.id != null and group.id != ''">
+				AND a.group_id = #{group.id}
+			</if>
+			<if test="groupId != null and groupId != ''">
+				AND a.group_id = #{groupId}
+			</if>
+			<if test="phone != null and phone != ''">
+				AND a.phone = #{phone}
+			</if>
+			<if test="contacts != null and contacts != ''">
+				AND a.contacts LIKE 
+					<if test="dbName == 'oracle'">'%'||#{contacts}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{contacts}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{contacts},'%')</if>
+			</if>
+			<if test="createtimeQ != null">
+				AND a.createtime &gt;= #{createtimeQ}
+			</if>
+			<if test="createtimeZ != null">
+				AND a.createtime &lt;= #{createtimeZ}
+			</if>
+			<if test="userId != null and userId !=''">
+				AND a.create_by=#{userId}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="com.sanerzone.smscenter.modules.sms.entity.SmsAddresslistInfo">
+		SELECT 
+			<include refid="smsAddresslistInfoColumns"/>
+		FROM sms_addresslist_info a
+		<include refid="smsAddresslistInfoJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		REPLACE INTO sms_addresslist_info(
+			group_id,
+			phone,
+			contacts,
+			email,
+			birthday,
+			create_by,
+			company_id,
+			createtime,
+			remarks
+		) VALUES (
+			#{group.id},
+			#{phone},
+			#{contacts},
+			#{email},
+			#{birthday},
+			#{createBy.id},
+			#{createBy.company.id},
+			NOW(),
+			#{remarks}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_addresslist_info SET 	
+			group_id = #{groupId},
+			phone = #{phone},
+			contacts = #{contacts},
+			email = #{email},
+			birthday = #{birthday},
+			createtime = #{createtime},
+			remarks = #{remarks}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_addresslist_info
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="deleteByGroupId">
+		DELETE FROM sms_addresslist_info
+		WHERE group_id = #{groupId}
+	</delete>
+	
+</mapper>

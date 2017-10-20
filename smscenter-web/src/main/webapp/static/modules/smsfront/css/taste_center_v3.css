@@ -1,0 +1,665 @@
+﻿@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    color: #3c3c3c;
+}
+
+a:focus {
+    outline: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+img {
+    border: 0;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+em, i {
+    font-style: normal;
+}
+
+.tastecontent {
+    width: 100%;
+}
+
+.totalcontent {
+    width: 100%;
+    float: left;
+    overflow: hidden;
+}
+
+.tastebanner {
+    width: 100%;
+    height: 690px;
+    background: url(../images/taste_img1.jpg) 50% 0 no-repeat;
+    text-align: center;
+    padding-top: 138px;
+}
+
+.tastebanner img {
+}
+
+.wrap {
+    background: #eaedf5;
+}
+
+.wrap .tastercenter {
+    width: 100%;
+    color: #eaedf5;
+    margin-top: -162px;
+}
+
+.centercon {
+    width: 1028px;
+    margin: 0 auto;
+    height: 974px;
+}
+
+.tastelist {
+    display: block;
+    width: 1035px;
+    position: absolute;
+    z-index: 10;
+    margin-top: -65px;
+}
+
+.tastelist li {
+    width: 237px;
+    height: 280px;
+    float: left;
+    background: url(../images/tastebg.jpg) left top no-repeat;
+    margin: 0 28px 60px 0;
+    text-align: left;
+    position: relative;
+}
+
+.tastelist li:hover {
+    background-position: 0 -2800px;
+}
+
+.tastelist .taste_t {
+    width: 100%;
+    margin: 0 auto;
+    height: 140px;
+    overflow: hidden;
+}
+
+.tastelist .taste_t .poslink {
+    display: block;
+    width: 100%;
+    height: 264px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.tastelist .taste_b {
+    width: 100%;
+    height: 72px;
+    margin-top: 52px;
+}
+
+.tastelist .stitle {
+    margin: 0 auto;
+}
+
+.tastelist .title1 {
+    width: 120px;
+    height: 36px;
+    margin-top: 66px;
+    cursor: pointer;
+}
+
+.tastelist .title2 {
+    width: 160px;
+    height: 36px;
+    margin-top: 66px;
+    cursor: pointer
+}
+
+.tastelist li .tastebtn {
+    display: block;
+    width: 196px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    color: #FFF;
+    font-family: '宋体';
+    margin: 0 auto;
+    margin-top: 17px;
+}
+
+.tastelist li .tastebtn:hover {
+    text-decoration: underline;
+}
+
+.tastelist li .tasteim, .tastelist li .voiceflash {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 216px 0 20px 0;
+    width: 100%;
+    background: url(../images/taste_img24.png) 34px 216px no-repeat;
+}
+
+.tastelist .redbg .tastebtn:hover {
+    color: #881e44;
+}
+
+.tastelist .bluebg .tastebtn:hover {
+    color: #1f398a;
+}
+
+.tastelist .purplebg .tastebtn:hover {
+    color: #531e89;
+}
+
+.tastelist .greenbg .tastebtn:hover {
+    color: #1a793c;
+}
+
+.tastelist .orgbg .tastebtn:hover {
+    color: #b83e08;
+}
+
+.tastelist .taste_t {
+    visibility: hidden
+}
+
+.tastelist .taste_b .titlecon {
+    line-height: 24px;
+    padding: 6px 15px 0;
+    overflow: hidden;
+    font-size: 12px;
+    font-family: '宋体';
+}
+
+.tastelist .titlecon .small_t {
+    float: left;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 5px;
+    color: #333;
+    padding-right: 12px;
+    font-size: 18px;
+    font-family: "微软雅黑";
+}
+
+.tastelist .titlecon .total_num {
+    float: right;
+    line-height: 24px;
+    color: #989797;
+    padding-left: 21px;
+    font-size: 12px;
+    font-family: '宋体';
+    margin-top: 10px;
+}
+
+.tastelist .titlecon .total_num img {
+    padding-bottom: 0;
+    padding-left: 3px;
+}
+
+.tastelist .taste_b .con {
+    line-height: 24px;
+    padding: 2px 12px 0 15px;
+    color: #b1b1b1;
+    font-size: 12px;
+    font-family: '宋体';
+}
+
+.wrap .tastecode {
+    width: 100%;
+    height: 220px;
+    background: url(../images/tiyanzhongxin-5.jpg) repeat-y;
+    padding-top: 35px;
+}
+
+.wrap .codeimg p {
+    font-size: 14px;
+    color: #cdc5ff;
+    font-family: '微软雅黑';
+    text-align: left;
+    line-height: 18px;
+    padding-left: 35px;
+    padding-top: 125px;
+}
+
+.wrap .codelink {
+    display: inline-block;
+    color: #e7e3ff;
+    text-decoration: underline;
+    padding-left: 6px;
+    font-family: "微软雅黑";
+}
+
+.wrap .codelink:hover {
+    color: #ffffff;
+}
+
+.wrap .codeimg {
+    width: 723px;
+    height: 199px;
+    margin-bottom: 21px;
+    margin: 0 auto;
+    background: url(../images/tiyanzhongxin-4.png) no-repeat;
+}
+
+/* 不同背景 */
+.tastelist .voicecode {
+    background-position: 0 -280px;
+}
+
+.tastelist .tastevoice {
+    background-position: 0 -560px;
+}
+
+.tastelist .tasteim {
+    background-position: 0 -840px;
+}
+
+.tastelist .tastecall {
+    background-position: 0 -1120px;
+}
+
+.tastelist .tastersms {
+    background-position: 0 -1400px;
+}
+
+.tastelist .tasteryin {
+    background-position: 0 -1680px;
+}
+
+.tastelist .tasteflow {
+    background-position: 0 -1960px;
+}
+
+.tastelist .callmeeting {
+    background-position: 0 -2240px;
+}
+
+.tastelist .biaoqingyun {
+    background-position: 0 -2520px;
+}
+
+.tastelist .more {
+    background-position: 0 -3080px;
+}
+
+.tastelist .more:hover {
+    background-position: 0 -3080px;
+}
+
+/*弹出层*/
+.pop_taste {
+    width: 850px;
+    height: 476px;
+    border: #132f41 solid 2px;
+    background: #FFF;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -427px;
+    margin-top: -240px;
+}
+
+.pop_call {
+    position: static;
+    left: 0;
+    top: 0;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+.pop_taste .poptaste_wrap {
+    overflow: hidden;
+    height: 406px;
+    padding-left: 55px;
+}
+
+.pop_taste .taste_l {
+    float: left;
+    padding-top: 47px;
+    *width: 380px;
+}
+
+.pop_taste .title {
+    width: 100%;
+    overflow: hidden;
+}
+
+.pop_taste .con {
+    width: 100%;
+    overflow: hidden;
+    padding: 22px 0 28px 0;
+    font-family: 'Microsoft YaHei';
+    #line-height: 22px;
+    line-height: 20px;
+    letter-spacing: 1.5px;
+    color: #333333;
+    font-size: 18px;
+}
+
+.pop_taste .codeinfo {
+    color: #565656;
+    font-size: 18px;
+    font-family: 'Microsoft YaHei';
+}
+
+.pop_taste .codeinfo .icon {
+    color: #565656;
+    font-size: 20px;
+}
+
+.pop_taste .codeimg {
+    padding-left: 3px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.pop_taste .call_list {
+    width: 384px;
+    overflow: hidden;
+}
+
+.pop_taste .call_list li {
+    width: 100%;
+    overflow: hidden;
+    float: left;
+    line-height: 48px;
+    margin-bottom: 24px;
+}
+
+.pop_taste .call_list .txt, .pop_taste .call_list .stxt {
+    float: left;
+    width: 262px;
+    height: 44px;
+    line-height: 44px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #aaaaaa;
+    font-family: '宋体';
+}
+
+.pop_taste .call_list .stxt {
+    width: 144px;
+}
+
+.pop_taste .call_list em.error {
+    float: left;
+    line-height: 48px;
+    padding-left: 6px;
+    font-size: 12px;
+    color: #F00;
+}
+
+.pop_taste .call_list .codeimg {
+    float: left;
+    margin-left: 16px;
+    margin-bottom: 0;
+}
+
+.pop_taste .codeimg img {
+    float: left;
+    margin: 13px 4px 0 0;
+}
+
+.pop_taste .codeimg .btn_change {
+    float: left;
+    line-height: 24px;
+    font-size: 12px;
+    color: #1a8dcf;
+    margin-top: 24px;
+}
+
+/*.commondiv3 .codeimg img{width:100%; height:100%;
+}*/
+.pop_taste .call_list .callbtn, .pop_taste .call_list .active {
+    display: inline-block;
+    width: 216px;
+    height: 48px;
+    line-height: 48px;
+    color: #FFF;
+    text-align: center;
+    background: url(../images/produce_img73.png) 0 0 no-repeat;
+    font-size: 14px;
+    font-family: '宋体';
+    cursor: default;
+}
+
+.pop_taste .call_list .active {
+    background-position: 0 -48px;
+    cursor: pointer;
+}
+
+.pop_taste .call_list .active:hover {
+    background-position: 0 -96px;
+}
+
+.pop_taste .taste_r {
+    float: left;
+}
+
+.pop_taste .taste_r .img1 {
+    padding: 86px 0 0 14px;
+}
+
+.pop_taste .taste_r .img2 {
+    padding: 86px 0 0 14px;
+}
+
+.pop_taste .taste_r .img3 {
+    padding: 62px 0 0 38px;
+}
+
+.pop_taste .taste_r .img4 {
+    padding: 63px 0 0 86px;
+}
+
+.pop_taste .taste_r .img5 {
+    padding: 44px 0 0 40px;
+}
+
+.pop_taste .taste_r .img6 {
+    padding: 63px 0 0 46px;
+}
+
+.pop_taste .taste_r .img7 {
+    padding: 63px 0 0 84px;
+}
+
+.pop_taste .taste_r .img8 {
+    padding: 82px 0 0 70px;
+}
+
+.pop_taste .taste_r .img9 {
+    padding: 63px 0 0 32px;
+}
+
+.pop_taste .taste_f {
+    height: 46px;
+    padding-left: 55px;
+    padding-top: 24px;
+    background: #132f41;
+    font-size: 14px;
+    font-family: '宋体';
+}
+
+.pop_taste .taste_f .share {
+    float: left;
+    line-height: 24px;
+    color: #FFF;
+    margin-right: 68px;
+}
+
+.pop_taste .taste_f .link {
+    float: left;
+    line-height: 24px;
+    margin-right: 16px;
+    padding: 0 12px;
+    color: #FFF;
+    background: #2b4454;
+}
+
+.pop_taste .taste_f .link:hover, .pop_taste .taste_f .active {
+    background: #20a56e;
+}
+
+.tastetips {
+    font-size: 14px;
+    color: #aaaaaa;
+    font-family: '宋体';
+    line-height: 24px;
+    padding: 18px 0 0 0;
+}
+
+/*通话样式*/
+.tonghua_area_ing {
+    width: 416px;
+    overflow: hidden;
+    margin: 0 auto;
+    float: left;
+    padding-top: 30px;
+}
+
+.btnsDiv, .button_div {
+    width: 284px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 33px;
+    line-height: 33px;
+    float: none;
+}
+
+.button_div {
+    text-align: left;
+}
+
+.btnsDiv a, .button_div a {
+    display: inline-block;
+    width: 112px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    margin-left: 20px;
+}
+
+/*呼叫*/
+.t1 {
+    background: url(../images/wldh_btn_img1.png) 0 0 no-repeat;
+}
+
+.t1:hover, .t1:active {
+    background-position: 0 -33px;
+}
+
+/*挂断*/
+.t4 {
+    background: url(../images/wldh_btn_img4.png) 0 0 no-repeat;
+}
+
+.t4:hover, .t4:active {
+    background-position: 0 -33px;
+}
+
+/*灰色*/
+.disabled, .disabled:hover, disabled:active {
+    background: url(../images/wldh_btn_img5.png) 0 0 no-repeat;
+}
+
+.tonghua_div {
+    width: 407px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.person_a, .person_b {
+    width: 84px;
+    height: 84px;
+    float: left;
+}
+
+.person_a { /* margin:0 12px 0 20px; */
+}
+
+.person_b { /* margin:0 20px 0 12px; */
+}
+
+.contact_div {
+    width: 238px;
+    float: left;
+    overflow: hidden;
+    text-align: center;
+}
+
+.contact_div p {
+    line-height: 30px;
+    font-size: 14px;
+    color: #18bd9c;
+    padding: 0 0 10px;
+}
+
+.contact_div .tonghua_time {
+    height: 26px;
+    line-height: 26px;
+    padding: 0 10px;
+    color: #fc9400;
+    font-size: 14px;
+}
+
+.pd20 {
+    padding-bottom: 20px;
+}
+
+.autoheight {
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

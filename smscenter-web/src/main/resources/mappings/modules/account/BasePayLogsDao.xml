@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.account.dao.BasePayLogsDao">
+    
+	<sql id="basePayLogsColumns">
+		a.id AS "id",
+		a.userid AS "userid",
+		a.payid AS "payid",
+		a.money AS "money",
+		a.order_status AS "orderStatus",
+		a.serial_number AS "serialNumber",
+		a.pay_type AS "payType",
+		a.pay_ment AS "payMent",
+		a.trans_id AS "transId",
+		a.create_time AS "createTime",
+		a.remark AS "remark"
+	</sql>
+	
+	<sql id="basePayLogsJoins">
+	</sql>
+    
+	<select id="get" resultType="BasePayLogs">
+		SELECT 
+			<include refid="basePayLogsColumns"/>
+		FROM base_pay_logs a
+		<include refid="basePayLogsJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="getByParam" resultType="BasePayLogs">
+		SELECT 
+			<include refid="basePayLogsColumns"/>
+		FROM base_pay_logs a
+		<include refid="basePayLogsJoins"/>
+		WHERE a.payid = #{payid}
+	</select>	
+	
+	<select id="findList" resultType="BasePayLogs">
+		SELECT 
+			<include refid="basePayLogsColumns"/>
+		FROM base_pay_logs a
+		<include refid="basePayLogsJoins"/>
+		<where>
+			
+			<if test="userid != null and userid != ''">
+				AND a.userid = #{userid}
+			</if>
+			<if test="sTime != null and sTime != ''">
+				AND a.create_time >= DATE_FORMAT(#{sTime},'%Y-%m-%d 00:00:00')
+			</if>
+			<if test="eTime != null and eTime != ''">
+				AND a.create_time &lt;= DATE_FORMAT(#{eTime},'%Y-%m-%d 23:59:59')
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="BasePayLogs">
+		SELECT 
+			<include refid="basePayLogsColumns"/>
+		FROM base_pay_logs a
+		<include refid="basePayLogsJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO base_pay_logs(
+			userid,
+			payid,
+			money,
+			order_status,
+			serial_number,
+			pay_type,
+			pay_ment,
+			trans_id,
+			create_time,
+			remark
+		) VALUES (
+			#{userid},
+			#{payid},
+			#{money},
+			#{orderStatus},
+			DATE_FORMAT(NOW(),'%Y%m%d%H%i%s000'),
+			#{payType},
+			#{payMent},
+			#{transId},
+			NOW(),
+			#{remark}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE base_pay_logs SET 	
+			userid = #{userid},
+			payid = #{payid},
+			money = #{money},
+			order_status = #{orderStatus},
+			serial_number = #{serialNumber},
+			pay_type = #{payType},
+			pay_ment = #{payMent},
+			trans_id = #{transId},
+			create_time = #{createTime},
+			remark = #{remark}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM base_pay_logs
+		WHERE id = #{id}
+	</update>
+	
+	<update id="updateStatus">
+		UPDATE base_pay_logs SET 
+			order_status = #{orderStatus}
+		WHERE payid=#{payid}		 
+	</update>
+	
+</mapper>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsDaySignDao">
+    
+	<sql id="smsDaySignColumns">
+		a.day AS "day",
+		a.acc_id AS "accId",
+		a.sign AS "sign",
+		a.userid AS "userid",
+		a.send_count AS "sendCount",
+		a.fail_count AS "failCount",
+		a.success_count AS "successCount",
+		a.submit_success_count AS "submitSuccessCount",
+		a.submit_fail_count AS "submitFailCount",
+		a.report_success_count AS "reportSuccessCount",
+		a.report_null_count AS "reportNullCount",
+		a.report_fail_count AS "reportFailCount",
+		a.push_success_count AS "pushSuccessCount",
+		a.push_fail_count AS "pushFailCount",
+		a.push_unkown_count AS "pushUnkownCount",
+		a.update_datetime AS "updateDatetime"
+	</sql>
+	
+	<sql id="smsDaySignJoins">
+		LEFT JOIN sys_user u4 ON u4.id = a.userid
+	</sql>
+    
+	<select id="get" resultType="SmsDaySign">
+		SELECT 
+			<include refid="smsDaySignColumns"/>
+		FROM sms_day_sign a
+		<include refid="smsDaySignJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsDaySign">
+		SELECT 
+			<include refid="smsDaySignColumns"/>
+		FROM sms_day_sign a
+		<include refid="smsDaySignJoins"/>
+		<where>
+			
+			<if test="beginDay != null and endDay != null and beginDay != '' and endDay != ''">
+				AND a.day BETWEEN #{beginDay} AND #{endDay}
+			</if>
+			<if test="userid != null and userid != ''">
+				AND a.userid = #{userid}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="SmsDaySign">
+		SELECT 
+			<include refid="smsDaySignColumns"/>
+		FROM sms_day_sign a
+		<include refid="smsDaySignJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sms_day_sign(
+			day,
+			acc_id,
+			sign,
+			userid,
+			send_count,
+			fail_count,
+			success_count,
+			submit_success_count,
+			submit_fail_count,
+			report_success_count,
+			report_null_count,
+			report_fail_count,
+			push_success_count,
+			push_fail_count,
+			push_unkown_count,
+			update_datetime
+		) VALUES (
+			#{day},
+			#{accId},
+			#{sign},
+			#{userid},
+			#{sendCount},
+			#{failCount},
+			#{successCount},
+			#{submitSuccessCount},
+			#{submitFailCount},
+			#{reportSuccessCount},
+			#{reportNullCount},
+			#{reportFailCount},
+			#{pushSuccessCount},
+			#{pushFailCount},
+			#{pushUnkownCount},
+			NOW()
+		)
+	</insert>
+	
+	<insert id="batchInsert">
+	REPLACE INTO sms_day_sign(
+			day,
+			acc_id,
+			sign,
+			userid,
+			send_count,
+			fail_count,
+			success_count,
+			submit_success_count,
+			submit_fail_count,
+			report_success_count,
+			report_null_count,
+			report_fail_count,
+			push_success_count,
+			push_fail_count,
+			push_unkown_count,
+			update_datetime
+		) VALUES (
+			#{day},
+			#{accId},
+			#{sign},
+			#{userid},
+			#{sendCount},
+			#{failCount},
+			#{successCount},
+			#{submitSuccessCount},
+			#{submitFailCount},
+			#{reportSuccessCount},
+			#{reportNullCount},
+			#{reportFailCount},
+			#{pushSuccessCount},
+			#{pushFailCount},
+			#{pushUnkownCount},
+			NOW()
+		)
+	
+	
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_day_sign SET 	
+			day = #{day},
+			acc_id = #{accId},
+			sign = #{sign},
+			userid = #{userid},
+			send_count = #{sendCount},
+			fail_count = #{failCount},
+			success_count = #{successCount},
+			submit_success_count = #{submitSuccessCount},
+			submit_fail_count = #{submitFailCount},
+			report_success_count = #{reportSuccessCount},
+			report_null_count = #{reportNullCount},
+			report_fail_count = #{reportFailCount},
+			push_success_count = #{pushSuccessCount},
+			push_fail_count = #{pushFailCount},
+			push_unkown_count = #{pushUnkownCount},
+			update_datetime = NOW()
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_day_sign
+		WHERE id = #{id}
+	</update>
+	
+	<select id="findSendList" resultType="SmsDaySign">
+	SELECT 
+			a.userid AS "userid",
+			a.acc_id AS "accId",
+		   	a.send_time AS "day",
+		   	a.sms_content_sign AS "sign",
+			sum(a.sms_size) sendCount,
+			sum(CASE WHEN a.send_status LIKE 'F%' THEN a.sms_size ELSE 0 END) sendFailCount,
+			sum(CASE WHEN a.send_status LIKE 'T%' THEN a.sms_size ELSE 0 END) successCount,
+			sum(CASE WHEN a.gateway_status LIKE 'F10%' THEN a.sms_size ELSE 0 END) submitFailCount,
+			sum(case when a.gateway_status='T100' then a.sms_size else 0 end) reportSuccessCount,
+			sum(case when a.gateway_status LIKE 'F%' then a.sms_size else 0 end) reportFailCount,
+			sum(case when a.gateway_status='P100' and a.send_status='T000' then a.sms_size else 0 end) reportNullCount,
+			sum(case when a.user_notify_status='2' then a.sms_size else 0 end) pushSuccessCount,
+			sum(case when a.user_notify_status='3' then a.sms_size else 0 end) pushFailCount,
+			sum(case when a.user_notify_status='1' then a.sms_size else 0 end) pushUnkownCount
+		FROM ${tableName} a 
+		WHERE a.userid=#{userid}
+		<if test="day != null">
+			AND a.send_time >=DATE_FORMAT(#{day},'%Y-%m-%d 00:00:00')
+			AND a.send_time &lt;=DATE_FORMAT(#{day},'%Y-%m-%d 23:59:59')
+		</if>
+		GROUP BY a.sms_content_sign,a.acc_id
+	
+	</select>
+</mapper>

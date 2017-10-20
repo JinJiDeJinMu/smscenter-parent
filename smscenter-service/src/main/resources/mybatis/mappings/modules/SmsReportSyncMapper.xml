@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.biz.mapper.SmsReportSyncMapper">
+	
+    <select id="findList" resultType="com.sanerzone.smscenter.biz.entity.SmsReportSync">
+		SELECT 
+			a.id AS "id",
+			a.user_id AS "userId",
+			a.msgid AS "msgid",
+			a.stat AS "stat",
+			a.submit_time AS "submitTime",
+			a.done_time AS "doneTime",
+			a.srcid AS "srcid",
+			a.dest_terminal_id AS "destTerminalId",
+			a.smsc_sequence AS "smscSequence",
+			a.bizid AS "bizid",
+			a.createtime AS "createtime",
+			a.result AS "result",
+			a.taskid AS "taskid",
+			a.gateway_id AS "gatewayId"
+		FROM sms_report_sync a
+		<where>
+			<if test="id != null and id != ''">
+				AND a.id = #{id}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sms_report_sync(
+			user_id,
+			msgid,
+			stat,
+			submit_time,
+			done_time,
+			srcid,
+			dest_terminal_id,
+			smsc_sequence,
+			bizid,
+			createtime,
+			result,
+			taskid,
+			gateway_id
+		) VALUES (
+			#{userId},
+			#{msgid},
+			#{stat},
+			#{submitTime},
+			#{doneTime},
+			#{srcid},
+			#{destTerminalId},
+			#{smscSequence},
+			#{bizid},
+			#{createtime},
+			#{result},
+			#{taskid},
+			#{gatewayId}
+		)
+	</insert>
+	
+	<update id="delete">
+		DELETE FROM sms_report_sync
+		WHERE id = #{id}
+	</update>
+</mapper>

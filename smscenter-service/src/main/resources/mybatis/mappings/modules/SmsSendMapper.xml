@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.biz.mapper.SmsSendMapper">
+	
+	<insert id="insert">
+		INSERT INTO ${tableName}(
+			id,
+			acc_id,
+			userid,
+			fee_type,
+			fee_payment,
+			taskid,
+			custom_taskid,
+			custom_serviceid,
+			phone,
+			phone_type,
+			phone_area,
+			spnumber,
+			sms_content,
+			sms_content_id,
+			sms_content_sign,
+			sms_type,
+			sms_size,
+			send_status,
+			gateway_id,
+			gateway_group,
+			gateway_status,
+			source_gateway_id,
+			user_notify_status,
+			send_time,
+			submit_time,
+			report_time,
+			create_time,
+			receive_time,
+			service_id
+		) VALUES (
+			#{data.id},
+			#{data.smsREQMessage.accId},
+			#{data.smsREQMessage.userid},
+			#{data.smsREQMessage.feeType},
+			#{data.smsREQMessage.feePayment},
+			#{data.smsREQMessage.taskid},
+			#{data.smsREQMessage.customTaskid},
+			#{data.smsREQMessage.customServiceid},
+			#{data.phone},
+			#{data.phoneType},
+			#{data.phoneArea},
+			#{data.spnumber},
+			#{data.smsContent},
+			#{data.smsREQMessage.smsContentId},
+			#{data.smsContentSign},
+			#{data.contentType},
+			#{data.smsSize},
+			#{data.sendStatus},
+			#{data.gatewayId},
+			#{data.gatewayGroup},
+			'P100',
+			#{data.smsREQMessage.sourceGateWayId},
+			#{data.smsREQMessage.registeredDelivery},
+			#{data.smsREQMessage.sendTime},
+			#{data.submitTime},
+			#{data.reportTime},
+			now(),
+			#{data.smsREQMessage.receiveTime},
+			#{data.serviceId}
+		)
+	</insert>
+	
+	<update id="batchUpdateSendStatus" parameterType="java.util.Map">
+		UPDATE ${tableName} SET
+			send_status = #{sendStatus},
+			send_datetime = NOW(),
+			msgid=#{msgid}
+		WHERE id = ${id}	
+	</update>
+	
+	<update id="batchUpdateGatewayStatus" parameterType="java.util.Map">
+		UPDATE ${tableName} SET 
+			gateway_status=(CASE WHEN gateway_status='T100' THEN 'T100' ELSE #{gatewayStatus} END),
+			submit_time = #{submitTime},
+			report_time = #{reportTime}
+		WHERE id=#{id}
+	</update>
+	
+	<update id="updatePushFlag" parameterType="java.util.Map">
+		UPDATE ${tableName} SET
+			user_nofity_status=#{pushFlag}
+		WHERE id=#{id}	
+	</update>
+</mapper>

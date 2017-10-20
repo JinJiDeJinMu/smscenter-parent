@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.biz.mapper.SmsTaskMapper">
+	
+	<insert id="insert">
+		INSERT INTO sms_task(
+			taskid,
+			acc_id,
+			userid,
+			sms_content,
+			sms_size,
+			custom_taskid,
+			custom_spnumber,
+			task_type,
+			phone_count,
+			send_datetime,
+			send_status,
+			send_count,
+			custom_serviceid,
+			create_datetime,
+			update_datetime,
+			update_by
+		) VALUES (
+			#{taskid},
+			#{accId},
+			#{userid},
+			#{smsContent},
+			#{smsSize},
+			#{customTaskid},
+			#{customSpnumber},
+			#{taskType},
+			#{phoneCount},
+			#{sendDatetime},
+			#{sendStatus},
+			#{sendCount},
+			#{customServiceid},
+			NOW(),
+			NOW(),
+			#{userid}
+		)
+	</insert>
+	<select id="get" resultType="com.sanerzone.smscenter.biz.entity.SmsTask" parameterType="java.lang.String">
+		SELECT 
+			acc_id accId,
+			userid,
+			sms_content smsContent,
+			send_status sendStatus,
+			custom_taskid customTaskid,
+			custom_spnumber customSpnumber
+		FROM sms_task
+		WHERE taskid=#{_parameter}
+	</select>
+
+	<select id="findPendingSendTask" resultType="com.sanerzone.smscenter.biz.entity.SmsTask">
+		SELECT 
+			taskid,
+			version,
+			row_number rowNumber,
+			task_type taskType,
+			custom_serviceid customServiceid 
+		FROM sms_task a
+		WHERE a.send_datetime &lt;= NOW() 
+			AND (a.send_status='1' or a.send_status='8')
+		ORDER BY a.send_datetime 
+		LIMIT 20
+	</select>
+	
+	<update id="updateRowNumber" parameterType="java.util.Map">
+		UPDATE sms_task SET
+			row_number=#{rowNumber}
+		WHERE taskid=#{taskid}
+	</update>
+	
+	<update id="updateSendStatus" parameterType="java.util.Map">
+		UPDATE sms_task SET 
+			send_status=#{sendStatus},
+			<if test="sendStatus =='3'.toString()">
+				end_datetime = NOW(),
+			</if>
+			<if test="updateBy != null and updateBy !=''">
+				update_by = #{userBy},
+			</if>
+			update_datetime=NOW(),
+			version=version+1
+		<where>
+			taskid=#{taskid}
+			<if test="version != null and version !=''">
+				AND version=#{version}
+			</if>
+		</where>
+	</update>
+	
+</mapper>

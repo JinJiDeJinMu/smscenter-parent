@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.biz.mapper.SmsSubmitSyncMapper">
+	
+    <select id="findList" resultType="com.sanerzone.smscenter.biz.entity.SmsSubmitSync">
+		SELECT 
+			a.id AS "id",
+			a.msgid AS "msgid",
+			a.result AS "result",
+			a.bizid AS "bizid",
+			a.createtime AS "createtime",
+			a.taskid AS "taskid",
+			a.userid AS "userid",
+			a.gatewayid AS "gatewayid",
+			a.reserve AS "reserve",
+			a.phone AS "phone"
+		FROM jmsg_sms_submit_sync a
+		<where>
+			<if test="id != null and id != ''">
+				AND a.id = #{id}
+			</if>
+			<if test="bizid != null and bizid != ''">
+				AND a.bizid = #{bizid}
+			</if>
+			<if test="taskid != null and taskid != ''">
+				AND a.taskid = #{taskid}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO ${tableName}
+		(msgid, result, bizid,
+		createtime, taskid, userid, gatewayid, reserve, phone)
+		VALUES
+		(#{msgid}, #{result}, #{bizid}, NOW(), #{taskid}, #{userid}, #{gatewayid},
+		#{reserve}, #{phone})
+	</insert>
+	
+	<update id="delete">
+		DELETE FROM jmsg_sms_submit_sync
+		WHERE id = #{id}
+	</update>
+</mapper>

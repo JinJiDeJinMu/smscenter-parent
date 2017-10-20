@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsTaskDao">
+    
+	<sql id="smsTaskColumns">
+		a.taskid AS "taskid",
+		a.acc_id AS "accId",
+		a.userid AS "userid",
+		a.sms_content AS "smsContent",
+		a.sms_size AS "smsSize",
+		a.custom_taskid AS "customTaskid",
+		a.custom_spnumber AS "customSpnumber",
+		a.task_type AS "taskType",
+		a.phone_count AS "phoneCount",
+		a.send_datetime AS "sendDatetime",
+		a.end_datetime AS "endDatetime",
+		a.send_status AS "sendStatus",
+		a.send_count AS "sendCount",
+		a.success_count AS "successCount",
+		a.fail_count AS "failCount",
+		a.create_datetime AS "createDatetime",
+		a.update_datetime AS "updateDatetime",
+		a.update_by AS "updateBy.id",
+		a.version AS "version",
+		a.row_number AS "rowNumber",
+		a.recheck_user_id AS "recheckUserId",
+		a.recheck_time AS "recheckTime",
+		a.recheck_remarks AS "recheckRemarks"
+	</sql>
+	
+	<sql id="smsTaskJoins">
+	</sql>
+    
+	<select id="get" resultType="SmsTask">
+		SELECT 
+			<include refid="smsTaskColumns"/>
+		FROM sms_task a
+		<include refid="smsTaskJoins"/>
+		WHERE a.taskid = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsTask">
+		SELECT 
+			<include refid="smsTaskColumns"/>
+		FROM sms_task a
+		<include refid="smsTaskJoins"/>
+		<where>
+			
+			<if test="taskid != null and taskid != ''">
+				AND a.taskid = #{taskid}
+			</if>
+			<if test="accId != null and accId != ''">
+				AND a.acc_id = #{accId}
+			</if>
+			<if test="userid != null and userid != ''">
+				AND a.userid = #{userid}
+			</if>
+			<if test="sendDatetimeQ != null and sendDatetimeQ != ''">
+				AND a.send_datetime >= #{sendDatetimeQ}
+			</if>			
+			<if test="sendDatetimeZ != null and sendDatetimeZ != ''">
+				AND a.send_datetime &lt;= #{sendDatetimeZ}
+			</if>
+			<if test="sendStatus != null and sendStatus !=''">
+				AND a.send_status = #{sendStatus}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY send_datetime desc
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="SmsTask">
+		SELECT 
+			<include refid="smsTaskColumns"/>
+		FROM sms_task a
+		<include refid="smsTaskJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY send_datetime desc
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sms_task(
+			taskid,
+			acc_id,
+			userid,
+			sms_content,
+			sms_size,
+			custom_taskid,
+			custom_spnumber,
+			task_type,
+			phone_count,
+			send_datetime,
+			end_datetime,
+			send_status,
+			send_count,
+			success_count,
+			fail_count,
+			create_datetime,
+			update_datetime,
+			update_by,
+			version,
+			row_number
+		) VALUES (
+			#{taskid},
+			#{accId},
+			#{userid},
+			#{smsContent},
+			#{smsSize},
+			#{customTaskid},
+			#{customSpnumber},
+			#{taskType},
+			#{phoneCount},
+			#{sendDatetime},
+			#{endDatetime},
+			#{sendStatus},
+			#{sendCount},
+			#{successCount},
+			#{failCount},
+			NOW(),
+			NOW(),
+			#{createBy.id},
+			#{version},
+			#{rowNumber}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_task SET 	
+			acc_id = #{accId},
+			userid = #{userid},
+			sms_content = #{smsContent},
+			sms_size = #{smsSize},
+			custom_taskid = #{customTaskid},
+			custom_spnumber = #{customSpnumber},
+			task_type = #{taskType},
+			phone_count = #{phoneCount},
+			send_datetime = #{sendDatetime},
+			end_datetime = #{endDatetime},
+			send_status = #{sendStatus},
+			send_count = #{sendCount},
+			success_count = #{successCount},
+			fail_count = #{failCount},
+			create_datetime = #{createDatetime},
+			update_datetime = #{updateDatetime},
+			update_by = #{updateBy.id},
+			version = #{version},
+			row_number = #{rowNumber},
+			recheck_user_id = #{recheckUserId},
+			recheck_time = #{recheckTime},
+			recheck_remarks = #{recheckRemarks}
+		WHERE taskid = #{taskid}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_task
+		WHERE id = #{id}
+	</update>
+	
+	<update id="recheckSmsContent">
+		UPDATE sms_task SET 
+			send_status=#{sendStatus},
+			recheck_user_id=#{user.id},
+			recheck_time=NOW(),
+			recheck_remarks=#{recheckRemarks}
+		WHERE taskid=#{taskid} AND send_status='-1'
+	</update>
+	
+	<select id="findSmsTaskReport" resultType="SmsTask">
+		SELECT 
+			a.taskid AS "taskid",
+			a.send_count AS "sendCount",
+			a.send_datetime AS "sendDatetime",
+			a.end_datetime AS "endDatetime",
+			a.send_status AS "sendStatus",
+			a.success_count AS "successCount",
+			a.fail_count AS "failCount"
+		FROM sms_task a
+		<where>
+			<if test="sendDatetimeQ != null and sendDatetimeQ != ''">
+				AND a.send_datetime &gt;= #{sendDatetimeQ}
+			</if>
+			<if test="sendDatetimeZ != null and sendDatetimeZ != ''">
+				AND a.send_datetime &lt;= #{sendDatetimeZ}
+			</if>
+		</where>
+	</select>
+	
+	<update id="updateReport">
+		UPDATE sms_task SET
+			success_count=#{successCount},
+			fail_count=#{failCount},
+			update_datetime =NOW()
+		WHERE taskid=#{taskid}	
+	</update>
+	
+	<select id="findPendingSendTask" resultType="SmsTask">
+		SELECT 
+			taskid,version,row_number rowNumber
+		FROM sms_task a
+		WHERE a.send_datetime >= NOW() 
+		AND (a.send_status='1' or a.send_status='8')
+		ORDER BY a.send_datetime 
+		LIMIT 20
+	</select>
+	
+	<update id="updateRowNumber">
+		UPDATE sms_task SET
+			row_number=#{rowNumber}
+		WHERE taskid=#{taskid}
+	</update>
+	
+	<update id="updateSendStatus" parameterType="java.util.Map">
+		UPDATE sms_task SET 
+			send_status=#{sendStatus},
+			<if test="sendStatus =='3'.toString()">
+				end_datetime = NOW(),
+			</if>
+			<if test="updateBy != null and updateBy !=''">
+				update_by = #{userBy},
+			</if>
+			update_datetime=NOW(),
+			version=version+1
+		<where>
+			taskid=#{taskid}
+			<if test="version != null and version !=''">
+				AND version=#{version}
+			</if>
+		</where>
+	</update>
+	
+	<update id="updateStatus" parameterType="java.util.Map">
+		UPDATE sms_task SET 
+			send_status=#{sendStatus},
+			<if test="status =='3'.toString()">
+				end_datetime = NOW(),
+			</if>
+			<if test="updateBy != null and updateBy !=''">
+				update_by = #{userBy},
+			</if>
+			update_datetime=NOW()
+			
+		WHERE taskid=#{taskid}
+	</update>		
+	
+</mapper>

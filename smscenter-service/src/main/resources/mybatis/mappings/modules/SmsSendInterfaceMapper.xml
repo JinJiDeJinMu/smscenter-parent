@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.biz.mapper.SmsSendInterfaceMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.sanerzone.smscenter.biz.entity.SmsSendInterface">
+		<id column="id" property="id" />
+		<result column="userid" property="userid" />
+		<result column="phone" property="phone" />
+		<result column="send_phone" property="sendPhone" />
+		<result column="sms_content" property="smsContent" />
+		<result column="serviceid" property="serviceid" />
+		<result column="send_status" property="sendStatus" />
+		<result column="create_time" property="createTime" />
+	</resultMap>
+	
+	<select id="findSWSendList" resultType="com.sanerzone.smscenter.biz.entity.SmsSendInterface">
+		SELECT 
+			id ,
+			userid,
+			phone,
+			send_phone sendPhone,
+			sms_content smsContent,
+			serviceid,
+			send_status sendStatus
+		FROM sms_send_interface a
+		WHERE a.id > ${maxId} AND a.send_status=#{sendStatus}
+		ORDER BY id
+		LIMIT 1000
+	</select>
+	
+	<update id="updateSendStatus">
+		UPDATE sms_send_interface a SET
+			a.send_status='1'
+		WHERE a.id &lt;= ${maxId} AND a.send_status=#{sendStatus}	
+	</update>
+
+</mapper>

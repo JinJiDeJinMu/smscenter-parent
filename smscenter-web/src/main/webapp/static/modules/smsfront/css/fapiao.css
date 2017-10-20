@@ -1,0 +1,218 @@
+@charset "utf-8";
+/* CSS Document */
+body{font:normal 12px/24px 微软雅黑,Arail;color:#565656;margin:0;padding:0;}
+*{margin:0;padding:0;}
+ul li{list-style:none;}
+a{text-decoration:none; outline:none;}
+a,span{display:inline-block;}
+img{border:none;}
+em,i{font-style:normal;}
+input,textarea{font-family:微软雅黑;}
+.clearfix:after{content:"";clear:both;display:block;visibility:hidden;height:0;}
+*html .clearfix{height:1%;}
+.c1{background:#f24143;}
+.c1:hover{background:#f85152}
+.c1:active{background:#f13032;}
+.c2{background:#f2ae43;}
+.c2:hover{background:#f7ba59;}
+.c2:active{background:#eea22b;}
+.c3{background:#28b779;}
+.c3:hover{background:#2dbf80;}
+.c3:active{background:#11b56e;}
+.c4{background:#03c2fa;}
+.c4:hover{background:#1bc6f8;}
+.c4:active{background:#27a9e3;}
+.c5{background:#ccc;}
+.c5:hover{background:#e1e0e0;}
+.c5:active{background:#b2b2b2;}
+.red{color:#f13032;
+}
+.blue{color:#27a9e3;
+}
+.orange{color:#fea720;
+}
+.green{color:#59c145;
+}
+/*分页*/
+.page{width:100%;padding:56px 0 0;height:26px;text-align:right;font-size:12px;}
+.page a{width:30px;height:26px;text-align:center;line-height:26px;color:#4f4f4f;background:#eeeeee;margin:0 0 0 3px;}
+.page .on{background:#02b9ef;color:#fff;}
+.page .ft{width:54px;color:#939393;}
+/*顶部标题部分*/
+.tit{height:48px;overflow:hidden;border-bottom:solid 4px #e7e5e5;}
+.tit h1{width:48%;float:left;height:48px;line-height:48px;font-size:28px;font-family:"兰亭纤黑";font-weight:normal;}
+.tit .dep{float:right;width:50%;font-size:14px;height:34px;line-height:34px;padding:14px 0 0;overflow:hidden;}
+.dep span{height:30px;line-height:30px;color:#808080;float:right;background:url(../images/ico_snow.png) 0 center no-repeat;padding-left:24px;}
+.dep span em{color:#28b740;}
+/*内容*/
+.tx_div{width:100%;background:#fefaf1;padding:10px 0 18px;margin:20px 0 0;}
+.tx_div h2{padding:0 26px 10px;height:32px;line-height:32px;font-size:16px;font-weight:normal;color:#000;}
+.tx_div p{line-height:28px;font-size:12px;color:#565656;padding:0 26px;}
+/*可索取发票金额*/
+.invoice_sum{width:100%; overflow:hidden; padding:28px 0; 
+}
+.invoice_l, .invoice_l1{width:68%; padding:38px 6% 38px 3%; float:left; background:#f4fafd; 
+}
+.invoice_l1{width:91%;
+}
+.invoice_l em, .invoice_l1 em{font-size:18px; font-weight:bold; color:#808080; margin-right:38px;
+}
+.invoice_l span, .invoice_l1 span{font-size:30px; color:#808080; padding-bottom:4px;
+}
+.invoice_l span i, .invoice_l1 span i{color:#11b56e; margin-right:28px;
+}
+.invoice_btn{float:right; width:146px; height:36px; line-height:36px; text-align:center; font-size:16px; color:#FFF; margin-top:68px; margin-right:2px;
+}
+.invoice_choose{float:left;width:100%;padding:28px 0 0;
+}
+.invoice_choose p{font-size:16px;width:100%;padding-left:28px;line-height:40px;
+}
+.invoice_choose .choose_radio{width:100%;float:left;padding-left:28px;
+}
+.choose_radio label{float:left;line-height:33px;padding-right:28px;
+	}
+/*发票信息以及收货地址*/
+.invoice_info{width:99.6%; padding-bottom:60px; border:#dddddd dotted 1px; background:#f4fafd;
+}
+.invoice1{width:100%; padding-bottom:44px; border-bottom:#dddddd dotted 1px;
+}
+.invoice2{width:100%;
+}
+.invoice1 .dl1, .invoice2 .dl1, .zy_list{width:920px; overflow:hidden; margin-top:28px;
+}
+.invoice1 .dl1 dt, .invoice2 .dl1 dt, .zy_list .label{width:154px; height:30px; line-height:30px; font-size:14px; color:#333333; padding-left:30px; float:left;  
+}
+.invoice1 .dl1 dd, .invoice2 .dl1 dd{float:left; width:734px; line-height:30px;
+}
+.invoice1 .dl1 label{width:134px; float:left; font-size:14px; color:#333333;
+}
+.txtbox{margin-top:16px;
+}
+.span1{font-size:14px; color:#333333;
+}
+.firm_name{font-size:14px; color:#adadad;
+}
+.firm_name em{font-size:16px; color:#f49500; padding-right:6px;
+}
+.money{font-size:14px; color:#949494; float:left;
+}
+.money .tip{float:left; line-height:30px; padding-right:10px;
+}
+.textl{width:418px; height:30px; line-height:30px; padding-left:8px; border:#CCC solid 1px; font-size:14px; color:#333333; float:left; margin-right:10px;
+}
+.textc{width:192px; height:30px; line-height:30px; padding-left:8px; border:#CCC solid 1px; margin-right:10px; color:#333333; float:left;
+}
+.texts{width:104px; height:30px; line-height:30px; padding-left:8px; border:#CCC solid 1px; color:#333333; float:left; margin-right:10px;
+}
+/*radio*/
+.radio-off{width:22px; height:22px; float:left; background:url(../images/green.png) -120px 0 no-repeat;; margin:6px 9px 0 0 ;
+}
+.radio-off .radio{width:22px; height:22px; opacity:0; filter:alpha(opacity:0);
+}
+.radio-off-hover{background:url(../images/green.png) -144px 0 no-repeat;
+}
+.radio-off-on{width:22px;height:22px;float:left;background:url(../images/green.png) -168px 0 no-repeat;margin:6px 9px 0 0;
+}
+/*提交，取消按钮*/
+.btnbox{padding-left:30px; margin-top:40px; overflow:hidden;
+}
+.sub_btn, .cancel_btn{width:146px; height:36px; line-height:36px; font-size:16px; color:#FFF; text-align:center; float:left; border:none; cursor:pointer;
+}
+.cancel_btn{margin-left:44px;
+}
+.btnbox .redtip{float:left; padding-left:12px; font-size:12px; color:#F00; line-height:40px;
+}
+/*发票记录*/
+.record{width:110px; height:48px; line-height:48px; background:#28b779; text-align:center; font-size:16px; color:#FFF; margin-top:30px;
+}
+.recordDiv{width:100%; height:44px; background:#eeeeee; padding:10px 0; border-top:#ddd solid 1px; margin-top:32px;
+}
+.recordDiv span, .recordlist span{height:40px; line-height:40px; padding:0 4px; float:left; font-size:16px; color:#565656; text-align:left; word-break:break-all; word-wrap:break-word; white-space:nowrap; word-wrap:normal; overflow:hidden; text-overflow:ellipsis;
+}
+.recordlist span{font-size:14px;
+}
+.recordlist span .view{float:left; width:20%; line-height:20px; margin-top:10px; 
+}
+.recordDiv .t1{width:18%; padding:0 4px 0 26px; background:url(../images/ico_dec.png) 98px 18px no-repeat;
+}
+.recordlist .t1{width:18%; padding:0 4px 0 26px;
+}
+.recordDiv .t2, .recordlist .t2{width:10%;
+}
+.recordDiv .t3, .recordlist .t3{width:14%;
+}
+.recordDiv .t4, .recordlist .t4{width:14%;
+}
+.recordDiv .t5, .recordlist .t5{width:20%;
+}
+.recordDiv .t6, .recordlist .t6{width:8%;
+}
+.recordlist{width:100%; border-bottom:#f9f9f9 solid 4px;
+}
+.recordlist li{width:100%; height:40px; line-height:40px; float:left;
+}
+/*查看显示框*/
+.view_info{position:absolute; left:0; top:0px; padding:0 10px 0 18px; background:#fdf3dc; width:328px;
+}
+.view_info i{font-size:14px; color:#565656; padding:16px 0 20px 0; 
+}
+.view_info .orange{color:#fea720; font-size:16px; font-weight:normal;
+}
+.view_info img{position:absolute; top:-11px; right:60px;
+}
+.view_info i.kd{padding-right:58px;
+}
+/*弹出层部分*/
+.pop_record_div{
+}
+
+/*增值税专用发票增加的内容*/
+.zy_list{margin-top:0; display:none;
+}
+.zy_list li{width:100%; float:left; margin-top:28px;
+}
+/*.zy_list .label{text-align:right; padding-left:0; padding-right:30px;
+}*/
+
+/*开具发票之后改变的发票信息状态*/
+.state{display:none;
+}
+
+.refuse_tips{
+	position: relative;
+}
+.refuse_tips_cont{
+	display: none;
+	padding:5px;
+	border:1px solid #ccc;
+	background:#FEFECC;
+	line-height:25px;
+	width:200px;
+	position: absolute;
+    white-space: normal;
+    z-index: 100;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

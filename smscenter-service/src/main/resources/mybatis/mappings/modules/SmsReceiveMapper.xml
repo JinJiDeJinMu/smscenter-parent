@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.biz.mapper.SmsReceiveMapper">
+	
+	<insert id="insert">
+		INSERT INTO ${tableName}(
+			acc_id,
+			userid,
+			msgid,
+			spnumber,
+			phone,
+			sms_content,
+			gateway_id,
+			createtime,
+			result,
+			push_flag
+		) VALUES (
+			#{data.accId},
+			#{data.userid},
+			#{data.msgid},
+			#{data.spnumber},
+			#{data.phone},
+			#{data.smsContent},
+			#{data.gatewayId},
+			now(),
+			#{data.result},
+			#{data.pushFlag}
+		)
+	</insert>
+	
+	<insert id="insertSmsReceive" parameterType="com.sanerzone.smscenter.biz.message.SMSURREQMessage">
+		INSERT INTO sms_receive (
+			id,
+			acc_id,
+			userid,
+			msgid,
+			spnumber,
+			phone,
+			sms_content,
+			gateway_id,
+			createtime,
+			result,
+			push_flag
+		) VALUES (
+			#{bizid},
+			#{accid},
+			#{userid},
+			#{msgid},
+			#{spnumber},
+			#{phone},
+			#{content},
+			#{gateWayId},
+			NOW(),
+			'',
+			#{result}
+		)
+	</insert>
+	
+	<update id="updateResult" parameterType="com.sanerzone.smscenter.biz.message.SMSURRESMessage">
+		UPDATE sms_receive SET
+			result=#{result},
+			recv_time=from_unixtime(#{recvTime}/1000)
+		WHERE id=#{bizid}
+	</update>
+	
+</mapper>

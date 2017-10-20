@@ -1,0 +1,175 @@
+@charset "utf-8";
+/* CSS Document */
+.dep .s1 {
+    font-weight: bold;
+    font-size: 14px;
+    color: #02b9ef;
+    padding: 0 0 0 48px;
+    background: url(../images/ico_eye.png) 0 center no-repeat;
+}
+
+.dep .s1 em {
+    font-weight: normal;
+    color: #02b9ef;
+}
+
+.dep .s1 em a {
+    color: #02b9ef;
+    text-decoration: underline;
+}
+
+.div21, .div31 {
+    width: 100%;
+    background: #f4fafd;
+    padding: 42px 0 35px;
+    margin: 10px 0 0;
+}
+
+.div31 {
+    padding: 36px 0 35px;
+}
+
+.div21 dl {
+    height: 60px;
+    width: 100%;
+    position: relative;
+}
+
+.div21 dt {
+    width: 38px;
+    padding: 3px 0 0 25px;
+    height: 27px;
+    float: left;
+}
+
+.div21 dd {
+    height: 60px;
+    float: left;
+}
+
+.divselect {
+    width: 146px;
+    position: relative;
+    z-index: 100;
+    float: left;
+}
+
+.divselect cite {
+    width: 116px;
+    height: 28px;
+    line-height: 28px;
+    display: block;
+    color: #333333;
+    cursor: pointer;
+    font-style: normal;
+    padding: 0 8px;
+    border: 1px solid #cccccc;
+    background: url(../images/ico_dec.png) no-repeat 112px center #fff;
+    font-size: 14px;
+}
+
+.divselect ul {
+    width: 132px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 20000;
+    margin-top: -1px;
+    display: none;
+}
+
+.divselect ul li {
+    height: 28px;
+    line-height: 28px;
+}
+
+.divselect ul li a {
+    display: block;
+    height: 28px;
+    color: #333333;
+    text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.divselect ul li a:hover {
+    background-color: #CCC;
+}
+
+.div21 dd .txt3 {
+    width: 172px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 10px;
+    border: solid 1px #ccc;
+    background: #fff;
+    float: left;
+    margin: 0 8px 0 0;
+    color: #9f9f9f;
+}
+
+.btn_reg {
+    width: 126px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+}
+
+.btn_check, .btn_remove {
+    width: 102px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+}
+
+.tips {
+    padding: 20px 26px 0 26px;
+    line-height: 28px;
+    font-size: 14px;
+    color: #565656;
+}
+
+.tips em {
+    font-size: 18px;
+    color: #02b9ef;
+    font-style: normal;
+    float: left;
+    height: 56px;
+}
+
+.hm {
+    height: 40px;
+    line-height: 40px;
+    padding: 0 0 15px 26px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #f2ae43;
+}
+
+.ts {
+    width: 100%;
+    height: 65px;
+    line-height: 65px;
+    font-size: 22px;
+    color: #fff;
+    text-align: center;
+}
+
+.ts span {
+    width: 70%;
+    float: left;
+    background: #27a9e3;
+}
+
+.ts em {
+    width: 30%;
+    float: left;
+    background: #f2ae43;
+    font-weight: bold;
+    font-style: normal;
+}
+

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsGatewayGroupRelDao">
+    
+	<sql id="smsGatewayGroupRelColumns">
+		a.id AS "id",
+		a.group_id AS "groupId",
+		a.phone_type AS "phoneType",
+		a.province_id AS "provinceId",
+		a.gw_code AS "gwCode",
+		a.level AS "level",
+		a.create_time AS "createTime",
+		a.create_by AS "createBy.id",
+		u1.gw_name AS gwName,
+		u2.name AS groupName
+	</sql>
+	
+	<sql id="smsGatewayGroupRelJoins">
+		LEFT JOIN sms_gateway u1 ON u1.gw_code = a.gw_code
+		LEFT JOIN sms_gateway_group u2 ON u2.id = a.group_id
+	</sql>
+    
+	<select id="get" resultType="SmsGatewayGroupRel">
+		SELECT 
+			<include refid="smsGatewayGroupRelColumns"/>
+		FROM sms_gateway_group_rel a
+		<include refid="smsGatewayGroupRelJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsGatewayGroupRel">
+		SELECT 
+			<include refid="smsGatewayGroupRelColumns"/>
+		FROM sms_gateway_group_rel a
+		<include refid="smsGatewayGroupRelJoins"/>
+		<where>
+			
+			<if test="groupId != null and groupId != ''">
+				AND a.group_id = #{groupId}
+			</if>
+			<if test="phoneType != null and phoneType != ''">
+				AND a.phone_type = #{phoneType}
+			</if>
+			<if test="provinceId != null and provinceId != ''">
+				AND a.province_id = #{provinceId}
+			</if>
+			<if test="gwCode != null and gwCode != ''">
+				AND a.gw_code = #{gwCode}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="SmsGatewayGroupRel">
+		SELECT 
+			<include refid="smsGatewayGroupRelColumns"/>
+		FROM sms_gateway_group_rel a
+		<include refid="smsGatewayGroupRelJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		REPLACE INTO sms_gateway_group_rel(
+			group_id,
+			phone_type,
+			province_id,
+			gw_code,
+			level,
+			create_time,
+			create_by
+		) VALUES (
+			#{groupId},
+			#{phoneType},
+			#{provinceId},
+			#{gwCode},
+			#{level},
+			NOW(),
+			#{createBy.id}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_gateway_group_rel SET 	
+			group_id = #{groupId},
+			phone_type = #{phoneType},
+			province_id = #{provinceId},
+			gw_code = #{gwCode},
+			level = #{level}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_gateway_group_rel
+		WHERE id = #{id}
+	</update>
+	
+	<select id="findBizByGroupId" resultType="com.sanerzone.smscenter.biz.entity.SmsGatewayGroupRel" parameterType="java.util.Map">
+		SELECT 
+			a.group_id AS "groupId",
+			a.phone_type AS "phoneType",
+			a.province_id AS "provinceId",
+			a.gw_code AS "gwCode",
+			a.level AS "level",
+			a.create_time AS "createTime"
+		FROM sms_gateway_group_rel a
+		<where>
+			<if test="groupId != null and groupId !=''">
+				a.group_id=#{groupId}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.biz.mapper.SmsInitMapper">
+	<select id="findPhoneInfoList" resultType="com.sanerzone.smscenter.biz.entity.SmsPhoneInfo">
+		SELECT 
+			a.phone,
+			a.phone_type phoneType,
+			a.phone_prov phoneProv,
+			a.phone_city phoneCity,
+			a.phone_city_code phoneCityCode,
+			a.zip,
+			a.types,
+			a.area_code areaCode 
+		FROM sms_phone_info a
+	</select>
+	
+	<select id="findTemplateList" resultType="com.sanerzone.smscenter.biz.entity.SmsTemplate">
+		SELECT 
+			id,
+			name,
+			content,
+			type,
+			create_by userid,
+			status,
+			scope,
+			template_src templateSrc,
+			template_id templateId,
+			template_content templateContent 
+		FROM sms_template
+	</select>
+	
+	<select id="findKeywordList" resultType="java.lang.String" parameterType="java.lang.Integer">
+		SELECT keywords FROM sms_keywords LIMIT ${_parameter},10000
+	</select>
+	
+	<select id="findSysBlacklistList" resultType="java.lang.String" parameterType="java.lang.Integer">
+		SELECT phone FROM sms_phone_blacklist LIMIT ${_parameter},100000
+	</select>
+	
+	<select id="findUserBlacklistList" resultType="java.lang.String" parameterType="java.lang.Integer">
+		SELECT phone FROM sms_phone_dynamic LIMIT ${_parameter},100000
+	</select>
+
+	<select id="findWhitelistList" resultType="java.lang.String" parameterType="java.lang.Integer">
+		SELECT phone FROM sms_phone_whitelist LIMIT ${_parameter},100000
+	</select>
+	
+	<select id="findGatewayInfoList" resultType="com.sanerzone.smscenter.biz.entity.SmsGateway">
+		SELECT 
+			id,
+			gw_code gwCode, 
+			gw_name gwName,
+			gw_remark gwRemark,
+			gw_status gwStatus,
+			gw_type gwType,
+			gw_proto gwProto,
+			gw_proto_version gwProtoVersion,
+			gw_proto_class gwProtoClass,
+			gw_proto_extparam gwProtoExtparam,
+			gw_server_ip gwServerIp,
+			gw_server_port gwServerPort,
+			gw_username gwUsername,
+			gw_password gwPassword,
+			gw_sp_number gwSpNumber,
+			gw_corp_id gwCorpId,
+			gw_service_id gwServiceId,
+			gw_receive_model gwReceiveModel,
+			sms_sign_model smsSignModel,
+			sms_sign_nose smsSignNose,
+			gw_longsms gwLongsms,
+			gw_once_submit gwOnceSubmit,
+			gw_send_rate gwSendRate,
+			gw_connections gwConnections			
+		FROM sms_gateway		
+	</select>
+	
+	<select id="findGatewayGroupList" resultType="com.sanerzone.smscenter.biz.entity.SmsGatewayGroup">
+		SELECT 
+			id,
+			name,
+			remark,
+			sort,
+			status
+		FROM sms_gateway_group
+	</select>
+	
+	<select id="findGatewayGroupRelList" resultType="com.sanerzone.smscenter.biz.entity.SmsGatewayGroupRel">
+		SELECT  
+			id,
+			group_id groupId,
+			phone_type phoneType,
+			province_id provinceId,
+			gw_code gwCode,
+			level
+		FROM sms_gateway_group_rel
+	</select>
+	
+	<select id="findGatewayQueueidList" resultType="com.sanerzone.smscenter.biz.entity.SmsGatewayQueueid">
+		SELECT 
+			gw_code gwCode,
+			serviceid,
+			topic,
+			queue_id queueId,
+			queue_name queueName,
+			queue_status queueStatus,
+			thread_num threadNum,
+			offset,
+			tps,
+			weight 
+		FROM sms_gateway_queueid
+	</select>
+	
+	<select id="findRuleInfoList" resultType="com.sanerzone.smscenter.biz.entity.SmsRuleInfo">
+		SELECT id,
+			   rule_code ruleCode,
+			   rule_name ruleName,
+			   rule_content ruleContent,
+			   rule_type ruleType,
+			   ispass,
+			   status,
+			   description
+		FROM sms_rule_info
+	</select>
+	
+	<select id="findRuleGroupList" resultType="com.sanerzone.smscenter.biz.entity.SmsRuleGroup">
+		SELECT id,
+			   group_name groupName,
+			   description,
+			   status
+		FROM sms_rule_group 
+	</select>
+	
+	<select id="findRuleRelationList" resultType="com.sanerzone.smscenter.biz.entity.SmsRuleRelation">
+		SELECT id,
+			   group_id groupId,
+			   rule_type ruleType,
+			   rule_id ruleId
+		FROM sms_rule_relation
+	</select>
+	
+	
+</mapper>

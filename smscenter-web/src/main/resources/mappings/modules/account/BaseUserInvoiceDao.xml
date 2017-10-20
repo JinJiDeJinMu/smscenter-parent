@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.account.dao.BaseUserInvoiceDao">
+    
+	<sql id="baseUserInvoiceColumns">
+		a.userid AS "userid",
+		a.amount AS "amount",
+		a.total_amount AS "totalAmount",
+		a.freeze_amount AS "freezeAmount",
+		u1.name AS "user.name"
+	</sql>
+	
+	<sql id="baseUserInvoiceJoins">
+		LEFT JOIN sys_user u1 ON a.userid = u1.id
+	</sql>
+    
+	<select id="get" resultType="BaseUserInvoice">
+		SELECT 
+			<include refid="baseUserInvoiceColumns"/>
+		FROM base_user_invoice a
+		<include refid="baseUserInvoiceJoins"/>
+		WHERE a.userid = #{id}
+	</select>
+	
+	<select id="findList" resultType="BaseUserInvoice">
+		SELECT 
+			<include refid="baseUserInvoiceColumns"/>
+		FROM base_user_invoice a
+		<include refid="baseUserInvoiceJoins"/>
+		<where>
+			
+			<if test="userid != null and userid != ''">
+				AND a.userid = #{userid}
+			</if>
+			<if test="user != null and user.name != null and user.name !=''">
+				AND u1.name LIKE CONCAT('%',#{user.name},'%')
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="BaseUserInvoice">
+		SELECT 
+			<include refid="baseUserInvoiceColumns"/>
+		FROM base_user_invoice a
+		<include refid="baseUserInvoiceJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO base_user_invoice(
+			userid,
+			amount,
+			total_amount,
+			freeze_amount
+		) VALUES (
+			#{userid},
+			#{amount},
+			#{totalAmount},
+			#{freezeAmount}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE base_user_invoice SET 	
+			amount = amount+#{amount},
+			total_amount = total_amount+#{totalAmount},
+			freeze_amount = freeze_amount+#{freezeAmount}
+		WHERE userid = #{userid}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM base_user_invoice
+		WHERE userid = #{id}
+	</update>
+	
+	<select id="getUserAmount" resultType="java.lang.String">
+	 SELECT     
+	        a.amount
+	       FROM base_user_invoice a
+	       <include refid="baseUserInvoiceJoins"/>
+	       WHERE a.userid = #{userid}
+	</select>
+	
+</mapper>

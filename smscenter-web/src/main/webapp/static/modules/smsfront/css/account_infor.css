@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+*{margin:0; padding:0;
+}
+.div31{padding:30px 0 10px;width:100%;min-width:920px;background:#f4fafd;}
+.div31 dl{width:100%;height:30px;padding:0 0 26px;font-size:14px;color:#333;}
+.div31 dt{width:152px;padding:0 0 0 20px;float:left;height:30px;line-height:30px;}
+.div31 dd{float:left;line-height:30px;}
+.div31 dd em, .div31 dd .long{line-height:30px;font-style:normal;width:240px;float:left;}
+.div31 dd .long{width:300px;
+}
+.btn_change_phone,.btn_change_email, .bdlink, .btn_yz_email{float:left;height:30px;line-height:30px;color:#02b9ef;text-decoration:underline;}
+.binding{float:left; height:30px; line-height:30px; cursor:default; color:#333333;
+}
+.btn_yz_email{padding-right:20px;
+}
+
+.txt3,.txt4{width:182px;height:28px;line-height:28px;padding:0 5px;border:solid 1px #ccc;float:left;}
+.txt3{width:500px;}
+
+.div31 .qes{width:15px;height:15px;float:left;margin:8px 0 0 6px;cursor:pointer;}
+.thDiv .t4{background:url(../images/ico_dec.png) 80px center no-repeat;cursor:pointer;}
+.tsDiv{width:178px;position:absolute;z-index:3;top:0;left:0;display:none;}
+.tsnr{width:166px;padding:0 0 0 12px;position:relative;}
+.tsDiv img{position:absolute;top:0;left:2px;display:block;z-index:6;}
+.tsnr p{width:144px;padding:10px;border:solid 1px #f2e0bc;background:#fffed0;line-height:28px;font-size:12px;}
+.dl_box{width:540px;float:left;}
+.ts_box{float:left;display:block;position:relative;margin:4px 0 0;}
+.ts_box img{position:absolute;top:0;left:2px;display:block;z-index:4;}
+.dl_box dl{position:relative;}
+.btn_save{margin:100px 0 0 0;}
+
+.div1{width:100%;overflow:hidden;background:#f4fafd;margin:36px 0 0;padding:30px 0 6px;}
+.div1 dl{width:100%;height:54px;font-size:14px;color:#333333;overflow:Hidden;}
+.div1 dt{width:150px;height:30px;line-height:30px;padding:0 0 0 20px;float:left;}
+.div1 dd{float:left;}
+.div1 dd .txt2{width:312px;height:28px;line-height:28px;padding:0 10px;float:left;background:#fff;border:solid 1px #ccc;margin-right:10px;}
+.div1 dd .ts{font-style:normal;color:#fea720;float:left;height:30px;line-height:30px;}
+.div1 dd span.error{font-size:12px;color:#f00;clear:both;width:100%;height:24px;line-height:24px;}
+.lenbox{width:333px;margin:6px 0 0;overflow:Hidden;}
+.lenbox span{width:110px;height:18px;border:solid 1px #fcfcfc;margin-right:-1px;line-height:18px;font-size:12px;color:#CECECE;background:#ededed;text-align:center;}
+.lenL .s1{background:#f00;color:#fff;}
+.lenM .s1{background:#f90;color:#f90;}
+.lenM .s2{background:#f90;color:#fff;}
+.lenH .s1,.lenH .s2{background:#3c0;color:#3c0;}
+.lenH .s3{background:#3c0;color:#fff;}
+.btn_send{clear:both;display:block;height:24px;line-height:24px;margin:6px 0 0;color:#fff;float:left;cursor:pointer;border:none;}
+.org_tips{float:left; line-height:30px; padding-left:10px; font-size:12px; color:#f79a09;
+}
+span.error{font-size:12px; line-height:30px; padding:0 0 0 20px; color:#F00;
+}
+
+/*绑定微信页面*/
+.wx_box{width:340px; overflow:hidden; margin:30px auto 0; font-family:'Microsoft YaHei';
+}
+.wx_box .title{font-size:16px; line-height:22px; color:#333333; text-align:center; width:100%;
+}
+.wx_box .wxcode{width:220px; text-align:center; overflow:hidden; margin:10px auto 30px;
+}
+.wxcode img{width:220px; height:220px;
+}
+.wx_box .tips{font-size:12px; color:#666666; text-align:center; padding-bottom:14px;
+}
+.txt2_1{width: 74px;
+    padding: 0 5px;
+    height: 35px;
+    line-height: 35px;
+    border: solid 1px #ccc;
+    float: left;
+    margin-right: 10px;
+    color: #9a9a9a;
+}
+#randCodeImg{
+	height:35px;
+	line-height:32px;
+}

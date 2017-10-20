@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsGatewayDao">
+    
+	<sql id="smsGatewayColumns">
+		a.id AS "id",
+		a.gw_code AS "gwCode",
+		a.app_code AS "appCode",
+		a.gw_name AS "gwName",
+		a.gw_remark AS "gwRemark",
+		a.gw_status AS "gwStatus",
+		a.gw_type AS "gwType",
+		a.gw_proto AS "gwProto",
+		a.gw_proto_version AS "gwProtoVersion",
+		a.gw_proto_class AS "gwProtoClass",
+		a.gw_proto_extparam AS "gwProtoExtparam",
+		a.gw_server_ip AS "gwServerIp",
+		a.gw_server_port AS "gwServerPort",
+		a.gw_local_ip AS "gwLocalIp",
+		a.gw_local_port AS "gwLocalPort",
+		a.gw_username AS "gwUsername",
+		a.gw_password AS "gwPassword",
+		a.gw_sp_number AS "gwSpNumber",
+		a.gw_corp_id AS "gwCorpId",
+		a.gw_service_id AS "gwServiceId",
+		a.gw_receive_model AS "gwReceiveModel",
+		a.sms_sign_model AS "smsSignModel",
+		a.sms_sign_nose AS "smsSignNose",
+		a.gw_longsms AS "gwLongsms",
+		a.gw_once_submit AS "gwOnceSubmit",
+		a.gw_send_rate AS "gwSendRate",
+		a.gw_receive_rate AS "gwReceiveRate",
+		a.gw_connections AS "gwConnections",
+		a.create_time AS "createTime",
+		a.modify_time AS "modifyTime",
+		a.create_by AS "createBy.id",
+		a.modify_by AS "modifyBy",
+		a.modify_remark AS "modifyRemark"
+	</sql>
+	
+	<sql id="smsGatewayJoins">
+	</sql>
+    
+	<select id="get" resultType="SmsGateway">
+		SELECT 
+			<include refid="smsGatewayColumns"/>
+		FROM sms_gateway a
+		<include refid="smsGatewayJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsGateway">
+		SELECT 
+			<include refid="smsGatewayColumns"/>
+		FROM sms_gateway a
+		<include refid="smsGatewayJoins"/>
+		<where>
+			
+			<if test="gwName != null and gwName != ''">
+				AND a.gw_name LIKE CONCAT('%',#{gwName},'%')
+			</if>
+			<if test="gwStatus != null and gwStatus != ''">
+				AND a.gw_status = #{gwStatus}
+			</if>
+			<if test="gwProto != null and gwProto != ''">
+				AND a.gw_proto = #{gwProto}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="SmsGateway">
+		SELECT 
+			<include refid="smsGatewayColumns"/>
+		FROM sms_gateway a
+		<include refid="smsGatewayJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sms_gateway(
+			gw_code,
+			app_code,
+			gw_name,
+			gw_remark,
+			gw_status,
+			gw_type,
+			gw_proto,
+			gw_proto_version,
+			gw_proto_class,
+			gw_proto_extparam,
+			gw_server_ip,
+			gw_server_port,
+			gw_local_ip,
+			gw_local_port,
+			gw_username,
+			gw_password,
+			gw_sp_number,
+			gw_corp_id,
+			gw_service_id,
+			gw_receive_model,
+			sms_sign_model,
+			sms_sign_nose,
+			gw_longsms,
+			gw_once_submit,
+			gw_send_rate,
+			gw_receive_rate,
+			gw_connections,
+			create_time,
+			modify_time,
+			create_by,
+			modify_by,
+			modify_remark
+		) VALUES (
+			#{gwCode},
+			#{appCode},
+			#{gwName},
+			#{gwRemark},
+			#{gwStatus},
+			#{gwType},
+			#{gwProto},
+			#{gwProtoVersion},
+			#{gwProtoClass},
+			#{gwProtoExtparam},
+			#{gwServerIp},
+			#{gwServerPort},
+			#{gwLocalIp},
+			#{gwLocalPort},
+			#{gwUsername},
+			#{gwPassword},
+			#{gwSpNumber},
+			#{gwCorpId},
+			#{gwServiceId},
+			#{gwReceiveModel},
+			#{smsSignModel},
+			#{smsSignNose},
+			#{gwLongsms},
+			#{gwOnceSubmit},
+			#{gwSendRate},
+			#{gwReceiveRate},
+			#{gwConnections},
+			NOW(),
+			NOW(),
+			#{createBy.id},
+			#{createBy.id},
+			#{modifyRemark}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_gateway SET 	
+			gw_code = #{gwCode},
+			app_code = #{appCode},
+			gw_name = #{gwName},
+			gw_remark = #{gwRemark},
+			gw_status = #{gwStatus},
+			gw_type = #{gwType},
+			gw_proto = #{gwProto},
+			gw_proto_version = #{gwProtoVersion},
+			gw_proto_class = #{gwProtoClass},
+			gw_proto_extparam = #{gwProtoExtparam},
+			gw_server_ip = #{gwServerIp},
+			gw_server_port = #{gwServerPort},
+			gw_local_ip = #{gwLocalIp},
+			gw_local_port = #{gwLocalPort},
+			gw_username = #{gwUsername},
+			gw_password = #{gwPassword},
+			gw_sp_number = #{gwSpNumber},
+			gw_corp_id = #{gwCorpId},
+			gw_service_id = #{gwServiceId},
+			gw_receive_model = #{gwReceiveModel},
+			sms_sign_model = #{smsSignModel},
+			sms_sign_nose = #{smsSignNose},
+			gw_longsms = #{gwLongsms},
+			gw_once_submit = #{gwOnceSubmit},
+			gw_send_rate = #{gwSendRate},
+			gw_receive_rate = #{gwReceiveRate},
+			gw_connections = #{gwConnections},
+			modify_time = NOW(),
+			modify_by = #{updateBy.id},
+			modify_remark = #{modifyRemark}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_gateway
+		WHERE id = #{id}
+	</update>
+	
+	<select id="findBizEntity" resultType="com.sanerzone.smscenter.biz.entity.SmsGateway">
+		SELECT 
+			id,
+			gw_code gwCode, 
+			gw_name gwName,
+			gw_remark gwRemark,
+			gw_status gwStatus,
+			gw_type gwType,
+			gw_proto gwProto,
+			gw_proto_version gwProtoVersion,
+			gw_proto_class gwProtoClass,
+			gw_proto_extparam gwProtoExtparam,
+			gw_server_ip gwServerIp,
+			gw_server_port gwServerPort,
+			gw_username gwUsername,
+			gw_password gwPassword,
+			gw_sp_number gwSpNumber,
+			gw_corp_id gwCorpId,
+			gw_service_id gwServiceId,
+			gw_receive_model gwReceiveModel,
+			sms_sign_model smsSignModel,
+			sms_sign_nose smsSignNose,
+			gw_longsms gwLongsms,
+			gw_once_submit gwOnceSubmit,
+			gw_send_rate gwSendRate,
+			gw_connections gwConnections			
+		FROM sms_gateway
+		WHERE gw_code = #{gwCode}
+	</select>
+	
+</mapper>

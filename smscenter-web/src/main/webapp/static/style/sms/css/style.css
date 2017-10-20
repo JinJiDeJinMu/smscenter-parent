@@ -1,0 +1,125 @@
+h1,h2,h3,h4,h5,h6 {font-weight: 100}
+h1 {font-size: 30px}
+h2 {font-size: 24px}
+h3 {font-size: 16px}
+h4 {font-size: 14px}
+h5 {font-size: 12px}
+h6 {font-size: 10px}
+h3,h4,h5 {margin-top: 5px;font-weight: 600}
+a:focus {outline: none}
+ul,ol,li {list-style: none;padding: 0;margin: 0;}
+p {margin: 0;}
+.row {margin-left: -5px;margin-right: -5px;}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9
+{padding-left: 5px;padding-right: 5px;}
+body {font-family: "open sans","Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 13px;color: #676a6c;overflow-x: hidden;}
+.wrapper-content {padding: 20px;background-color: #f5f5f5;padding-bottom: 0;}
+.ibox {clear: both;margin-bottom: 25px;margin-top: 0;padding: 0;}
+.ibox-title {-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;background-color: #fff;border-color: #e7eaec;-webkit-border-image: none;-o-border-image: none;border-image: none;border-style: solid solid none;border-width: 4px 0 0;color: inherit;margin-bottom: 0;padding: 14px 15px 7px;min-height: 48px;}
+.ibox-title h5 {display: inline-block;font-size: 14px;margin: 0 0 7px;padding: 0;text-overflow: ellipsis;float: left;}
+.m-l-sm {margin-left: 10px;}
+.ibox-tools {display: inline-block;float: right;margin-top: 0;position: relative;padding: 0;}
+.ibox-tools a {cursor: pointer;margin-left: 5px;color: #c4c4c4;}
+.dropdown-menu {border: medium none;display: none;float: left;font-size: 12px;left: 0;list-style: none outside none;padding: 0;position: absolute;text-shadow: none;top: 100%;z-index: 1000;border-radius: 0;box-shadow: 0 0 3px rgba(86,96,117,.3);}
+.dropdown-menu>li>a {border-radius: 3px;color: inherit;line-height: 25px;margin: 4px;text-align: left;font-weight: 400;}
+.ibox-tools .dropdown-menu>li>a {padding: 4px 10px;font-size: 12px;}
+.ibox-content {background-color: #fff;color: inherit;padding: 15px 20px 20px;border-color: #e7eaec;-webkit-border-image: none;-o-border-image: none;border-image: none;border-style: solid solid none;border-width: 1px 0;clear: both;}
+.ibox-content h1, .ibox-content h2, .ibox-content h3, .ibox-content h4, .ibox-content h5, .ibox-title h1, .ibox-title h2, .ibox-title h3, .ibox-title h4, .ibox-title h5 {margin-top: 5px;}
+
+
+
+.wrapper-content blockquote {margin-bottom: 5px;}
+.userdir {padding-top: 5px;}
+.userdir label,.userdir p {display: block;float: left;line-height: 34px;}
+.userdir label {text-align: right;font-weight: normal;color: #999;margin: 0 5px;}
+
+.userdir p {color: #333;font-weight: bold;font-size: 18px;margin-right: 5px;}
+.userdir p em {font-style: normal;color: #bbb;}
+.userdir a {padding-left: 15px;padding-right: 15px;}
+
+.navlink .col-xs-2 {text-align: center;}
+.navlink a {display: inline-block;border-radius: 8px;text-decoration: none;}
+.navlink a p,.navlink a em {text-decoration: none;color: #fff;font-size: 14px;padding: 10px 15px;}
+.navlink a p span {padding-right: 5px;font-size: 16px;}
+.navlink a em {display: block;float: right;line-height:22px;font-size: 16px;font-weight: bold;color: #666;}
+.navlink a.navlink1 {background-color: #E91E63;}
+.navlink a:hover.navlink1 {background-color: #fc4c88;}
+.navlink a.navlink2 {background-color: #4CAF50;}
+.navlink a:hover.navlink2 {background-color: #73dc77;}
+.navlink a.navlink3 {background-color: #2196F3;}
+.navlink a:hover.navlink3 {background-color: #5fb6fc;}
+.navlink a.navlink4 {background-color: #FF5722;}
+.navlink a:hover.navlink4 {background-color: #fd8863;}
+.navlink a.navlink5 {background-color: #26A69A;}
+.navlink a:hover.navlink5 {background-color: #4ad0c3;}
+.navlink a.navlink6 {background-color: #9CCC65;}
+.navlink a:hover.navlink6 {background-color: #b6ec78;}
+
+.data_today .ibox-content,.newslist .ibox-content {height: 178px;}
+.newslist li a {color: #666;line-height: 28px;cursor: pointer;}
+.newslist li a:hover {color: #888;}
+.newslist li a span {font-size: 3px;display: block;line-height: 28px;}
+.newslist li a em {font-style: normal;color: #999;font-style: normal;}
+.newslist li a:hover span {color: #666;}
+
+.ibox-content .user_info .form-inline label,.ibox-content .form-inline p 
+{display: inline-block;width: auto;vertical-align: middle;margin-bottom: 0;}
+.ibox-content .user_info .form-inline .form-group {display: block;margin-bottom: 3px;}
+.ibox-content .user_info .form-inline label {font-weight: normal;color: #999;}
+.ibox-content .user_info h6 {font-size: 18px;margin: 0;color: #2292c5;font-weight: 200;line-height: 32px;height: 32px;}
+.ibox-content .user_info {margin-bottom: 5px;border-bottom:1px dashed #efefef;}
+
+.ibox-content .user_info .col-xs-3 {text-align: center;}
+.ibox-content .user_info img {height: 65px;}
+.ibox-content .user_info p.badge-info,.data_today .badge_success {background-color: #5cb85c;border-color: #4cae4c;}
+
+
+.ibox-tools {margin-top: -6px;}
+.ibox-tools .btn {padding-top: 3px;padding-bottom: 3px;}
+
+.newslist .ibox-tools {margin-top: 0;}
+.newslist .ibox-tools .text-info {color: #31708f;}
+
+
+.data_today .success {padding-top: 8px;padding-bottom:5px;line-height:18px;margin-top: 7px;margin-bottom: 7px;border-bottom: 1px dashed #e7eaec;border-top: 1px dashed #e7eaec;}
+.data_today .text {font-weight: 600;}
+
+.data_today .success .text {margin-bottom: 3px;}
+
+.data_today .badge-primary {background-color: #5bc0de;border-color: #46b8da;}
+
+.modal-body h2 {text-align: center;font-weight: bold;}
+.modal-body span {text-align: center;color: #888;font-size:14px;display:block;padding-bottom: 10px;margin-bottom: 20px;border-bottom: 1px dashed #efefef;}
+
+
+.modal-body .newscon p {text-indent: 24px;margin-bottom: 10px;font-size: 14px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

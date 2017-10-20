@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.account.dao.BaseAccountDao">
+    
+	<sql id="baseAccountColumns">
+		a.id AS "id",
+		a.userid AS "userid",
+		a.acc_type AS "accType",
+		a.service_id AS "serviceId",
+		a.acc_name AS "accName",
+		a.acc_status AS "accStatus",
+		a.acc_amount_version AS "accAmountVersion",
+		a.remark AS "remark",
+		a.create_time AS "createTime",
+		a.create_by AS "createBy.id",
+		a.company_id AS "companyId"
+	</sql>
+	
+	<sql id="baseAccountJoins">
+		LEFT JOIN sys_office o1 ON o1.id = a.company_id
+		LEFT JOIN sys_user u1 ON u1.id = a.userid 
+	</sql>
+    
+	<select id="get" resultType="com.sanerzone.smscenter.modules.account.entity.BaseAccount">
+		SELECT 
+			<include refid="baseAccountColumns"/>,
+			u1.id AS "user.id",
+			u1.name AS "user.name",
+			o1.id AS "company.id",
+			o1.name AS "company.name"
+		FROM base_account a
+		<include refid="baseAccountJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="com.sanerzone.smscenter.modules.account.entity.BaseAccount">
+		SELECT 
+			<include refid="baseAccountColumns"/>,o1.name AS "company.name",u2.amount AS "accAmount"
+		FROM base_account a
+		<include refid="baseAccountJoins"/>
+		LEFT JOIN base_user_amount u2 ON u2.userid = u1.id
+		<where>
+			<if test="userid != null and userid !=''">
+				AND a.userid=#{userid}
+			</if>
+			<if test="company != null and company.id != null and company.id !=''">
+				AND a.company_id=#{company.id}
+			</if>
+			<if test="user != null and user.loginName != null and user.loginName !=''">
+				AND u1.login_name = #{user.loginName}
+			</if>
+			<if test="user != null and user.name != null and user.name !=''">
+				AND u1.login_name LIKE CONCAT('%',#{user.name},'%')
+			</if>
+			<if test="userType != null and userType !=''">
+				AND u1.user_type=#{userType}
+			</if>
+			<if test="accType != null and accType != ''">
+				AND a.acc_type = #{accType}
+			</if>
+			<if test="serviceId != null and serviceId != ''">
+				AND a.service_id = #{serviceId}
+			</if>
+			<if test="accName != null and accName != ''">
+				AND a.acc_name LIKE CONCAT('%',#{accName},'%')
+			</if>
+			<if test="accStatus != null and accStatus != ''">
+				AND a.acc_status = #{accStatus}
+			</if>
+			<if test="createBy != null and createBy.id != null and createBy.id !=''">
+				AND u1.create_by=#{createBy.id}
+			</if>
+			AND a.acc_status > -3
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="com.sanerzone.smscenter.modules.account.entity.BaseAccount">
+		SELECT 
+			<include refid="baseAccountColumns"/>
+		FROM base_account a
+		<include refid="baseAccountJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO base_account(
+			userid,
+			acc_type,
+			service_id,
+			acc_name,
+			remark,
+			create_time,
+			create_by,
+			company_id,
+			acc_status
+		) VALUES (
+			#{userid},
+			#{accType},
+			#{serviceId},
+			#{accName},
+			#{remark},
+			NOW(),
+			#{createBy.id},
+			#{company.id},
+			#{accStatus}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE base_account SET 	
+			userid = #{userid},
+			acc_type = #{accType},
+			service_id = #{serviceId},
+			acc_name = #{accName},
+			acc_status = #{accStatus},
+			acc_amount = #{accAmount},
+			acc_amount_version = #{accAmountVersion},
+			acc_freeze = #{accFreeze},
+			remark = #{remark},
+			create_time = #{createTime}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM base_account
+		WHERE id = #{id}
+	</update>
+	
+	<select id="getAccountList" resultType="com.sanerzone.jeebase.modules.sys.entity.Dict">
+		SELECT a.id value, CONCAT(u1.name,' ',u1.login_name) label
+		FROM base_account a
+		LEFT JOIN sys_user u1 ON u1.id = a.userid
+		<where>
+			a.acc_status=1 AND u1.user_type='1'
+			<if test="accType != null and accType !=''">
+				AND a.acc_type=#{accType}
+			</if>
+			<if test="serviceId != null and serviceId !=''">
+				AND a.service_id=#{serviceId}
+			</if>
+			<if test="userid != null and userid !=''">
+				AND u1.create_by=#{userid}
+			</if>
+		</where>
+	</select>
+	
+	<select id="getUserList" resultType="com.sanerzone.jeebase.modules.sys.entity.Dict">
+		SELECT a.id value,CONCAT(a.name,' ',a.login_name) label 
+		FROM sys_user a
+		<where>
+			a.user_type='1' AND a.del_flag='0'
+			<if test="userid != null and userid !=''">
+				AND a.create_by=#{userid}
+			</if>
+		</where>
+	</select>
+	
+	<select id="getUserListByUT" resultType="com.sanerzone.jeebase.modules.sys.entity.Dict">
+		SELECT a.id value,CONCAT(a.name,' ',a.login_name) label 
+		FROM sys_user a
+		<where>
+			a.del_flag='0'
+			<if test="userType != null and userType !=''">
+				AND a.user_type=#{userType}
+			</if>
+		</where>
+	</select>
+	
+	<update id="rechargeAmount">
+		UPDATE base_user_amount SET 
+			amount = amount+#{accAmount} 
+		WHERE userid=#{userid} AND acc_type='sms'
+	</update>
+	
+	<select id="getByParam" resultType="com.sanerzone.smscenter.modules.account.entity.BaseAccount">
+		SELECT 
+			<include refid="baseAccountColumns"/>
+		FROM base_account a
+		<where>
+			<if test="user != null and user.id != null and user.id !=''">
+				AND a.userid =#{user.id}
+			</if>
+			<if test="serviceId != null and serviceId !=''">
+				AND a.service_id=#{serviceId}
+			</if>
+			<if test="accType != null and accType != ''">
+				AND a.acc_type=#{accType}
+			</if>
+		</where>
+	</select>
+	
+	<select id="getByUserid" resultType="com.sanerzone.smscenter.modules.account.entity.BaseAccount">
+		SELECT 
+			<include refid="baseAccountColumns"/>
+		FROM base_account a
+		<where>
+			<if test="userid != null and userid !=''">
+				AND a.userid =#{userid}
+			</if>
+		</where>
+		LIMIT 1
+	</select>	
+	
+	<update id="updateAccStatus">
+		UPDATE base_account SET
+			acc_status=#{accStatus}
+		WHERE id=#{id}	
+	</update>
+	
+	<select id="findAccountMapList" resultType="java.util.Map" parameterType="java.util.Map">
+		SELECT a.userid,
+			   a.id AS accId,
+			   a.acc_type accType,
+			   a.service_id AS serviceId,
+			   a.acc_name AS accName,
+			   acc_status AS accStatus,
+			   a.company_id AS companyId,
+			   b.name,
+			   b.login_name AS loginName,
+			   b.mobile,
+			   b.user_type AS userType,
+			   b.del_flag AS delFlag
+		FROM base_account a
+		LEFT JOIN sys_user b ON a.userid = b.id
+		<where>
+		<if test="accId != null and accId !=''">
+			AND a.id=#{accId}
+		</if>
+		</where>
+	</select>
+	
+	<select id="findUserMoeny" resultType="java.lang.Long" parameterType="java.util.Map">
+		SELECT 
+			acc_amount
+		FROM base_user_account
+		WHERE userid=#{userid} AND acc_type=#{accType}
+	</select>
+	
+	<select id="updateByFront">
+		UPDATE base_account SET
+			service_id = #{serviceId},
+			acc_name = #{accName}
+		WHERE id=#{id}	 
+	</select>
+	
+</mapper>

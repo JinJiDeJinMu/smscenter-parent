@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsKeywordsDao">
+    
+	<sql id="smsKeywordsColumns">
+		a.id AS "id",
+		a.keywords AS "keywords",
+		a.create_by AS "createBy.id",
+		a.createtime AS "createtime"
+	</sql>
+	
+	<sql id="smsKeywordsJoins">
+	</sql>
+    
+	<select id="get" resultType="SmsKeywords">
+		SELECT 
+			<include refid="smsKeywordsColumns"/>
+		FROM sms_keywords a
+		<include refid="smsKeywordsJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsKeywords">
+		SELECT 
+			<include refid="smsKeywordsColumns"/>
+		FROM sms_keywords a
+		<include refid="smsKeywordsJoins"/>
+		<where>
+			
+			<if test="keywords != null and keywords != ''">
+				AND a.keywords LIKE CONCAT('%',#{keywords},'%')
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="SmsKeywords">
+		SELECT 
+			<include refid="smsKeywordsColumns"/>
+		FROM sms_keywords a
+		<include refid="smsKeywordsJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		REPLACE INTO sms_keywords(
+			keywords,
+			create_by,
+			createtime
+		) VALUES (
+			#{keywords},
+			#{createBy.id},
+			NOW()
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_keywords SET 	
+			keywords = #{keywords},
+			createtime = #{createtime}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_keywords
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

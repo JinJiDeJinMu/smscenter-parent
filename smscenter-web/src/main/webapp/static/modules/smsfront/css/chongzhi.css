@@ -1,0 +1,477 @@
+@charset "utf-8";
+/* CSS Document */
+em {
+    font-style: normal;
+}
+
+.process {
+    height: 48px;
+    line-height: 48px;
+    border: solid 1px #54db93;
+    margin: 18px 0 0;
+}
+
+.process span {
+    width: 20%;
+    float: left;
+    display: block;
+}
+
+.process span i {
+    width: 22px;
+    height: 22px;
+    float: left;
+    margin: 13px 0 0 12px;
+    background: url(../images/step_s_def.png) 0 0 no-repeat;
+    line-height: 22px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #58cb8e;
+}
+
+.process span em {
+    padding: 0 0 0 6px;
+    font-size: 18px;
+    color: #808080;
+    font-style: normal;
+}
+
+.process .w22 {
+    width: 22%;
+}
+
+.process .w18 {
+    width: 18%;
+}
+
+.process .on {
+    background: #54db93;
+}
+
+.process .on i {
+    background: url(../images/step_s_sel.png) 0 0 no-repeat;
+    color: #fff;
+}
+
+.process .on em {
+    color: #fff;
+}
+
+.right h2 {
+    height: 68px;
+    line-height: 68px;
+    font-size: 24px;
+    color: #808080;
+    font-weight: normal;
+    width: 100%;
+    margin: 0 0 10px;
+}
+
+.right h2 i {
+    width: 68px;
+    height: 68px;
+    background: url(../images/step_bg.png) 0 0 no-repeat;
+    line-height: 68px;
+    text-align: center;
+    display: block;
+    float: left;
+    margin: 0 12px 0 0;
+    color: #54db93;
+}
+
+.step2 h2 i {
+    background: url(../images/step_bg1.png) 0 0 no-repeat;
+    color: #f2ae43;
+}
+
+.step1, .step2, .step3, .step4, .step5 {
+    margin: 50px 0 0;
+}
+
+.s11 {
+    width: 100%;
+    height: 124px;
+    overflow: Hidden;
+    background: #f4fafd;
+}
+
+.s11_l {
+    width: 60%;
+    float: left;
+    padding: 44px 0 0;
+    height: 90px;
+}
+
+.s11_l .base_tit {
+    width: 154px;
+    height: 34px;
+    float: left;
+    line-height: 34px;
+    text-align: right;
+    font-size: 16px;
+}
+
+.s11_l .txt3 {
+    width: 222px;
+    padding: 0 5px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    float: left;
+    border: solid 1px #ccc;
+    background: #fff;
+    margin-right: 8px;
+}
+
+.s11_l em {
+    height: 34px;
+    line-height: 34px;
+    float: left;
+}
+
+.s11_l span.error {
+    font-size: 12px;
+    color: #f00;
+    height: 34px;
+    line-height: 34px;
+    clear: both;
+    padding: 0 0 0 154px;
+    width: 100%;
+}
+
+.s11_r {
+    width: 40%;
+    float: left;
+    overflow: hidden;
+    background: #eacb9b;
+    height: 124px;
+    position: relative;
+}
+
+.ye_info {
+    position: absolute;
+    left: 42%;
+    top: 68%;
+    font-size: 14px;
+    color: #fff;
+}
+
+.s11_r .img {
+    width: 68px;
+    padding: 19px 0 0 24px;
+    float: left;
+}
+
+.s11_r .img img {
+    display: block;
+}
+
+.s11_r .img em {
+    height: 24px;
+    line-height: 24px;
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 0 0;
+}
+
+.s11_r .count {
+    font-size: 34px;
+    color: #fff; /*font-family:Arial;*/
+    line-height: 124px;
+    text-align: center;
+    display: block;
+    text-align: center;
+}
+
+.tips {
+    height: 24px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #565656;
+    padding: 10px 0 0;
+}
+
+.tips em {
+    font-size: 18px;
+    color: #02b9ef;
+    padding: 0 0 0 22px;
+}
+
+.tips a {
+    padding: 0 4px;
+    background: #f2ae43;
+    margin: 0 5px;
+    color: #fff;
+}
+
+.step2 ul {
+    width: 100%;
+    padding: 24px 0 0;
+    height: 100px;
+    background: #f4fafd;
+}
+
+.step2 li {
+    width: 30%;
+    float: left;
+    height: 76px;
+    overflow: hidden;
+    padding: 0 0 0 1%;
+}
+
+/*.step2 li .radio{float:left;margin:32px 20px 0 0;}*/
+.step2 li label {
+    width: 76%;
+    float: left;
+    border: solid 1px #d2d1d1;
+}
+
+.step2 li label img {
+    width: 100%;
+}
+
+.next {
+    width: 146px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    margin: 38px 0 0 78px;
+}
+
+.step2 .paycode {
+    margin: 38px 0 0 78px;
+    overflow: hidden;
+    display: none;
+}
+
+.step2 .paycode img {
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+.step2 .paycode .info {
+    float: left;
+    font-size: 18px;
+    color: #565656;
+    font-family: 'Microsoft YaHei';
+    line-height: 100px;
+    padding-left: 10px;
+}
+
+.notice {
+    padding: 80px 0 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.notice p {
+    padding: 20px 0 20px 0px;
+    line-height: 24px;
+    font-size: 14px;
+    color: #858383;
+}
+
+.notice .money {
+    padding: 26px 0 26px 172px;
+    background: #f7f7f7;
+    float: left;
+    width: 85%;
+}
+
+.notice .money .p1 {
+    width: 50%;
+    line-height: 34px;
+    color: #848181;
+    font-size: 16px;
+    float: left;
+}
+
+.notice .money .chat {
+    width: 33%;
+    float: right;
+}
+
+.notice .money .chat .img {
+    width: 100px;
+    height: 100px;
+}
+
+.money .chat .font {
+    float: left;
+    width: 97%;
+    text-align: left;
+    padding-left: 7%;
+    line-height: 19px;
+    padding-top: 3px;
+    color: #848181;
+}
+
+.money .chat .font1 {
+    float: left;
+    width: 97%;
+    text-align: left;
+    padding-left: 3%;
+    line-height: 17px;
+    color: #848181;
+}
+
+.step2 h3 {
+    height: 68px;
+    overflow: hidden;
+    width: 100%;
+    font-weight: normal;
+}
+
+.step2 h3 i {
+    width: 68px;
+    height: 68px;
+    background: url(../images/step_bg1.png) 0 0 no-repeat;
+    line-height: 68px;
+    text-align: center;
+    color: #f2ae43;
+    font-size: 30px;
+    display: block;
+    float: right;
+}
+
+.step2 span {
+    display: block;
+    height: 34px;
+    border-bottom: dotted 1px #b5b5b5;
+    margin: 0 72px 0 0;
+}
+
+.s31, .s41 {
+    width: 100%;
+    overflow: hidden;
+    border-bottom: solid 2px #eeeeee;
+}
+
+.step3 dl, .step4 dl {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    border-top: dotted 1px #ddd;
+    font-size: 14px;
+    color: #808080;
+}
+
+.step3 dt, .step4 dt {
+    width: 140px;
+    padding: 0 30px 0 0;
+    text-align: right;
+    font-weight: bold;
+    float: left;
+}
+
+.step3 dd, .step4 dd {
+    float: left;
+}
+
+.step3 dd em, .step4 dd em {
+    color: #fea720;
+    font-weight: bold;
+    padding: 0 14px 0 0;
+}
+
+.step3 dd span, .step4 dd span {
+    color: #02b9ef;
+}
+
+.s51_cont {
+    width: 100%;
+    padding: 22px 0;
+    height: 83px;
+    background: #f4fafd;
+    float: left;
+}
+
+.s51_cont .s51 {
+    float: left;
+    width: 50%;
+}
+
+.s51_cont .s51 p {
+    height: 74px;
+    line-height: 74px;
+    font-size: 34px;
+    color: #808080;
+}
+
+.s51_cont .s51 .base_tit {
+    width: 192px;
+    padding: 0 56px 0 0;
+    font-size: 18px;
+    color: #03c2fa;
+    text-align: right;
+    height: 74px;
+    line-height: 74px;
+    float: left;
+}
+
+.s51_cont .s51 em {
+    padding: 0 20px 0 0;
+}
+
+.s51_cont .code {
+    float: right;
+    padding-right: 50px;
+}
+
+.s51_cont .code .img {
+    width: 88px;
+    height: 88px;
+    float: left;
+}
+
+.s51_cont .code .font {
+    float: left;
+    text-align: center;
+    padding: 22px 0 0 10px;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.s51_cont .code .font .b {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.back {
+    font-size: 18px;
+    color: #27a9e3;
+    margin: 0 0 0 50px;
+}
+
+.radio-off {
+    width: 22px;
+    height: 22px;
+    float: left;
+    background: url(../images/green.png) -120px 0 no-repeat;
+    margin: 8% 20px 0 0;
+}
+
+.radio-off .radio {
+    width: 22px;
+    height: 22px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.radio-off-hover {
+    background: url(../images/green.png) -144px 0 no-repeat;
+}
+
+.radio-off-on {
+    width: 22px;
+    height: 22px;
+    float: left;
+    background: url(../images/green.png) -168px 0 no-repeat;
+    margin: 8% 20px 0 0;
+}

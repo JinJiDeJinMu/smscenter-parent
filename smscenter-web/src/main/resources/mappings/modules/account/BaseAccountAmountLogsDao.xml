@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.account.dao.BaseAccountAmountLogsDao">
+    
+	<sql id="baseAccountAmountLogsColumns">
+		a.id AS "id",
+		a.acc_id AS "accId",
+		a.userid AS "userid",
+		a.acc_type AS "accType",
+		a.acc_amount AS "accAmount",
+		a.amount AS "amount",
+		a.change_type AS "changeType",
+		a.payment AS "payment",
+		a.payid AS "payid",
+		a.remark AS "remark",
+		a.create_time AS "createTime",
+		a.create_by AS "createBy.id",
+		a.reserve AS "reserve",
+		a.service_id AS "serviceId",
+		a.trans_id AS "transId"
+	</sql>
+	
+	<sql id="baseAccountAmountLogsJoins">
+		LEFT JOIN sys_user u3 ON u3.id = a.userid
+	</sql>
+    
+	<select id="get" resultType="BaseAccountAmountLogs">
+		SELECT 
+			<include refid="baseAccountAmountLogsColumns"/>
+		FROM base_account_amount_logs a
+		<include refid="baseAccountAmountLogsJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="BaseAccountAmountLogs">
+		SELECT 
+			<include refid="baseAccountAmountLogsColumns"/>,
+			u4.name AS "company.name",
+			u3.login_name AS "user.loginName",
+			u3.name AS "user.name"
+		FROM base_account_amount_logs a
+		<include refid="baseAccountAmountLogsJoins"/>
+		LEFT JOIN sys_office u4 ON u4.id = u3.company_id
+		<where>
+			<if test="company != null and company.id != null and company.id !=''">
+				AND u3.company.id = #{company.id}
+			</if>
+			<if test="accId != null and accId != ''">
+				AND a.acc_id = #{accId}
+			</if>
+			<if test="user != null and user.id != null and user.id != ''">
+				AND a.userid = #{user.id}
+			</if>
+			<if test="accType != null and accType != ''">
+				AND a.acc_type = #{accType}
+			</if>
+			<if test="changeType != null and changeType != ''">
+				AND a.change_type = #{changeType}
+			</if>
+			<if test="createTimeQ != null">
+				AND a.create_time >= DATE_FORMAT(#{createTimeQ},'%Y-%m-%d %T')
+			</if>
+			<if test="createTimeZ != null">
+				AND a.create_time &lt;= DATE_FORMAT(#{createTimeZ},'%Y-%m-%d %T') 
+			</if>
+			<if test="createBy != null and createBy.id != null and createBy.id !=''">
+				AND u3.create_by = #{createBy.id}
+			</if>
+			<if test="user != null and user.loginName != null and user.loginName !=''">
+				AND u3.login_name = #{user.loginName}
+			</if>
+			<if test="user != null and user.name != null and user.name !=''">
+				AND u3.name LIKE CONCAT('%',#{user.name},'%')
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.create_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="BaseAccountAmountLogs">
+		SELECT 
+			<include refid="baseAccountAmountLogsColumns"/>
+		FROM base_account_amount_logs a
+		<include refid="baseAccountAmountLogsJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO base_account_amount_logs(
+			acc_id,
+			userid,
+			acc_type,
+			acc_amount,
+			amount,
+			change_type,
+			payment,
+			payid,
+			remark,
+			create_time,
+			create_by,
+			reserve,
+			service_id,
+			trans_id
+		) VALUES (
+			#{accId},
+			#{userid},
+			#{accType},
+			#{accAmount},
+			#{amount},
+			#{changeType},
+			#{payment},
+			#{payid},
+			#{remark},
+			NOW(),
+			#{createBy.id},
+			#{reserve},
+			#{serviceId},
+			#{transId}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE base_account_amount_logs SET 	
+			acc_id = #{accId},
+			userid = #{userid},
+			acc_type = #{accType},
+			acc_amount = #{accAmount},
+			amount = #{amount},
+			change_type = #{changeType},
+			payment = #{payment},
+			payid = #{payid},
+			remark = #{remark},
+			create_time = #{createTime},
+			reserve = #{reserve}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM base_account_amount_logs
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

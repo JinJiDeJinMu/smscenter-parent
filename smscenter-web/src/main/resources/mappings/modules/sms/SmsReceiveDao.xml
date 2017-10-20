@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsReceiveDao">
+    
+	<sql id="smsReceiveColumns">
+		a.id AS "id",
+		a.acc_id AS "accId",
+		a.userid AS "userid",
+		a.msgid AS "msgid",
+		a.spnumber AS "spnumber",
+		a.phone AS "phone",
+		a.sms_content AS "smsContent",
+		a.gateway_id AS "gatewayId",
+		a.createtime AS "createtime",
+		a.result AS "result",
+		a.push_flag AS "pushFlag"
+	</sql>
+	
+	<sql id="smsReceiveJoins">
+	</sql>
+    
+	<select id="get" resultType="SmsReceive">
+		SELECT 
+			<include refid="smsReceiveColumns"/>
+		FROM sms_receive a
+		<include refid="smsReceiveJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsReceive">
+		SELECT 
+			<include refid="smsReceiveColumns"/>
+		FROM sms_receive a
+		<include refid="smsReceiveJoins"/>
+		<where>
+			<if test="userid != null and userid !=''">
+				AND a.userid=#{userid}
+			</if>
+			<if test="spnumber != null and spnumber != ''">
+				AND a.spnumber = #{spnumber}
+			</if>
+			<if test="phone != null and phone != ''">
+				AND a.phone = #{phone}
+			</if>
+			<if test="smsContent != null and smsContent != ''">
+				AND a.sms_content LIKE 
+					<if test="dbName == 'oracle'">'%'||#{smsContent}||'%'</if>
+					<if test="dbName == 'mssql'">'%'+#{smsContent}+'%'</if>
+					<if test="dbName == 'mysql'">concat('%',#{smsContent},'%')</if>
+			</if>
+			<if test="createtimeQ != null and createtimeQ != ''">
+				AND a.createtime >= #{createtimeQ}
+			</if>			
+			<if test="createtimeZ != null and createtimeZ != ''">
+				AND a.createtime &lt;= #{createtimeZ}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="SmsReceive">
+		SELECT 
+			<include refid="smsReceiveColumns"/>
+		FROM sms_receive a
+		<include refid="smsReceiveJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sms_receive(
+			id,
+			acc_id,
+			userid,
+			msgid,
+			spnumber,
+			phone,
+			sms_content,
+			gateway_id,
+			createtime,
+			result,
+			push_flag
+		) VALUES (
+			#{id},
+			#{accId},
+			#{userid},
+			#{msgid},
+			#{spnumber},
+			#{phone},
+			#{smsContent},
+			#{gatewayId},
+			#{createtime},
+			#{result},
+			#{pushFlag}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_receive SET 	
+			acc_id = #{accId},
+			userid = #{userid},
+			msgid = #{msgid},
+			spnumber = #{spnumber},
+			phone = #{phone},
+			sms_content = #{smsContent},
+			gateway_id = #{gatewayId},
+			createtime = #{createtime},
+			result = #{result},
+			push_flag = #{pushFlag}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_receive
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

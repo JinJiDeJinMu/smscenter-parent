@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsGatewayQueueidDao">
+    
+	<sql id="smsGatewayQueueidColumns">
+		a.id AS "id",
+		a.gw_code AS "gwCode",
+		a.serviceid AS "serviceid",
+		a.topic AS "topic",
+		a.queue_id AS "queueId",
+		a.queue_name AS "queueName",
+		a.queue_status AS "queueStatus",
+		a.thread_num AS "threadNum",
+		a.offset AS "offset",
+		a.tps AS "tps",
+		a.createtime AS "createtime",
+		a.remark AS "remark",
+		a.weight AS "weight",
+		u1.gw_name AS "gwName"
+	</sql>
+	
+	<sql id="smsGatewayQueueidJoins">
+		LEFT JOIN sms_gateway u1 ON u1.gw_code = a.gw_code
+	</sql>
+    
+	<select id="get" resultType="SmsGatewayQueueid">
+		SELECT 
+			<include refid="smsGatewayQueueidColumns"/>
+		FROM sms_gateway_queueid a
+		<include refid="smsGatewayQueueidJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsGatewayQueueid">
+		SELECT 
+			<include refid="smsGatewayQueueidColumns"/>
+		FROM sms_gateway_queueid a
+		<include refid="smsGatewayQueueidJoins"/>
+		<where>
+			
+			<if test="gwCode != null and gwCode != ''">
+				AND a.gw_code = #{gwCode}
+			</if>
+			<if test="queueName != null and queueName !=''">
+				AND a.queue_name LIKE CONCAT('%',#{queueName},'%')
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="SmsGatewayQueueid">
+		SELECT 
+			<include refid="smsGatewayQueueidColumns"/>
+		FROM sms_gateway_queueid a
+		<include refid="smsGatewayQueueidJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sms_gateway_queueid(
+			gw_code,
+			serviceid,
+			topic,
+			queue_id,
+			queue_name,
+			queue_status,
+			thread_num,
+			createtime,
+			remark,
+			weight
+		) VALUES (
+			#{gwCode},
+			#{serviceid},
+			#{topic},
+			#{queueId},
+			#{queueName},
+			#{queueStatus},
+			#{threadNum},
+			NOW(),
+			#{remark},
+			#{weight}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_gateway_queueid SET 	
+			gw_code = #{gwCode},
+			serviceid = #{serviceid},
+			topic = #{topic},
+			queue_id = #{queueId},
+			queue_name = #{queueName},
+			queue_status = #{queueStatus},
+			thread_num = #{threadNum},
+			offset = #{offset},
+			tps = #{tps},
+			remark = #{remark},
+			weight = #{weight}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_gateway_queueid
+		WHERE id = #{id}
+	</update>
+	
+	<select id="findBizByGwCode" resultType="com.sanerzone.smscenter.biz.entity.SmsGatewayQueueid" parameterType="java.util.Map">
+		SELECT 
+			gw_code gwCode,
+			serviceid,
+			topic,
+			queue_id queueId,
+			queue_name queueName,
+			queue_status queueStatus,
+			thread_num threadNum,
+			offset,
+			tps,
+			weight 
+		FROM sms_gateway_queueid
+		<where>
+		<if test="gwCode != null and gwCode !=''">
+				gw_code=#{gwCode}
+		</if>
+		</where>
+	</select>
+	
+</mapper>

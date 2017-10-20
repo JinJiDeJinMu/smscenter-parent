@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.account.dao.BaseUserAmountDao">
+    
+	<sql id="baseUserAmountColumns">
+		a.userid AS "userid",
+		a.acc_type AS "accType",
+		a.amount AS "amount",
+		a.create_time AS "createTime"
+	</sql>
+	
+	<sql id="baseUserAmountJoins">
+	</sql>
+    
+	<select id="get" resultType="BaseUserAmount">
+		SELECT 
+			<include refid="baseUserAmountColumns"/>
+		FROM base_user_amount a
+		<include refid="baseUserAmountJoins"/>
+		WHERE a.userid = #{id} and a.acc_type='sms'
+	</select>
+	
+	<select id="findList" resultType="BaseUserAmount">
+		SELECT 
+			<include refid="baseUserAmountColumns"/>
+		FROM base_user_amount a
+		<include refid="baseUserAmountJoins"/>
+		<where>
+			
+			<if test="userid != null and userid != ''">
+				AND a.userid = #{userid}
+			</if>
+			<if test="accType != null and accType != ''">
+				AND a.acc_type = #{accType}
+			</if>
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="BaseUserAmount">
+		SELECT 
+			<include refid="baseUserAmountColumns"/>
+		FROM base_user_amount a
+		<include refid="baseUserAmountJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO base_user_amount(
+			userid,
+			acc_type,
+			amount,
+			create_time
+		) VALUES (
+			#{userid},
+			#{accType},
+			#{amount},
+			NOW()
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE base_user_amount SET 	
+			amount = #{amount}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM base_user_amount
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

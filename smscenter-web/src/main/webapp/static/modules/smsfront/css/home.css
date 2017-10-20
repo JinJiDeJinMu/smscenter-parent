@@ -1,0 +1,440 @@
+@charset "utf-8";
+/* CSS Document */
+em {
+    font-style: normal;
+}
+
+.div1, .div2, .div3, .div4 {
+    width: 100%;
+}
+
+.div1 {
+    padding: 20px 0 0;
+}
+
+.div1 a {
+    width: 32%;
+    margin: 0 2% 0 0;
+    *margin: 0 1.9% 0 0;
+    height: 100px;
+    padding: 20px 0 0;
+    float: left;
+}
+
+.div1 a .img {
+    width: 68px;
+    padding: 0 0 0 24px;
+    float: left;
+}
+
+.div1 a .img img {
+    display: block;
+}
+
+.div1 a .img em {
+    height: 24px;
+    line-height: 24px;
+    display: block;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 0 0;
+}
+
+.div1 .c1 .count {
+    height: 80px;
+    line-height: 80px;
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    display: block;
+}
+
+.div1 .c2 .count {
+    height: 80px;
+    line-height: 80px;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    display: block;
+}
+
+.div1 .c3 .count {
+    height: 80px;
+    line-height: 80px;
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+    display: block;
+}
+
+.div1 .c3 {
+    margin-right: 0;
+}
+
+.cont {
+    width: 100%;
+    padding: 10px 0 0; /* overflow:Hidden; */
+}
+
+.message {
+    width: 68%;
+    float: left;
+    overeflow: Hidden;
+    background: #f4fafd; /* margin-right:26px; */
+    padding: 30px 0 18px;
+}
+
+.message dl {
+    width: 100%;
+    padding: 0 0 12px;
+    color: #565656;
+    font-size: 16px;
+}
+
+.message dt {
+    width: 150px;
+    height: 26px;
+    line-height: 26px;
+    float: left;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.cont span {
+    height: 26px;
+    line-height: 26px;
+    float: left; /* padding:90px 0 0; */
+    height: 238px;
+    background: #f4fafd;
+    width: 32%;
+}
+
+.cont span .content {
+    width: 100%;
+    overflow: hidden;
+}
+
+.cont span .lock {
+    display: block;
+    height: 26px;
+    line-height: 26px;
+    float: right;
+    margin-right: 28px;
+    font-size: 14px;
+    color: #cacac8;
+    margin-top: 69px;
+}
+
+.cont span .link {
+    height: 26px;
+    line-height: 26px;
+    float: right;
+    font-size: 14px;
+    color: #cacac8;
+    margin-top: 47px;
+    margin-right: 28px;
+}
+
+.cont span .adrip {
+    height: 26px;
+    line-height: 26px;
+    float: right;
+    font-size: 14px;
+    color: #cacac8;
+    margin-top: 14px;
+    margin-right: 28px;
+}
+
+.cont span .unlock {
+    width: 32px;
+    height: 26px;
+    float: left;
+    margin-right: 22px;
+}
+
+.cont span em {
+    height: 26px;
+    line-height: 26px;
+    font-size: 16px;
+    padding: 0 0 0 34px;
+    background: url(../images/point.gif) 0 center no-repeat;
+}
+
+.div31, .div41, .div3 .btnbox {
+    width: 100%;
+    overflow: Hidden;
+    background: #f4fafd;
+    padding: 30px 0 18px;
+    margin: 10px 0 0;
+}
+
+.div31 dl, .div41 dl {
+    float: left;
+    width: 49%;
+    overflow: hidden;
+    padding: 0 0 12px;
+    color: #565656;
+    font-size: 16px;
+}
+
+.div31 .w10, .div41 .w10 {
+    width: 100%;
+    clear: both;
+}
+
+.div31 .w_dl {
+    width: 100%;
+    clear: both;
+}
+
+.div31 dt, .div41 dt {
+    width: auto;
+    height: 26px;
+    line-height: 26px;
+    float: left;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.div31 dd, .div41 dd, .message dd {
+    font-size: 14px;
+    height: 26px;
+    line-height: 26px;
+}
+
+.div31 dd em, .div41 dd em {
+    color: #f49500;
+    padding: 0 8px 0 0;
+    font-weight: bold;
+}
+
+.div3 .btnbox {
+    padding: 20px 0;
+}
+
+.div3 .btnbox a {
+    float: left;
+    width: 107px;
+    height: 37px;
+    border: #CCC solid 1px;
+    background: #FFF;
+    text-align: center;
+    line-height: 37px;
+    font-size: 14px;
+    color: #565656;
+    margin-left: 34px;
+}
+
+.div3 .btnbox a:hover {
+    background: #28b779;
+    color: #FFF;
+    border-color: #28b779;
+}
+
+.popbox1 {
+    width: 620px;
+}
+
+.popbox1 p {
+    line-height: 24px;
+    font-size: 14px;
+}
+
+.popbox1 .choose {
+    height: 24px;
+    line-height: 24px;
+    overflow: Hidden;
+    padding: 12px 0 0;
+}
+
+.popbox1 .choose .checkbox {
+    float: left;
+    margin: 7px 10px 0 0;
++ margin: 3 px 10 px 0 0;
+}
+
+.popbox1 .choose label {
+    height: 24px;
+    line-height: 24px;
+    float: left;
+}
+
+.popbox1 .choose label em {
+    font-style: normal;
+    color: #818181;
+}
+
+.help {
+    width: 65px;
+    height: 78px;
+    background: #f6f6f6;
+    border: solid 1px #e1e1e1;
+    padding: 4px 0 0;
+    position: fixed;
+    bottom: 100px;
+    right: 1%;
+    text-align: center;
+    color: #4f5965;
+    cursor: pointer;
+}
+
+.help span {
+    cursor: pointer;
+}
+
+#overlayBg {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    padding: 0 0 120px;
+}
+
+#helpDiv {
+    width: 990px;
+    height: 1858px;
+    position: absolute;
+    left: 50%;
+    top: 120px;
+    margin-left: -495px;
+    background: #fff;
+    text-align: center;
+}
+
+#helpDiv p {
+    height: 30px;
+    line-height: 30px;
+    color: #03c2fa;
+    font-size: 20px;
+    padding: 8px 0 34px;
+    text-align: center;
+}
+
+#helpDiv .btn_start {
+    width: 266px;
+    height: 66px;
+    line-height: 66px;
+    text-align: center;
+    display: inlin-block;
+    background: #03c2fa;
+    font-size: 26px;
+    color: #fff;
+}
+
+#helpDiv .btn_cancel {
+    font-size: 16px;
+    margin: 0 20px;
+    display: inline-block;
+    color: #03C2FA;
+    text-decoration: underline;
+}
+
+/*账户余额*/
+.ye {
+    position: relative;
+}
+
+.ye_info {
+    position: absolute;
+    left: 40%;
+    top: 71%;
+    font-size: 14px;
+    color: #fff;
+}
+
+.ye_info em {
+    float: left;
+    line-height: 24px;
+}
+
+.ye_info .icon, .message .idcon {
+    float: left;
+    *display: inline-block;
+    *float: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background: url(../images/ico_qes1.png) 6px 6px no-repeat;
+    position: relative;
+}
+
+.message .idcon {
+    background: url(../images/ico_qes2.png) 6px 6px no-repeat;
+    *background: url(../images/ico_qes2.png) 6px 8px no-repeat;
+}
+
+.ye .icon_info, .message .id_info {
+    display: none;
+    position: absolute;
+    bottom: -102px;
+    color: #888;
+    left: 10px;
+    width: 234px;
+    height: 60px;
+    padding: 6px 6px 6px 12px;
+    border: #CCC solid 1px;
+    background: #FFFED0;
+    line-height: 20px;
+}
+
+.message .id_info {
+    width: 276px;
+    height: 42px;
+    bottom: -60px;
+}
+
+.message .unline {
+    float: left;
+    padding-right: 4px;
+    color: #f49500;
+    *float: none;
+    *display: inline-block;
+    *margin-top: -29px;
+}
+
+.message .ip_width {
+    width: 70%;
+    overflow: hidden;
+}
+
+.div3 .graytips, .div3 .graylink {
+    padding-left: 20px;
+    color: #9C9C9C;
+}
+
+.div3 .graylink, .div3 .orglink:hover {
+    text-decoration: underline;
+}
+
+.div3 .orglink {
+    color: #f49500;
+    padding: 0 8px 0 0;
+    font-weight: bold;
+}
+
+.div31 .w40 {
+    width: 40%;
+}
+
+.div31 .w30 {
+    width: 30%;
+}
+
+.div31 .w30 dt {
+    width: 140px;
+}
+
+.div3 .bluelink {
+    padding-left: 20px;
+    color: #03c2fa;
+}
+
+.div3 .bluelink:hover {
+    color: #03c2fa;
+    text-decoration: underline;
+}

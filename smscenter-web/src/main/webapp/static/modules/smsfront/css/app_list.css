@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+.div1 {
+    width: 100%;
+}
+
+.div11 {
+    width: 100%;
+    margin: 10px 0 0;
+}
+
+.thDiv .t1, .th_list li .t1 {
+    width: 14%;
+    padding: 0 4px 0 20px
+}
+
+.t2 {
+    width: 10%;
+}
+
+.t3 {
+    width: 10%;
+}
+
+.t4 {
+    width: 22%;
+}
+
+.t5 {
+    width: 36%
+}
+
+.th_list li .red {
+    color: #fb3601;
+}
+
+.th_list li .org {
+    color: #fea720;
+}
+
+.th_list li .green {
+    color: #2eb604;
+}
+
+.th_list li .blue {
+    color: #03C2FA;
+}
+
+.th_list li .t5 a {
+    margin-right: 10px;
+    width: 60px;
+}
+
+.th_list li .t1 a {
+    height: 40px;
+    line-height: 40px;
+    float: left;
+}
+
+.th_list li .t1 i {
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 14px 0 0 6px;
+    cursor: pointer;
+}
+
+.th_list li .t1 {
+    display: block;
+}
+
+/* .thDiv .t4{background:url(../images/ico_dec.png) 80px center no-repeat;cursor:pointer;} */
+.tsDiv {
+    width: 178px;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.tsnr {
+    width: 166px;
+    padding: 0 0 0 12px;
+    position: relative;
+}
+
+.tsDiv img {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    display: block;
+    z-index: 6;
+}
+
+.tsnr p {
+    width: 144px;
+    padding: 10px;
+    border: solid 1px #f2e0bc;
+    background: #fffed0;
+    line-height: 28px;
+    font-size: 12px;
+    white-space: normal;
+}

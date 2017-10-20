@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sanerzone.smscenter.modules.sms.dao.SmsDayReportDao">
+    
+	<sql id="smsDayReportColumns">
+		a.day AS "day",
+		a.acc_id AS "accId",
+		a.gateway_id AS "gatewayId",
+		a.phone_type AS "phoneType",
+		a.userid AS "userid",
+		a.send_count AS "sendCount",
+		a.fail_count AS "failCount",
+		a.success_count AS "successCount",
+		a.submit_success_count AS "submitSuccessCount",
+		a.submit_fail_count AS "submitFailCount",
+		a.report_success_count AS "reportSuccessCount",
+		a.report_null_count AS "reportNullCount",
+		a.report_fail_count AS "reportFailCount",
+		a.user_count AS "userCount",
+		a.back_count AS "backCount",
+		a.user_back_count AS "userBackCount",
+		a.back_flag AS "backFlag",
+		a.back_datetime AS "backDatetime",
+		a.update_datetime AS "updateDatetime",
+		a.push_success_count AS "pushSuccessCount",
+		a.push_fail_count AS "pushFailCount",
+		a.push_unkown_count AS "pushUnkownCount"
+	</sql>
+	
+	<sql id="smsDayReportJoins">
+		LEFT JOIN sys_user u1 ON u1.id = a.userid
+		LEFT JOIN sys_office u2 ON u2.id = u1.company_id
+	</sql>
+    
+	<select id="get" resultType="SmsDayReport">
+		SELECT 
+			<include refid="smsDayReportColumns"/>
+		FROM sms_day_report a
+		<include refid="smsDayReportJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="SmsDayReport">
+		SELECT 
+			a.day AS "day",
+			SUM(a.user_count) AS "userCount",
+			SUM(a.send_count) AS "sendCount",
+			SUM(a.success_count) AS "successCount",
+			SUM(a.submit_success_count) AS "submitSuccessCount",
+			SUM(a.submit_fail_count) AS "submitFailCount",
+			SUM(a.report_success_count) AS "reportSuccessCount",
+			SUM(a.fail_count) AS "failCount",
+			SUM(a.report_null_count) AS "reportNullCount",
+			SUM(a.report_fail_count) AS "reportFailCount",
+			a.update_datetime AS "updateDatetime"
+		FROM sms_day_report a
+		<where>
+		    <if test="userid != null and userid !=''">
+				AND a.userid=#{userid}
+			</if>
+			<if test="dayQ != null">
+				AND a.day >=#{dayQ}
+			</if>
+			<if test="dayZ != null">
+				AND a.day &lt;=#{dayZ}
+			</if>
+			<if test="phoneType != null and phoneType !=''">
+				AND a.phone_type=#{phoneType}
+			</if>
+		</where>
+		GROUP BY a.day
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.day DESC,SUM(a.user_count) DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findListByAccId" resultType="SmsDayReport">
+		SELECT 
+			a.day AS "day",
+			a.acc_id AS "accId",
+			b.acc_name AS "accName",
+			SUM(a.user_count) AS "userCount",
+			SUM(a.send_count) AS "sendCount",
+			SUM(a.success_count) AS "successCount",
+			SUM(a.submit_success_count) AS "submitSuccessCount",
+			SUM(a.submit_fail_count) AS "submitFailCount",
+			SUM(a.report_success_count) AS "reportSuccessCount",
+			SUM(a.fail_count) AS "failCount",
+			SUM(a.report_null_count) AS "reportNullCount",
+			SUM(a.report_fail_count) AS "reportFailCount",
+			a.update_datetime AS "updateDatetime"
+		FROM sms_day_report a
+		LEFT JOIN base_account b ON a.acc_id = b.id
+		<where>
+		    <if test="userid != null and userid !=''">
+				AND a.userid=#{userid}
+			</if>
+			<if test="dayQ != null">
+				AND a.day >=#{dayQ}
+			</if>
+			<if test="dayZ != null">
+				AND a.day &lt;=#{dayZ}
+			</if>
+			<if test="accId != null and accId !=''">
+				AND a.acc_id=#{accId}
+			</if>
+		</where>
+		GROUP BY a.day,a.acc_id
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.day DESC,SUM(a.user_count) DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findByUserList" resultType="SmsDayReport">
+		SELECT 
+			a.userid AS "user.id",
+			a.day AS "day",
+			SUM(a.user_count) AS "userCount",
+			SUM(a.send_count) AS "sendCount",
+			SUM(a.success_count) AS "successCount",
+			SUM(a.submit_success_count) AS "submitSuccessCount",
+			SUM(a.submit_fail_count) AS "submitFailCount",
+			SUM(a.report_success_count) AS "reportSuccessCount",
+			SUM(a.fail_count) AS "failCount",
+			SUM(a.report_null_count) AS "reportNullCount",
+			SUM(a.report_fail_count) AS "reportFailCount",
+			SUM(a.user_back_count) AS "userBackCount",
+			SUM(a.back_count) AS "backCount",
+			SUM(a.push_success_count) AS "pushSuccessCount",
+			SUM(a.push_fail_count) AS "pushFailCount",
+			SUM(a.push_unkown_count) AS "pushUnkownCount",
+			a.update_datetime AS "updateDatetime",
+			a.back_datetime AS "backDatetime",
+			a.back_flag AS "backFlag",
+			u1.name AS "user.name",
+			u1.login_name AS "user.loginName"
+		FROM sms_day_report a
+		<include refid="smsDayReportJoins"/>
+		<where>
+			<if test="user != null and user.id != null and user.id !=''">
+				AND a.userid=#{user.id}
+			</if>
+			<if test="userid != null and userid !=''">
+				AND a.userid=#{userid}
+			</if>
+			<if test="queryType == 'day'.toString()">
+				<if test="dayQ != null">
+					AND a.day >=#{dayQ}
+				</if>
+				<if test="dayZ != null">
+					AND a.day &lt;=#{dayZ}
+				</if>
+			</if>
+			<if test="queryType == 'month'.toString()">
+				<if test="dayQ != null">
+					AND DATE_FORMAT(a.day,'%Y-%m') >= DATE_FORMAT(#{dayQ},'%Y-%m')
+				</if>
+				<if test="dayZ != null">
+					AND DATE_FORMAT(a.day,'%Y-%m') &lt;= DATE_FORMAT(#{dayZ},'%Y-%m')
+				</if>
+			</if>
+			<if test="backFlag != null and backFlag !=''">
+				AND a.back_flag=#{backFlag}
+			</if>
+		</where>
+		GROUP BY a.userid,
+		<if test="queryType == 'day'.toString()">
+			a.day
+		</if>
+		<if test="queryType == 'month'.toString()">
+			DATE_FORMAT(a.day,'%Y-%m')
+		</if>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.day DESC,SUM(a.user_count) DESC
+			</otherwise>
+		</choose>	
+	</select>
+	
+	<select id="findByGatewayList" resultType="SmsDayReport">
+		SELECT 
+			a.day AS "day",
+			a.gateway_id gatewayId,
+			u1.gw_name gatewayName,
+			SUM(a.user_count) AS "userCount",
+			SUM(a.send_count) AS "sendCount",
+			SUM(a.success_count) AS "successCount",
+			SUM(a.submit_success_count) AS "submitSuccessCount",
+			SUM(a.submit_fail_count) AS "submitFailCount",
+			SUM(a.report_success_count) AS "reportSuccessCount",
+			SUM(a.fail_count) AS "failCount",
+			SUM(a.report_null_count) AS "reportNullCount",
+			SUM(a.report_fail_count) AS "reportFailCount",
+			a.update_datetime AS "updateDatetime"
+		FROM sms_day_report a
+		LEFT JOIN sms_gateway u1 ON a.gateway_id = u1.gw_code
+		<where>
+				AND a.gateway_id !='-1'
+			<if test="gatewayId != null and gatewayId !=''">
+				AND a.gateway_id=#{gatewayId}
+			</if>
+			<if test="gatewayName != null and gatewayName !=''">
+				AND u1.gw_name LIKE CONCAT('%',#{gatewayName},'%')
+			</if>
+			<if test="queryType == 'day'.toString()">
+				<if test="dayQ != null">
+					AND a.day >=#{dayQ}
+				</if>
+				<if test="dayZ != null">
+					AND a.day &lt;=#{dayZ}
+				</if>
+			</if>
+			<if test="queryType == 'month'.toString()">
+				<if test="dayQ != null">
+					AND DATE_FORMAT(a.day,'%Y-%m') >= DATE_FORMAT(#{dayQ},'%Y-%m')
+				</if>
+				<if test="dayZ != null">
+					AND DATE_FORMAT(a.day,'%Y-%m') &lt;= DATE_FORMAT(#{dayZ},'%Y-%m')
+				</if>
+			</if>
+		</where>
+		GROUP BY a.gateway_id,
+		<if test="queryType == 'day'.toString()">
+			a.day
+		</if>
+		<if test="queryType == 'month'.toString()">
+			DATE_FORMAT(a.day,'%Y-%m')
+		</if>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.day DESC,SUM(a.send_count) DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findByUserGatewayList" resultType="SmsDayReport">
+		SELECT
+			a.userid AS "user.id",
+			a.day AS "day",
+			a.gateway_id gatewayId,
+			SUM(a.user_count) AS "userCount",
+			SUM(a.send_count) AS "sendCount",
+			SUM(a.success_count) AS "successCount",
+			SUM(a.submit_success_count) AS "submitSuccessCount",
+			SUM(a.submit_fail_count) AS "submitFailCount",
+			SUM(a.report_success_count) AS "reportSuccessCount",
+			SUM(a.fail_count) AS "failCount",
+			SUM(a.report_null_count) AS "reportNullCount",
+			SUM(a.report_fail_count) AS "reportFailCount",
+			a.update_datetime AS "updateDatetime",
+			u1.name AS "user.name",
+			u1.login_name AS "user.loginName",
+			u3.gw_name gatewayName
+		FROM sms_day_report a
+		<include refid="smsDayReportJoins"/>
+		LEFT JOIN sms_gateway u3 ON a.gateway_id = u3.gw_code
+		<where>
+			AND a.gateway_id !='-1'
+			<if test="user != null and user.id != null and user.id !=''">
+				AND a.userid=#{user.id}
+			</if>
+			<if test="userid != null and userid !=''">
+				AND a.userid=#{userid}
+			</if>
+			<if test="gatewayId != null and gatewayId !=''">
+				AND a.gateway_id=#{gatewayId}
+			</if>
+			<if test="gatewayName != null and gatewayName !=''">
+				AND u3.gw_name LIKE CONCAT('%',#{gatewayId},'%')
+			</if>
+			<if test="queryType == 'day'.toString()">
+				<if test="dayQ != null">
+					AND a.day >=#{dayQ}
+				</if>
+				<if test="dayZ != null">
+					AND a.day &lt;=#{dayZ}
+				</if>
+			</if>
+			<if test="queryType == 'month'.toString()">
+				<if test="dayQ != null">
+					AND DATE_FORMAT(a.day,'%Y-%m') >= DATE_FORMAT(#{dayQ},'%Y-%m')
+				</if>
+				<if test="dayZ != null">
+					AND DATE_FORMAT(a.day,'%Y-%m') &lt;= DATE_FORMAT(#{dayZ},'%Y-%m')
+				</if>
+			</if>
+		</where>
+		GROUP BY a.gateway_id,a.userid,
+		<if test="queryType == 'day'.toString()">
+			a.day
+		</if>
+		<if test="queryType == 'month'.toString()">
+			DATE_FORMAT(a.day,'%Y-%m')
+		</if>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.day DESC,SUM(a.send_count) DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findByUserPhoneTypeList" resultType="SmsDayReport">
+		SELECT
+			a.userid AS "user.id",
+			a.day AS "day",
+			a.phone_type AS "phoneType",
+			SUM(a.user_count) AS "userCount",
+			SUM(a.send_count) AS "sendCount",
+			SUM(a.success_count) AS "successCount",
+			SUM(a.submit_success_count) AS "submitSuccessCount",
+			SUM(a.submit_fail_count) AS "submitFailCount",
+			SUM(a.report_success_count) AS "reportSuccessCount",
+			SUM(a.fail_count) AS "failCount",
+			SUM(a.report_null_count) AS "reportNullCount",
+			SUM(a.report_fail_count) AS "reportFailCount",
+			a.update_datetime AS "updateDatetime",
+			u1.name AS "user.name",
+			u1.login_name AS "user.loginName"
+		FROM sms_day_report a
+		<include refid="smsDayReportJoins"/>
+		<where>
+			<if test="phoneType != null and phoneType !=''">
+				AND a.phone_type=#{phoneType}
+			</if>
+			<if test="user != null and user.id != null and user.id !=''">
+				AND a.userid=#{user.id}
+			</if>
+			<if test="userid != null and userid !=''">
+				AND a.userid=#{userid}
+			</if>
+			<if test="gatewayId != null and gatewayId !=''">
+				AND a.gateway_id=#{gatewayId}
+			</if>
+			<if test="gatewayName != null and gatewayName !=''">
+				AND u3.gw_name LIKE CONCAT('%',#{gatewayId},'%')
+			</if>
+			<if test="queryType == 'day'.toString()">
+				<if test="dayQ != null">
+					AND a.day >=#{dayQ}
+				</if>
+				<if test="dayZ != null">
+					AND a.day &lt;=#{dayZ}
+				</if>
+			</if>
+			<if test="queryType == 'month'.toString()">
+				<if test="dayQ != null">
+					AND DATE_FORMAT(a.day,'%Y-%m') >= DATE_FORMAT(#{dayQ},'%Y-%m')
+				</if>
+				<if test="dayZ != null">
+					AND DATE_FORMAT(a.day,'%Y-%m') &lt;= DATE_FORMAT(#{dayZ},'%Y-%m')
+				</if>
+			</if>
+		</where>
+		GROUP BY a.phone_type,a.userid,
+		<if test="queryType == 'day'.toString()">
+			a.day
+		</if>
+		<if test="queryType == 'month'.toString()">
+			DATE_FORMAT(a.day,'%Y-%m')
+		</if>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.day DESC,SUM(a.send_count) DESC
+			</otherwise>
+		</choose>
+	</select>	
+	
+	<select id="findAllList" resultType="SmsDayReport">
+		SELECT 
+			<include refid="smsDayReportColumns"/>
+		FROM sms_day_report a
+		<include refid="smsDayReportJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO sms_day_report(
+			day,
+			acc_id,
+			gateway_id,
+			phone_type,
+			userid,
+			send_count,
+			fail_count,
+			success_count,
+			submit_success_count,
+			submit_fail_count,
+			report_success_count,
+			report_null_count,
+			report_fail_count,
+			user_count,
+			back_count,
+			user_back_count,
+			back_flag,
+			back_datetime,
+			update_datetime,
+			push_success_count,
+			push_fail_count,
+			push_unkown_count
+		) VALUES (
+			#{day},
+			#{accId},
+			#{gatewayId},
+			#{phoneType},
+			#{userid},
+			#{sendCount},
+			#{failCount},
+			#{successCount},
+			#{submitSuccessCount},
+			#{submitFailCount},
+			#{reportSuccessCount},
+			#{reportNullCount},
+			#{reportFailCount},
+			#{userCount},
+			#{backCount},
+			#{userBackCount},
+			#{backFlag},
+			#{backDatetime},
+			#{updateDatetime},
+			#{pushSuccessCount},
+			#{pushFailCount},
+			#{pushUnkownCount}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE sms_day_report SET 	
+			day = #{day},
+			acc_id = #{accId},
+			gateway_id = #{gatewayId},
+			phone_type = #{phoneType},
+			userid = #{userid},
+			send_count = #{sendCount},
+			fail_count = #{failCount},
+			success_count = #{successCount},
+			submit_success_count = #{submitSuccessCount},
+			submit_fail_count = #{submitFailCount},
+			report_success_count = #{reportSuccessCount},
+			report_null_count = #{reportNullCount},
+			report_fail_count = #{reportFailCount},
+			user_count = #{userCount},
+			back_count = #{backCount},
+			user_back_count = #{userBackCount},
+			back_flag = #{backFlag},
+			back_datetime = #{backDatetime},
+			update_datetime = #{updateDatetime},
+			push_success_count = #{pushSuccessCount},
+			push_fail_count = #{pushFailCount},
+			push_unkown_count = #{pushUnkownCount}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM sms_day_report
+		WHERE id = #{id}
+	</update>
+	
+	<select id="findSendList" resultType="SmsDayReport">
+		SELECT 
+			a.userid AS "userid",
+			a.acc_id AS accId,
+		   	a.send_time day,
+		   	IFNULL(a.phone_type,'-1') phoneType,
+		   	IFNULL(a.gateway_id, '-1') gatewayId,
+			sum(a.sms_size) sendCount,
+			sum(CASE WHEN a.send_status LIKE 'F%' THEN a.sms_size ELSE 0 END) sendFailCount,
+			sum(CASE WHEN a.send_status LIKE 'T%' THEN a.sms_size ELSE 0 END) successCount,
+			sum(CASE WHEN a.gateway_status LIKE 'F10%' THEN a.sms_size ELSE 0 END) submitFailCount,
+			sum(case when a.gateway_status='T100' then a.sms_size else 0 end) reportSuccessCount,
+			sum(case when a.gateway_status LIKE 'F%' then a.sms_size else 0 end) reportFailCount,
+			sum(case when a.gateway_status='P100' and a.send_status='T000' then a.sms_size else 0 end) reportNullCount,
+			sum(case when (a.fee_type=0 and a.send_status like 'T%') or (a.fee_type=2 and a.send_status like 'T%' and (a.gateway_status like 'T%' or a.gateway_status like 'P%' )) then a.sms_size else 0 end) userCount,
+			sum(case when a.user_notify_status='2' then a.sms_size else 0 end) pushSuccessCount,
+			sum(case when a.user_notify_status='3' then a.sms_size else 0 end) pushFailCount,
+			sum(case when a.user_notify_status='1' then a.sms_size else 0 end) pushUnkownCount
+		FROM ${tableName} a 
+		WHERE a.userid=#{userid} and a.acc_id = #{accId}
+		<if test="day != null">
+			AND a.send_time >=DATE_FORMAT(#{day},'%Y-%m-%d 00:00:00')
+			AND a.send_time &lt;=DATE_FORMAT(#{day},'%Y-%m-%d 23:59:59')
+		</if>
+		GROUP BY a.phone_type,a.gateway_id
+	</select>
+	
+	<insert id="batchInsert">
+		REPLACE INTO sms_day_report(
+			day,
+			acc_id,
+			gateway_id,
+			phone_type,
+			userid,
+			send_count,
+			fail_count,
+			success_count,
+			submit_success_count,
+			submit_fail_count,
+			report_success_count,
+			report_null_count,
+			report_fail_count,
+			user_count,
+			back_count,
+			user_back_count,
+			back_flag,
+			update_datetime,
+			push_success_count,
+			push_fail_count,
+			push_unkown_count
+		) VALUES (
+			#{day},
+			#{accId},
+			#{gatewayId},
+			#{phoneType},
+			#{userid},
+			#{sendCount},
+			#{failCount},
+			#{successCount},
+			#{submitSuccessCount},
+			#{submitFailCount},
+			#{reportSuccessCount},
+			#{reportNullCount},
+			#{reportFailCount},
+			#{userCount},
+			#{backCount},
+			#{userBackCount},
+			#{backFlag},
+			NOW(),
+			#{pushSuccessCount},
+			#{pushFailCount},
+			#{pushUnkownCount}
+		)
+	</insert>
+	
+	<update id="updateBackFlag">
+		UPDATE sms_day_report SET
+			back_flag='1',
+			back_datetime=NOW()
+		WHERE acc_id=#{accId} AND day=DATE_FORMAT(#{day},'%Y-%m-%d')	
+	</update>
+	
+	<select id="findRechargeList" resultType="SmsDayReport">
+		SELECT 
+			a.userid AS "userid",
+			a.acc_id AS accId,
+			sum(a.user_back_count) userBackCount,
+			a.day day
+		FROM sms_day_report a 
+		WHERE a.day=DATE_FORMAT(#{day},'%Y-%m-%d') AND back_flag='0'
+		GROUP BY a.userid
+	</select>
+	
+	<select id="findDaySendCountList" resultType="SmsDayReport">
+		SELECT 
+			a.userid AS "userid",
+			a.acc_id AS "accId",
+			SUM(a.user_count) AS "sendCount"
+		FROM sms_day_report a
+		WHERE a.day=DATE_FORMAT(#{day},'%Y-%m-%d')
+		GROUP BY a.userid,a.acc_id
+	</select>
+	
+	<select id="findList4Index" resultType="SmsDayReport">
+		SELECT 
+			a.day AS "day",
+			SUM(a.user_count) AS "userCount",
+			SUM(a.send_count) AS "sendCount",
+			SUM(a.success_count) AS "successCount",
+			SUM(a.submit_success_count) AS "submitSuccessCount",
+			SUM(a.submit_fail_count) AS "submitFailCount",
+			SUM(a.report_success_count) AS "reportSuccessCount",
+			SUM(a.fail_count) AS "failCount",
+			SUM(a.report_null_count) AS "reportNullCount",
+			SUM(a.report_fail_count) AS "reportFailCount",
+			a.update_datetime AS "updateDatetime"
+		FROM sms_day_report a
+		<include refid="smsDayReportJoins"/>
+		<where>
+			<if test="user != null and user.id != null and user.id !=''">
+				AND a.userid=#{user.id}
+			</if>
+			<if test="company != null and company.id != null and company.id !=''">
+				AND u2.id=#{company.id}
+			</if>
+			<if test="companyId != null and companyId !=''">
+				AND u2.id=#{companyId}
+			</if>
+			<if test="queryType == 'day'.toString()">
+				<if test="dayQ != null">
+					AND a.day >=DATE_FORMAT(#{dayQ},'%Y-%m-%d %T')
+				</if>
+				<if test="dayZ != null">
+					AND a.day &lt;=DATE_FORMAT(#{dayZ},'%Y-%m-%d %T')
+				</if>
+			</if>
+			<if test="queryType == 'month'.toString()">
+				<if test="dayQ != null">
+					AND DATE_FORMAT(a.day,'%Y-%m') >= DATE_FORMAT(#{dayQ},'%Y-%m')
+				</if>
+				<if test="dayZ != null">
+					AND DATE_FORMAT(a.day,'%Y-%m') &lt;= DATE_FORMAT(#{dayZ},'%Y-%m')
+				</if>
+			</if>
+			<if test="backFlag != null and backFlag !=''">
+				AND a.back_flag=#{backFlag}
+			</if>
+		</where>
+		GROUP BY a.userid,a.day
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+				ORDER BY a.day
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

@@ -1,0 +1,447 @@
+﻿@charset "utf-8";
+/* CSS Document */
+.developer_wrap {
+    width: 100%;
+    overflow: hidden;
+    padding-top: 72px;
+}
+
+.developer_wrap .banner {
+    width: 100%;
+    height: 786px;
+    padding-top: 90px;
+    background: url(../images/developer_img1.jpg) 50% 0 no-repeat;
+    text-align: center;
+}
+
+.developer_wrap .developer_div1 {
+    width: 100%;
+    height: 360px;
+    padding-top: 72px;
+}
+
+.developer_div1 .blocklist {
+    width: 1029px;
+    overflow: hidden;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.blocklist .link {
+    width: 176px;
+    height: 296px;
+    padding-left: 26px;
+    padding-right: 22px;
+    float: left;
+    margin-right: 44px;
+    background: url(../images/developer_img3.jpg) 0 0 no-repeat;
+}
+
+.blocklist .link .content {
+    line-height: 24px;
+    padding-top: 198px;
+    font-size: 14px;
+    font-family: '宋体';
+    color: #6d6e70;
+}
+
+.blocklist .block1 {
+    background-position: 0px -1184px;
+}
+
+.blocklist .block2 { /*background-position: 0 -1776px;*/
+    background-position: 0px -2072px;
+}
+
+.blocklist .block3 {
+    background-position: 0px 0px;
+}
+
+.blocklist .block4 {
+    margin-right: 0;
+    background-position: 0px -592px;
+}
+
+.blocklist .block1:hover {
+    background-position: 0 -1480px;
+}
+
+.blocklist .block2:hover {
+    background-position: 0 -2072px;
+}
+
+.blocklist .block3:hover {
+    background-position: 0 -296px;
+}
+
+.blocklist .block4:hover {
+    background-position: 0 -888px;
+}
+
+.developer_div1 .jian {
+    height: 31px;
+    width: 60px;
+    margin: 0 auto;
+    margin-top: 69px;
+    *margin-top: 66px;
+}
+
+.developer_wrap .developer_div2 {
+    width: 100%;
+}
+
+.developer_div2 .div2_con {
+    width: 946px;
+    margin: 0 auto;
+    font-family: 'Microsoft YaHei';
+}
+
+.div2_con .jt {
+    width: 1px;
+    height: 1px;
+    display: block;
+    border-top: #009570 solid 23px;
+    border-bottom: solid 23px transparent;
+    border-left: solid 30px transparent;
+    border-right: solid 30px transparent;
+    position: relative;
+    margin: 0 auto;
+    top: -1px;
+}
+
+.developer_div2 .div2_con .title {
+    line-height: 64px;
+    width: 304px;
+    margin: 0 auto;
+    padding-top: 60px;
+    margin-bottom: 32px;
+    font-size: 40px;
+    font-weight: normal;
+    text-align: center;
+    border-bottom: #e7eaec solid 2px;
+}
+
+.div2_con .doc_content {
+    width: 944px;
+    margin-bottom: 72px;
+    border: #e7e8e8 solid 1px;
+    border-top: 0;
+}
+
+.div2_con .doc_content .stitle {
+    width: 100%;
+    height: 48px;
+    background: #e7e8e8;
+}
+
+.doc_content .stitle .name {
+    float: left;
+    line-height: 48px;
+    padding-left: 14px;
+    font-size: 20px;
+    color: #081f30;
+    font-weight: normal;
+}
+
+.doc_content .taglist {
+    padding: 24px 0 24px 16px;
+    overflow: hidden;
+}
+
+.doc_content .taglist .link {
+    float: left;
+    margin-right: 42px;
+    height: 24px;
+    line-height: 24px;
+    background: #f1f1f1;
+    font-size: 16px;
+    color: #142f42;
+    padding: 0 6px;
+}
+
+.doc_content .taglist .link:hover {
+    background: #02ab71;
+    color: #FFF;
+}
+
+.doc_content .sdklist {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 36px;
+}
+
+.doc_content .sdklist li {
+    line-height: 25px;
+    width: 100%;
+    float: left;
+    overflow: hidden;
+    margin-top: 35px;
+}
+
+.doc_content .sdklist .name {
+    float: left;
+    width: 122px;
+    padding-left: 16px;
+    font-size: 18px;
+    color: #0b2334;
+    line-height: 25px;
+}
+
+.doc_content .sdklist .mr {
+    margin-right: 0;
+}
+
+.doc_content .sdklist a {
+    float: left;
+    line-height: 25px;
+    font-size: 14px;
+    color: #142f42;
+    font-family: '宋体';
+    margin-right: 22px;
+}
+
+.doc_content .sdklist .andicon {
+    padding: 0 17px 0 38px;
+    background: url(../images/developer_img4.png) 14px 2px #f1f1f1 no-repeat;
+}
+
+.doc_content .sdklist .iosicon {
+    padding: 0 16px 0 33px;
+    background: url(../images/developer_img4.png) 12px -27px #f1f1f1 no-repeat;
+}
+
+.doc_content .sdklist .winicon {
+    padding: 0 14px 0 38px;
+    background: url(../images/developer_img4.png) 12px -57px #f1f1f1 no-repeat;
+}
+
+.doc_content .sdklist .webicon {
+    padding: 0 19px 0 34px;
+    background: url(../images/developer_img4.png) 11px -86px #f1f1f1 no-repeat;
+}
+
+.doc_content .sdklist .ocxicon {
+    padding: 0 16px 0 35px;
+    background: url(../images/developer_img4.png) 10px -116px #f1f1f1 no-repeat;
+}
+
+.doc_content .sdklist .andicon:hover {
+    padding: 0 17px 0 38px;
+    background: url(../images/developer_img4.png) 14px -148px #02ab71 no-repeat;
+    color: #FFF;
+}
+
+.doc_content .sdklist .iosicon:hover {
+    padding: 0 16px 0 33px;
+    background: url(../images/developer_img4.png) 12px -176px #02ab71 no-repeat;
+    color: #FFF;
+}
+
+.doc_content .sdklist .winicon:hover {
+    padding: 0 14px 0 38px;
+    background: url(../images/developer_img4.png) 12px -207px #02ab71 no-repeat;
+    color: #FFF;
+}
+
+.doc_content .sdklist .webicon:hover {
+    padding: 0 19px 0 34px;
+    background: url(../images/developer_img4.png) 11px -236px #02ab71 no-repeat;
+    color: #FFF;
+}
+
+.doc_content .sdklist .ocxicon:hover {
+    padding: 0 16px 0 35px;
+    background: url(../images/developer_img4.png) 10px -266px #02ab71 no-repeat;
+    color: #FFF;
+}
+
+.developer_wrap .developer_div3 {
+    width: 100%;
+    height: 154px;
+    padding-top: 230px;
+    background: url(../images/developer_img5.jpg) 50% 0 no-repeat;
+}
+
+.developer_wrap .developer_div3 .div3_con {
+    width: 1060px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.developer_div3 .div3_con .linkbox {
+    width: 232px;
+    float: left;
+    overflow: hidden;
+    margin-right: 174px;
+}
+
+.developer_div3 .div3_con .mr {
+    margin-right: 0;
+}
+
+.div3_con .linkbox .link {
+    float: left;
+    margin-left: 16px;
+    margin-bottom: 24px;
+    width: 99px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 16px;
+    background: #0f161b;
+    color: #FFF;
+    letter-spacing: 2px;
+}
+
+.div3_con .linkbox .link:hover {
+    background: #086146;
+}
+
+.developer_wrap .developer_div4 {
+    width: 100%;
+    height: 326px;
+}
+
+.developer_wrap .developer_div4 .jt {
+    width: 1px;
+    height: 1px;
+    display: block;
+    border-top: #101e2d solid 23px;
+    border-bottom: solid 23px transparent;
+    border-left: solid 30px transparent;
+    border-right: solid 30px transparent;
+    position: relative;
+    margin: 0 auto;
+    top: -1px;
+}
+
+.developer_wrap .developer_div4 .div4_con {
+    width: 1034px;
+    padding-top: 34px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.developer_div4 .div4_con dl {
+    float: left;
+    overflow: hidden;
+}
+
+.developer_div4 .div4_con dt {
+    height: 101px;
+}
+
+.developer_div4 .div4_con .dl1 {
+    width: 287px;
+}
+
+.developer_div4 .div4_con .dl2 {
+    width: 245px;
+}
+
+.developer_div4 .div4_con .dl3 {
+    width: 330px;
+}
+
+.developer_div4 .div4_con .dl4 {
+    width: 170px;
+}
+
+.div4_con .dl1 .img {
+    margin-left: 47px;
+}
+
+.div4_con .dl2 .img {
+    margin-left: 31px;
+}
+
+.div4_con .dl3 .img {
+    margin-left: 71px;
+}
+
+.div4_con .dl4 dt {
+    text-align: center;
+}
+
+.developer_div4 .div4_con .link {
+    float: left;
+    width: 142px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 16px;
+    color: #142f42;
+    font-family: 'Microsoft YaHei';
+    text-align: center;
+    background: #f1f1f1;
+}
+
+.div4_con .dl2 .link {
+    width: 122px;
+}
+
+.div4_con .dl3 .con {
+    width: 212px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 16px;
+    color: #142f42;
+    font-family: 'Microsoft YaHei';
+    text-align: center;
+    background: #f1f1f1;
+    margin-bottom: 4px;
+}
+
+.developer_div4 .div4_con .link:hover {
+    background: #20a56e;
+    color: #FFF;
+}
+
+.div4_con .dl4 .stitle {
+    font-size: 16px;
+    color: #0c283d;
+    font-family: 'Microsoft YaHei';
+    font-weight: normal;
+    text-align: center;
+    padding: 4px 0;
+}
+
+.div4_con .dl4 .con {
+    line-height: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: #969696;
+    font-family: '宋体';
+    letter-spacing: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
