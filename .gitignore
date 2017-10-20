@@ -8,7 +8,7 @@
 .rar
 .idea
 *.iml
-.settings/*
+.settings/
 /indexes/*
 /target/*
 /src/main/webapp/WEB-INF/classes/*
