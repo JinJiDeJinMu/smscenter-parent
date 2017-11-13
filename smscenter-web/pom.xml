@@ -790,7 +790,7 @@
 				<version>${tomcat.version}</version> 
 				<configuration>
 					<port>${webserver.port}</port>
-					<path>/${project.artifactId}</path>
+					<path>/</path>
 					<uriEncoding>${project.build.sourceEncoding}</uriEncoding>
 				</configuration>
 			</plugin>

@@ -16,4 +16,5 @@
 target/
 temp/
 cache/
+logs/
 .DS_Store
