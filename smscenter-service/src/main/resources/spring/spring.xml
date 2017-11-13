@@ -55,5 +55,4 @@
 	<import resource="classpath:spring/spring-mybatis.xml" />
 	<import resource="classpath:spring/spring-dubbo.xml" />
 	<import resource="classpath:spring/spring-rocketmq.xml" />
-	<import resource="classpath:spring/spring-cxf.xml" />
 </beans>
