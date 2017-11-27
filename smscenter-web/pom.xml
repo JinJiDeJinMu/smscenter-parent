@@ -68,13 +68,13 @@
 			<name>Jeesite Repository</name>
 			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
 		</repository>
-		
+       <!--
 		<repository>
 			<id>nexus-repos</id>
 			<name>Team Nexus Repository</name>
 			<url>http://192.168.1.180:8081/nexus/content/groups/public</url>
 		</repository>
-		
+      -->
 	</repositories>
 	
 	<!-- 设定插件仓库 -->
@@ -692,7 +692,10 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
+					<!--
 					<encoding>${project.build.sourceEncoding}</encoding>
+					-->
+
 				</configuration>
 				<!-- <executions>
 					<execution>
