@@ -76,7 +76,6 @@ public class SmsApiCmccOpen extends GateWayHttpAbstract {
 
 //		System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
 		String json = HttpRequest.sendPostJson(paramsMaps.get("apiUrl") + "sendTemplateSms/v1", JSON.toJSON(params).toString(), postHeaders, 3000);
-
 		logger.info("网关:{}, 请求:{}, 响应:{}", this.gateWayID, strBuffer.toString(), json);
 
 		List<SMSSRMessage> resultList = Lists.newArrayList();
@@ -193,18 +192,17 @@ public class SmsApiCmccOpen extends GateWayHttpAbstract {
 	
 	public static void main(String[] args) {
 		//{"templateId":"201706091122","paramValue":["123456","5"]}
-		
-		String apiUrl = "http://211.138.118.14:1100/sms/";
-		//String apiUrl = "http://aep.cmccopen.cn/sms/";
+
+		String apiUrl = "http://aep.api.cmccopen.cn/sms/";
 		
 		//String notifyURL = "/api/sms/report/pr/cmcc";
 		
 		SmsApiCmccOpen api = new SmsApiCmccOpen("JYCSMS",
-				"{\"from\":\"106575261108111\",\"username\":\"08165079f8064d13832871ee54aca41b\",\"passwordDigest\":\"e47bf413ad412f0f\",\"smsTemplateId\":\"3e383b26-ede6-4212-9ae9-2441b3a6fb13\",\"apiUrl\":\""+apiUrl+"\",\"Host\":\"aep.cmccopen.cn\"}");
+				"{\"from\":\"106575261108111\",\"username\":\"08165079f8064d13832871ee54aca41b\",\"passwordDigest\":\"e47bf413ad412f0f\",\"smsTemplateId\":\"a5d63947-84f0-4e47-9d35-1b3de22745d7\",\"apiUrl\":\""+apiUrl+"\",\"Host\":\"aep.api.cmccopen.cn\"}");
 		
-		String [] strs = {"123456", "5"};
+		String [] strs = {"654321","5"};
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("templateId", "3e383b26-ede6-4212-9ae9-2441b3a6fb13");
+		map.put("templateId", "a5d63947-84f0-4e47-9d35-1b3de22745d7");
 		map.put("paramValue", strs);
 		
 		SMSREQMessage req = new SMSREQMessage();
@@ -212,8 +210,8 @@ public class SmsApiCmccOpen extends GateWayHttpAbstract {
 		
 		SMSMTMessage mt = new SMSMTMessage();
 		//mt.setPhone("13666672546");
-		mt.setPhone("15996480329");
-		mt.setSmsContent("123456");
+		mt.setPhone("15669959631");
+		mt.setSmsContent("666");
 		mt.setSmsREQMessage(req);
 		List<SMSSRMessage> list = api.doSend(mt);
 

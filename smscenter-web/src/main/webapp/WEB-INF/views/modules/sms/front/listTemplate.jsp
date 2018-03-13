@@ -123,7 +123,7 @@
         	   <span class="t2">模板状态</span>
                <span class="t6">标题</span>
                <span class="t8">模板内容</span>
-               <!-- <span class="t9">操作</span> -->
+               <span class="t9">操作</span>
            </div>
            <ul class="th_list clearfix">
           </ul>

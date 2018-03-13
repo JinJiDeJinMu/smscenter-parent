@@ -13,4 +13,4 @@
 <c:set var="ctxFront" value="${pageContext.request.contextPath}/front"/>
 <c:set var="ctxFrontStatic" value="${pageContext.request.contextPath}/static/modules/smsfront"/>
 <c:set var="ctxKonStatic" value="${pageContext.request.contextPath}/static/modules/kon"/>
-<c:set var="debug" value="http://192.168.1.100:8080/smscenter-spout/debug"/>
+<c:set var="debug" value="http://localhost:8081/debug"/>

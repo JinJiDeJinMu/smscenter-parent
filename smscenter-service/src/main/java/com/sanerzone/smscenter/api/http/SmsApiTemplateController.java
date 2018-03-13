@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sanerzone.common.support.utils.StreamUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +56,8 @@ public class SmsApiTemplateController extends BaseController{
             if (charEncoding == null){
                 charEncoding = "UTF-8";
             }
-            String respText = StreamHelper.InputStreamTOString(request.getInputStream(), charEncoding);
+            /*String respText = StreamHelper.InputStreamTOString(request.getInputStream(), charEncoding);*/
+            String respText = StreamUtils.InputStreamTOString(request.getInputStream(),charEncoding);
             logger.info("sms api json: {}", respText);
             if(StringHelper.isNotBlank(respText)){
                 return (Map) JSON.parseObject(respText, Map.class);
@@ -69,8 +71,7 @@ public class SmsApiTemplateController extends BaseController{
     @SuppressWarnings({"unchecked", "rawtypes"})
     @RequestMapping(value = "sms/send", method = RequestMethod.POST)
     public String smsSend(HttpServletRequest request, HttpServletResponse response){
-    	
-    	Map pMap = getPostDataMap(request, response);
+        Map pMap = getPostDataMap(request, response);
     	long time = System.currentTimeMillis();
         Map map = Maps.newHashMap();
         try{
