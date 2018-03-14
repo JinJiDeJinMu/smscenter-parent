@@ -47,7 +47,7 @@
 			     		html += '   <span class="t3">'+ item.sendCount +'</span>';
 			            html += '   <span class="t3">'+ item.successCount +'</span>';
 			            html += '   <span class="t3">'+ item.failCount +'</span>';
-			            html += '   <span class="t3">'+ item.reportSuccessCount +'</span>';
+                        html += '   <span class="t3">'+ item.userCount +'</span>';
 			            html += '</li>';
 			        }); 
 					$('.div34 .clearfix').html(html);
@@ -147,8 +147,8 @@
 	     		<span class="t3">应用名称</span>
 	     		<span class="t3">发送总量</span>
 	     		<span class="t3">发送成功量</span>
-	     		<span class="t3">系统处理失败量</span>
-	     		<span class="t3">状态报告成功量</span>
+	     		<span class="t3">系统处理成功量</span>
+	     		<span class="t3">系统扣费成功量</span>
 		    </div>
 	     	<ul class="th_list clearfix">
 	      

@@ -113,12 +113,13 @@
                 </div>
             </div>
             <div class="con" id="m2Div" style="display: none;">
-  				<div class="nr" id="selectDiv1" style="display:block;">
+  				<div class="nr" id="selectDiv2" style="display:block;">
     				<ul class="listnav">
 				      	<li><h2>充值</h2>
-				      	    <div class="nav2"><a href="${ctxFront}/view/payNow" target="mainFrame" class="cur"><span id="spanId">立即充值</span></a></div>
-				      		<div class="nav2"><a href="${ctxFront}/user/rechargeList" target="mainFrame">充值记录</a></div>
-				      	     
+				      	    <%--<div class="nav2"><a href="${ctxFront}/view/payNow" target="mainFrame" class="cur"><span id="spanId">立即充值</span></a></div>
+				      		<div class="nav2"><a href="${ctxFront}/user/rechargeList" target="mainFrame">充值记录</a></div>--%>
+                            <div class="nav2"><a href="${ctxFront}/view/index" target="mainFrame" class="cur"><span id="spanId11">立即充值</span></a></div>
+                            <div class="nav2"><a href="${ctxFront}/view/index" target="mainFrame" class="cur"><span id="spanId22">充值记录</span></a></div>
 				      	</li>
 				      	 <li>
                             <h2>发票信息</h2>
@@ -131,10 +132,10 @@
   				</div>
 			</div>
 			<div class="con" id="m6Div" style="display: none;">
-  				<div class="nr" id="selectDiv1" style="display:block;">
+  				<div class="nr" id="selectDiv6" style="display:block;">
     				<ul class="listnav">
       					<li><h2>消费详单</h2>
-      					<div class="nav2"><a href="${ctxFront}/view/smsDayAccidReport" target="mainFrame" class="cur"><span id="spanId">日应用消费统计</span></a></div>
+      					<div class="nav2"><a href="${ctxFront}/view/smsDayAccidReport" target="mainFrame" class="cur"><span id="spanId_1">日应用消费统计</span></a></div>
 				      	<div class="nav2"><a href="${ctxFront}/view/smsDayReport" target="mainFrame">日消费统计</a></div>
 				      	<div class="nav2"><a href="${ctxFront}/view/smsSendList" target="mainFrame">短信发送记录</a></div>
 				      	<div class="nav2"><a href="${ctxFront}/view/smsReceiveList" target="mainFrame">上行短信记录</a></div>
@@ -143,7 +144,7 @@
 				</div>
 			</div>
 			<div class="con" id="m3Div" style="display: none;">
-  				<div class="nr" id="selectDiv1" style="display:block;">
+  				<div class="nr" id="selectDiv3" style="display:block;">
     				<ul class="listnav">
 				      	<li>
 					        <h2>帐号管理</h2>

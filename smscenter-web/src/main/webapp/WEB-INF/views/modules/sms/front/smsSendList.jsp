@@ -84,9 +84,9 @@
 			        $.each(result.data.list, function (i, item) {  
 			            html += '<li>';
 			            html += '   <span class="t8">'+ item.sendTime +'</span>';
-			            html += '   <span class="t10">'+ item.phone +'</span>';
-			            html += '   <span class="t14">'+ item.smsContent +'</span>';
-			            html += '   <span class="t6">'+ item.sendStatus +'</span>';
+			            html += '   <span class="t10 center">'+ item.phone +'</span>';
+			            html += '   <span class="t14 center">'+ item.smsContent +'</span>';
+			            html += '   <span class="t6 ">'+ item.sendStatus +'</span>';
 			            html += '</li>';
 			        }); 
 					$('.common_list').html(html);
@@ -164,8 +164,8 @@
     	<div class="common_title">
         	<span class="t8 center">发送时间</span>
             <span class="t10 center">接收号码</span>
-            <span class="t14">短信内容</span>
-            <span class="t6 center">发送状态</span>
+            <span class="t14 center">短信内容</span>
+            <span class="t6 ">发送状态</span>
         </div>
         <ul class="common_list">
         

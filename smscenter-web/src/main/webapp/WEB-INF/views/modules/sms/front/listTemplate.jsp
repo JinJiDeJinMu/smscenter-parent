@@ -74,6 +74,7 @@
 		            html += '   <span class="t6" title="'+item.name+'">'+ item.name +'</span>';
 		            html += '   <span class="t8" title="'+item.content+'">'+ item.content +'</span>';
 		            //html += '   <span class="t9"><a href="/member/smsTemplate/toSmsTempConsult" target="_blank">查看参考模板</a></span>';
+                    html += '   <span class="t9"><a href="" target="">查看参考模板</a></span>';
 		            html += '</li>';
 		        }); 
 				$('.clearfix').html(html);
@@ -108,8 +109,11 @@
    	<div class="tx_div">
       	<h2>使用规则：</h2>
       	<p>
-      	1、模板审核通过后才可调用，受运营商限制，每个工作日9点统一提交给运营商审核，正常当日即可获得结果
-      	</p>
+		1、模板的修改和删除只能在后台操作，如有需要请联系管理员
+	    </p>
+		<p>
+		2、模板审核通过后才可调用，受运营商限制，每个工作日9点统一提交给运营商审核，正常当日即可获得结果
+		</p>
       </div>
      <form name="smsForm" id="smsForm" method="post">
       	<input id="pageNo" name="pageNo" type="hidden"/>

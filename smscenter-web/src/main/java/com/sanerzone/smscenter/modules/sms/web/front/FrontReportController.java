@@ -44,7 +44,7 @@ public class FrontReportController extends BaseController {
 		return renderString(response, result);
 	}
 	
-	//用户发送统计列表
+	//用户应用发送统计列表
 	@RequestMapping(value = "listByAccid")
 	public String listByAccid(SmsDayReport smsDayReport, HttpServletRequest request, HttpServletResponse response) {
 		if (!UserUtils.getUser().isAdmin())

@@ -186,10 +186,11 @@
                      	html+='             <a href="javascript:void(0);" title="编辑应用" onclick="editApp('+item.id+','+""+')">编辑</a>';
                      	if(item.accStatus==-2){//待上线
                         	html+='             <a href="javascript:void(0);" class="org apply" title="申请上线"  onclick="applyOnlineApp('+item.id+')">上线</a>';
-                            html+='             <a href="javascript:void(0);" class="red del" title="删除应用"   onclick="delApp('+item.id+')">删除</a>';
+
                      	}else if(item.accStatus==1){//上线
                      		html+='             <a href="javascript:void(0);" class="org apply" title="应用下线"  onclick="applyOnlineApp('+item.id+')">下线</a>';
                      	}
+                     	html+='             <a href="javascript:void(0);" class="red del" title="删除应用"   onclick="delApp('+item.id+')">删除</a>';
                         html+='         </span>'; 
                         html+='     </li>';
                         html+=' </ul>';
