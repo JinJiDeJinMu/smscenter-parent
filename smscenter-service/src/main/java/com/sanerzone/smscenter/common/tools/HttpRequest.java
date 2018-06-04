@@ -1,18 +1,13 @@
 package com.sanerzone.smscenter.common.tools;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.Proxy;
-import java.net.SocketTimeoutException;
-import java.net.URL;
+import java.io.*;
+import java.net.*;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.dom4j.Element;
 import org.slf4j.Logger;
@@ -41,7 +36,7 @@ public class HttpRequest
     {
         return sendFormPost(url, param, header, "UTF-8", HTTP_READ_TIME_OUT);
     }
-    
+
     public static String sendFormPost(String postUrl, String postEntity, HashMap<String, String> postHeaders,
         String charset, int timeout)
     {
@@ -222,7 +217,7 @@ public class HttpRequest
         }
         return sbStr.toString();
     }
-    
+
     /**
      * md5 32位小写
      * @param input

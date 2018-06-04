@@ -85,7 +85,12 @@ public abstract class GateWayHttpAbstract
             srMessage.setResult("F10102" + StringUtils.substring(httpBody, 16));
             srMessage.setReserve("接口调用异常");
         }
-        else if (httpBody.indexOf(key) == -1)
+        /*else if (httpBody.indexOf(key) == -1)
+        { //检查关键字段是否存在
+            srMessage.setResult("F10103");
+            srMessage.setReserve("接口返回格式错");
+        }*/
+        else if (httpBody.indexOf(key) != -1)
         { //检查关键字段是否存在
             srMessage.setResult("F10103");
             srMessage.setReserve("接口返回格式错");
