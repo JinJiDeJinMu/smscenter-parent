@@ -326,9 +326,9 @@
             </div>
         </div>
     </div>
-    <div class="zcfooter">
+    <%--<div class="zcfooter">
         <div class="footerimg"></div>
-    </div>
+    </div>--%>
 </div>
 </body>
 

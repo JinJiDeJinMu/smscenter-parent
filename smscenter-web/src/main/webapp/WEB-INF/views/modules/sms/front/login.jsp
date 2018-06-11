@@ -228,7 +228,7 @@ $(document).keyup(function(event){
       <div class="c_right">
           <p class="p1">还没有账号</p>
           <a href="${ctxFront}/reg/index" class="yj-btn btn-login">立即注册</a>
-          <p class="p2">若 <a href="javascript:void(0);">忘记密码？</a>可以通过邮箱或手机找回</p>
+        <%-- <p class="p2">若 <a href="javascript:void(0);">忘记密码？</a>可以通过邮箱或手机找回</p>--%>
           <ul class="tips">
               <li>开发者零门槛加入</li>
               <li>自助化服务</li>

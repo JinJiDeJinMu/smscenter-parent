@@ -64,7 +64,7 @@ em, i {
 .registerwrap .zcfooter .footerimg {
     width: 1028px;
     height: 17px;
-    background: url(../images/advice_img2.png) left top no-repeat;
+    /*background: url() left top no-repeat;*/
     margin: 0 auto;
 }
 
