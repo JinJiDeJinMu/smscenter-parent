@@ -4,6 +4,8 @@
  */
 package com.sanerzone.smscenter.gateway.base;
 
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+
 /**
  *
  * @author wangyong

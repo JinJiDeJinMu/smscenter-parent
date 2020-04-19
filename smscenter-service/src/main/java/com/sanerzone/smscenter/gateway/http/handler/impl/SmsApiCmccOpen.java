@@ -26,7 +26,7 @@ import com.sanerzone.smscenter.common.tools.HttpRequest;
 import com.sanerzone.smscenter.gateway.http.handler.GateWayHttpAbstract;
 import com.sanerzone.smscenter.gateway.http.message.SmsHttpMsgResponse;
 
-public class SmsApiCmccOpen extends GateWayHttpAbstract {
+public class  SmsApiCmccOpen extends GateWayHttpAbstract {
 
 	public SmsApiCmccOpen(String gateWayID, String jsonParams) {
 		super(gateWayID, jsonParams);

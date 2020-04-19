@@ -53,6 +53,6 @@ public class SmsApi2CRF {
 	}
 	
 	public static void main(String[] args) {
-		sendSMS("13666672546", "验证码：123456");
+		sendSMS("15669959631", "验证码：123456");
 	}
 }

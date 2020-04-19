@@ -100,6 +100,7 @@ public class SmsTemplateController extends BaseController {
 	public String list(SmsTemplate smsTemplate, HttpServletRequest request, HttpServletResponse response, Model model) {
 		Page<SmsTemplate> page = smsTemplateService.findPage(new Page<SmsTemplate>(request, response), smsTemplate); 
 		model.addAttribute("page", page);
+
 		return "modules/sms/smsTemplateList";
 	}
 
