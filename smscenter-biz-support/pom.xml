@@ -15,7 +15,7 @@
 		<jdk.version>1.7</jdk.version>
 		
 		<commons-lang3.version>3.3.2</commons-lang3.version>
-		<commons-io.version>2.4</commons-io.version>
+		<commons-io.version>2.7</commons-io.version>
 		<commons-codec.version>1.9</commons-codec.version>
 		<guava.version>18.0</guava.version>
 		
